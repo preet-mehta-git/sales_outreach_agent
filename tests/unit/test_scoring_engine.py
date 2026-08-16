@@ -16,10 +16,10 @@ def test_scoring_engine_no_website_high_opportunity():
         website_status=WebsiteStatus.NO_WEBSITE
     )
     
-    score_data = ScoringEngine.calculate_score(business)
-    assert score_data["total_score"] >= 75.0
-    assert score_data["website_gap_score"] == 35.0
-    assert score_data["reachability_score"] == 20.0
+    score_data = ScoringEngine.calculate_score(business, decision_maker_confidence="HIGH")
+    assert score_data["total_score"] >= 70.0
+    assert score_data["digital_opportunity_gap_score"] == 35.0
+    assert score_data["contactability_score"] == 10.0
 
 
 def test_scoring_engine_good_existing_website_low_opportunity():
@@ -41,5 +41,5 @@ def test_scoring_engine_good_existing_website_low_opportunity():
     )
 
     score_data = ScoringEngine.calculate_score(business, audit)
-    assert score_data["website_gap_score"] == 5.0
-    assert score_data["digital_gap_score"] == 0.0
+    assert score_data["digital_opportunity_gap_score"] == 1.8  # 35 * (1 - 0.95)
+    assert score_data["total_score"] < 60.0
