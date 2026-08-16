@@ -85,11 +85,19 @@ If you prefer not to receive future communications, please reply with "REMOVE" o
         self.db.commit()
         self.db.refresh(draft)
 
-        # Advance state DEMO_GENERATED -> OUTREACH_DRAFTED via Orchestrator
+        # Advance state DEMO_GENERATED -> OUTREACH_DRAFTED -> AWAITING_APPROVAL
         if lead.workflow_state == WorkflowState.DEMO_GENERATED:
             self.orchestrator.transition_lead(
                 lead_id=lead.id,
                 target_state=WorkflowState.OUTREACH_DRAFTED,
+                agent_name=self.name,
+                payload_snapshot={"draft_id": draft.id}
+            )
+
+        if lead.workflow_state == WorkflowState.OUTREACH_DRAFTED:
+            self.orchestrator.transition_lead(
+                lead_id=lead.id,
+                target_state=WorkflowState.AWAITING_APPROVAL,
                 agent_name=self.name,
                 payload_snapshot={
                     "draft_id": draft.id,

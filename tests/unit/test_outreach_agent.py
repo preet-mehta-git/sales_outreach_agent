@@ -42,6 +42,6 @@ def test_outreach_agent_drafting(db_session):
     assert "REMOVE" in out.data["email_body"]  # Opt-out compliance check
     assert "/static/demos/" in out.data["whatsapp_body"]
 
-    # Verify state transition to OUTREACH_DRAFTED
+    # Verify state transition to AWAITING_APPROVAL
     db_session.refresh(lead)
-    assert lead.workflow_state == WorkflowState.OUTREACH_DRAFTED
+    assert lead.workflow_state == WorkflowState.AWAITING_APPROVAL

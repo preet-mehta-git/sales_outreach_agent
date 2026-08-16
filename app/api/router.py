@@ -7,6 +7,8 @@ from app.api.qualification import router as qualification_router
 from app.api.research import router as research_router
 from app.api.demo import router as demo_router
 from app.api.outreach import router as outreach_router
+from app.api.approval import router as approval_router
+from app.api.pipeline import router as pipeline_router
 
 api_router = APIRouter(prefix="/api/v1")
 api_router.include_router(campaigns_router)
@@ -17,3 +19,5 @@ api_router.include_router(qualification_router)
 api_router.include_router(research_router)
 api_router.include_router(demo_router)
 api_router.include_router(outreach_router)
+api_router.include_router(approval_router)
+api_router.include_router(pipeline_router)

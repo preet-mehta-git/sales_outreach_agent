@@ -38,6 +38,6 @@ def test_draft_lead_outreach_api(db_session):
         assert get_data["status"] == "AWAITING_APPROVAL"
 
         db_session.refresh(lead)
-        assert lead.workflow_state == WorkflowState.OUTREACH_DRAFTED
+        assert lead.workflow_state == WorkflowState.AWAITING_APPROVAL
     finally:
         app.dependency_overrides.clear()

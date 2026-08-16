@@ -24,11 +24,11 @@ class DiscoveryAgent(BaseAgent[dict[str, Any]]):
         self.orchestrator = OrchestratorEngine(self.db)
 
     def run(self, input_data: AgentInput) -> dict[str, Any]:
-        params = input_data.parameters
+        params = {**input_data.parameters, **input_data.custom_params}
         city = params.get("city", "Ahmedabad")
         keywords = params.get("keywords", ["restaurant", "cafe", "bakery"])
         limit_per_keyword = params.get("limit_per_keyword", 5)
-        campaign_id = params.get("campaign_id")
+        campaign_id = params.get("campaign_id") or input_data.campaign_id
 
         discovered_count = 0
         new_leads_count = 0
