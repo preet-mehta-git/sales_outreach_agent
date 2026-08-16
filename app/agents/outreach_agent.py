@@ -1,9 +1,13 @@
-from typing import Any
+from typing import Any, Tuple, List, Optional
 from sqlalchemy.orm import Session
 
 from app.agents.base import BaseAgent
 from app.schemas.agent import AgentInput
-from app.schemas.enums import WorkflowState, OutreachStatus, ConfidenceLevel
+from app.schemas.enums import (
+    WorkflowState, OutreachStatus, ConfidenceLevel, EntityType,
+    EntityVerificationStatus, WebsiteVerificationStatus, OutreachReadiness,
+    ContactTargetStatus, DemoAccessStatus
+)
 from app.db.models import Business, DecisionMakerRecord, WebsiteAudit, OutreachDraft
 from app.orchestrator.engine import OrchestratorEngine
 from app.core.logging import get_logger
@@ -13,12 +17,60 @@ logger = get_logger("OutreachAgent")
 
 class OutreachAgent(BaseAgent[dict[str, Any]]):
     name = "OutreachAgent"
-    version = "1.0"
+    version = "2.1"
 
     def __init__(self, db: Session):
         super().__init__()
         self.db = db
         self.orchestrator = OrchestratorEngine(self.db)
+
+    def evaluate_readiness(self, lead: Business, draft: OutreachDraft | None) -> Tuple[OutreachReadiness, List[str]]:
+        reasons = []
+        is_ready = True
+
+        # Checklist 1: Entity Verified
+        if lead.entity_type != EntityType.BUSINESS or lead.entity_verification_status != EntityVerificationStatus.VERIFIED:
+            is_ready = False
+            reasons.append("Entity is not a verified commercial business.")
+
+        # Checklist 2: Website Status Verified
+        if lead.website_verification_status not in [WebsiteVerificationStatus.OFFICIAL_WEBSITE_VERIFIED, WebsiteVerificationStatus.NO_WEBSITE_CONFIRMED]:
+            is_ready = False
+            reasons.append(f"Website status is unverified or conflicting ({lead.website_verification_status}).")
+
+        # Checklist 3: Contact Route / Target Status Verified
+        if lead.contact_target_status == ContactTargetStatus.NOT_FOUND and not lead.phone and not lead.email:
+            is_ready = False
+            reasons.append("No verified individual decision maker or business contact route available.")
+        elif not lead.phone and not lead.email:
+            is_ready = False
+            reasons.append("No phone or email contact route available.")
+
+        # Checklist 4: Suppression Check
+        if lead.is_suppressed:
+            return OutreachReadiness.SUPPRESSED, ["Lead is explicitly suppressed."]
+
+        # Checklist 5: Demo Access Check (Demo URL optional for outreach if non-public)
+        if lead.demo_access_status != DemoAccessStatus.PUBLIC_ACCESSIBLE:
+            reasons.append(f"Demo URL is local/non-public ({lead.demo_access_status or 'LOCAL_ONLY'}). Non-public demo URL excluded from outreach copy.")
+
+        if is_ready:
+            return OutreachReadiness.READY_FOR_APPROVAL, ["All required Phase 11.1 outreach readiness criteria passed."]
+        else:
+            return OutreachReadiness.MANUAL_REVIEW, reasons
+
+    def determine_greeting(self, lead: Business, dm: Optional[DecisionMakerRecord]) -> str:
+        target_status = lead.contact_target_status
+
+        if target_status == ContactTargetStatus.VERIFIED_PERSON and dm and dm.name:
+            first_name = dm.name.split()[0]
+            return f"Hi {first_name},"
+        elif target_status == ContactTargetStatus.VERIFIED_ROLE and dm and dm.title:
+            return f"Hello {dm.title},"
+        elif target_status in (ContactTargetStatus.BUSINESS_CONTACT_ONLY, ContactTargetStatus.NOT_FOUND, ContactTargetStatus.MANUAL_REVIEW):
+            return f"Hello {lead.name} Team,"
+        else:
+            return f"Hello {lead.name} Team,"
 
     def run(self, input_data: AgentInput) -> dict[str, Any]:
         lead = self.db.query(Business).filter(Business.id == input_data.lead_id).first()
@@ -29,45 +81,48 @@ class OutreachAgent(BaseAgent[dict[str, Any]]):
         audit = self.db.query(WebsiteAudit).filter(WebsiteAudit.business_id == lead.id).first()
         draft = self.db.query(OutreachDraft).filter(OutreachDraft.business_id == lead.id).first()
 
-        # Personalization Check (Section 5.2): Check confidence before addressing by personal name
-        if dm and dm.name and dm.confidence in (ConfidenceLevel.HIGH, ConfidenceLevel.MEDIUM):
-            greeting = f"Hi {dm.name},"
-        else:
-            greeting = f"Hello {lead.name} Team,"
+        greeting = self.determine_greeting(lead, dm)
 
-        demo_url = draft.demo_url if (draft and draft.demo_url) else f"/static/demos/{lead.id}/index.html"
+        # Include demo URL ONLY if genuinely PUBLIC_ACCESSIBLE
+        is_demo_public = (lead.demo_access_status == DemoAccessStatus.PUBLIC_ACCESSIBLE and bool(lead.public_demo_url))
+        demo_url = lead.public_demo_url if is_demo_public else None
 
-        # Generate Email Copy (Evidence-based facts, no fabricated revenue)
-        subject = f"Growth opportunity for {lead.name} in {lead.city}"
-        
-        email_body = f"""{greeting}
+        subject = f"Digital opportunity assessment for {lead.name}"
 
-I came across {lead.name} while researching top {lead.category}s in {lead.city}. Your {lead.rating or 4.5}⭐ rating with {lead.review_count or 10}+ customer reviews shows strong local customer demand.
-
-However, we noticed a key digital presence opportunity: potential customers searching online are unable to view a mobile-optimized menu or place direct orders via WhatsApp.
-
-To show you how easy this is to solve, we built a personalized interactive web demo for {lead.name}:
+        if demo_url:
+            demo_section = f"""To demonstrate how this can be resolved, we assembled a live mobile prototype for {lead.name}:
 {demo_url}
 
-Features built into your demo:
-- Instant WhatsApp Click-to-Order button
-- Mobile-responsive digital menu with prices
-- One-tap Google Maps directions & table booking form
+Prototype features included:
+- Instant WhatsApp Click-to-Order CTA
+- Mobile-responsive menu display
+- One-tap location & enquiry form"""
+            wa_demo_text = f" View it here: {demo_url} -"
+        else:
+            demo_section = f"""We have conducted a digital audit and prototype design for {lead.name} to optimize direct online customer ordering and reservation conversion."""
+            wa_demo_text = ""
 
-Would you be open to a 5-minute call this Thursday to see how we can deploy this for {lead.name}?
+        email_body = f"""{greeting}
+
+I came across {lead.name} while reviewing commercial businesses in {lead.city}. Your {lead.rating or '4.0'}⭐ public rating across {lead.review_count or '10+'} Google reviews reflects strong customer interest.
+
+Based on our digital audit, we identified a key growth opportunity: online searchers looking for {lead.name} currently lack a direct mobile menu and WhatsApp instant ordering route.
+
+{demo_section}
+
+Would you be open to a 5-minute call this week to review how this can be enabled for {lead.name}?
 
 Best regards,
-Outreach Specialist | Antigravity AI Systems
+Outreach Team | Antigravity AI Systems
 
 ---
-If you prefer not to receive future communications, please reply with "REMOVE" or update your outreach preferences.
+To update outreach preferences or opt out, please reply with "REMOVE".
 """
 
-        # Generate WhatsApp Copy
         whatsapp_body = (
-            f"{greeting} 👋 We built a custom mobile web demo for {lead.name} "
-            f"including instant WhatsApp ordering & digital menu. "
-            f"Check it out here: {demo_url} - Would love your thoughts!"
+            f"{greeting} We reviewed the online presence for {lead.name} "
+            f"and identified opportunities for instant WhatsApp ordering and mobile menu.{wa_demo_text} "
+            f"Let us know if you would like to view our findings!"
         )
 
         # Create or Update OutreachDraft record
@@ -85,10 +140,17 @@ If you prefer not to receive future communications, please reply with "REMOVE" o
             draft.email_subject = subject
             draft.email_body = email_body
             draft.whatsapp_body = whatsapp_body
+            draft.demo_url = demo_url
             draft.status = OutreachStatus.AWAITING_APPROVAL
+
+        # Evaluate Outreach Readiness
+        readiness, readiness_reasons = self.evaluate_readiness(lead, draft)
+        lead.outreach_readiness = readiness
+        lead.outreach_readiness_reasons = readiness_reasons
 
         self.db.commit()
         self.db.refresh(draft)
+        self.db.refresh(lead)
 
         # Advance state DEMO_GENERATED -> OUTREACH_DRAFTED -> AWAITING_APPROVAL
         if lead.workflow_state == WorkflowState.DEMO_GENERATED:
@@ -107,11 +169,13 @@ If you prefer not to receive future communications, please reply with "REMOVE" o
                 payload_snapshot={
                     "draft_id": draft.id,
                     "status": draft.status.value,
+                    "outreach_readiness": readiness.value,
+                    "readiness_reasons": readiness_reasons,
                     "demo_url": demo_url
                 }
             )
 
-        logger.info(f"OutreachAgent created drafts for lead {lead.id}: Draft ID={draft.id}")
+        logger.info(f"OutreachAgent created drafts for lead {lead.id}: Draft ID={draft.id}, Readiness={readiness.value}, TargetStatus={lead.contact_target_status.value if lead.contact_target_status else 'NONE'}")
         return {
             "lead_id": lead.id,
             "draft_id": draft.id,
@@ -119,5 +183,8 @@ If you prefer not to receive future communications, please reply with "REMOVE" o
             "email_body": email_body,
             "whatsapp_body": whatsapp_body,
             "demo_url": demo_url,
-            "status": draft.status.value
+            "status": draft.status.value,
+            "outreach_readiness": readiness.value,
+            "readiness_reasons": readiness_reasons
         }
+

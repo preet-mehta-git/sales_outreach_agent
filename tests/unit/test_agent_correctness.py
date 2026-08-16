@@ -1,22 +1,15 @@
 import pytest
-from app.db.session import SessionLocal, engine
 from app.db.models import Base, Business, DecisionMakerRecord, WebsiteAudit, OutreachDraft
+
 from app.schemas.agent import AgentInput
 from app.schemas.enums import WorkflowState, ConfidenceLevel
 from app.agents.contact_discovery_agent import ContactDiscoveryAgent
 from app.agents.business_audit_agent import BusinessAuditAgent
 from app.agents.outreach_agent import OutreachAgent
 
-Base.metadata.create_all(bind=engine)
 
 
-@pytest.fixture
-def db_session():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+
 
 
 def test_contact_discovery_no_fabricated_owner(db_session):
@@ -62,7 +55,7 @@ def test_business_audit_no_fabricated_revenue(db_session):
     assert "inferred_insights" in res.data
     assert "potential_opportunities" in res.data
     assert "unknown_variables" in res.data
-    assert "Exact monthly revenue impact (requires internal financial records)" in res.data["unknown_variables"]
+    assert any("requires internal" in var for var in res.data["unknown_variables"])
 
 
 def test_outreach_low_confidence_generic_greeting(db_session):

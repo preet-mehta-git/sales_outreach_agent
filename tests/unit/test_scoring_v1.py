@@ -51,7 +51,7 @@ def test_score_no_website_weak_business():
 def test_score_multiple_locations():
     biz = create_mock_business(name="Chain Restaurant Branch 3", review_count=1200, rating=4.4)
     score_data = ScoringEngine.calculate_score(biz, purchase_signals=["new_branch", "expansion"])
-    assert score_data["purchase_signals_score"] == 7.0
+    assert score_data["purchase_signals_score"] == 10.0
 
 
 def test_score_premium_restaurant():
@@ -91,6 +91,7 @@ def test_score_missing_website_quality_data():
 
 
 def test_score_missing_purchase_signals():
-    biz = create_mock_business()
+    biz = create_mock_business(review_count=100)
     score_data = ScoringEngine.calculate_score(biz, purchase_signals=None)
     assert score_data["purchase_signals_score"] == 0.0
+

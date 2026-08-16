@@ -1,0 +1,749 @@
+{
+  "campaign_id": "b87e03e1-95cb-4f28-bee0-9b83eb9c437e",
+  "phase": "PHASE_11_LEAD_VERIFICATION_AND_PROSPECT_INTELLIGENCE",
+  "pilot_batch_size": 10,
+  "summary": {
+    "priority_leads": 2,
+    "qualified_leads": 2,
+    "potential_review_leads": 0,
+    "rejected_leads": 6,
+    "non_business_entities_filtered": 1,
+    "official_websites_verified": 6,
+    "websites_discovered_via_source_b": 1,
+    "no_website_confirmed": 3,
+    "verified_decision_makers": 0,
+    "unverified_decision_makers": 10,
+    "outreach_ready_for_approval": 4,
+    "outreach_manual_review": 6
+  },
+  "businesses": [
+    {
+      "business_id": "4d41fcdd-aaf7-42aa-973f-8b620db3bebc",
+      "1_business_name": "Manek Chowk Night Food Market",
+      "2_business_category": "street food",
+      "3_location": "Manek Chowk, Danaplee, Khadia, Ahmedabad",
+      "4_entity_verification": {
+        "entity_type": "NON_BUSINESS",
+        "verification_status": "REJECTED"
+      },
+      "5_website_discovery": {
+        "source_a_places_url": "NONE",
+        "source_b_search_url": "NONE",
+        "final_website_url": "NONE",
+        "website_source": "SOURCE_A",
+        "verification_status": "WEBSITE_FOUND_UNVERIFIED",
+        "classification": "NO_WEBSITE"
+      },
+      "6_website_quality_score": "NOT_AVAILABLE",
+      "7_opportunity_score_breakdown": {
+        "total_score": 86.0,
+        "digital_opportunity_gap": 35.0,
+        "customer_traction": 25.0,
+        "commercial_potential": 16.0,
+        "contactability": 5.0,
+        "purchase_signals": 5.0
+      },
+      "8_qualification_classification": "REJECTED",
+      "9_exact_reason_for_classification": "NON_BUSINESS_ENTITY (Entity rejected as market/landmark)",
+      "10_decision_maker_discovery": {
+        "name": "NOT_FOUND",
+        "title": "NOT_FOUND",
+        "confidence": "NOT_FOUND",
+        "evidence": "No public verifiable evidence"
+      },
+      "11_business_audit": {
+        "known_facts": {
+          "business_name": "Manek Chowk Night Food Market",
+          "category": "street food",
+          "city": "Ahmedabad",
+          "rating": 4.6,
+          "review_count": 2850,
+          "website_status": "NO_WEBSITE"
+        },
+        "inferred_insights": [
+          "Significant customer search demand indicated by 2850+ public reviews."
+        ],
+        "potential_opportunities": [
+          "Service catalog and pricing package overview",
+          "Direct appointment scheduling & lead capture form",
+          "Customer testimonial & portfolio section"
+        ],
+        "unknown_variables": [
+          "Exact monthly direct customer website traffic (requires web analytics)",
+          "Financial commission split paid to third-party platforms (requires internal finance records)",
+          "Exact conversion rate of phone inquiries into bookings"
+        ]
+      },
+      "12_public_demo_url": "NOT_AVAILABLE",
+      "13_outreach_readiness": {
+        "status": "NOT_READY",
+        "reasons": []
+      },
+      "14_email_draft": "NOT_AVAILABLE",
+      "15_whatsapp_draft": "NOT_AVAILABLE",
+      "16_suppression_status": false
+    },
+    {
+      "business_id": "c7258b23-2286-4aed-8508-17e2c34e803f",
+      "1_business_name": "Agashiye - House of MG",
+      "2_business_category": "fine dining restaurant",
+      "3_location": "Opp. Sidi Saiyyed Mosque, Lal Darwaja, Ahmedabad",
+      "4_entity_verification": {
+        "entity_type": "BUSINESS",
+        "verification_status": "VERIFIED"
+      },
+      "5_website_discovery": {
+        "source_a_places_url": "https://houseofmg.com",
+        "source_b_search_url": "NONE",
+        "final_website_url": "https://houseofmg.com",
+        "website_source": "GOOGLE_PLACES_SOURCE_A",
+        "verification_status": "OFFICIAL_WEBSITE_VERIFIED",
+        "classification": "GOOD_WEBSITE"
+      },
+      "6_website_quality_score": 81.75,
+      "7_opportunity_score_breakdown": {
+        "total_score": 55.4,
+        "digital_opportunity_gap": 6.4,
+        "customer_traction": 25.0,
+        "commercial_potential": 14.0,
+        "contactability": 5.0,
+        "purchase_signals": 5.0
+      },
+      "8_qualification_classification": "REJECTED",
+      "9_exact_reason_for_classification": "SCORE_BELOW_THRESHOLD (Opportunity Score < 70.0)",
+      "10_decision_maker_discovery": {
+        "name": "NOT_FOUND",
+        "title": "NOT_FOUND",
+        "confidence": "NOT_FOUND",
+        "evidence": "No public verifiable evidence"
+      },
+      "11_business_audit": {
+        "known_facts": {
+          "business_name": "Agashiye - House of MG",
+          "category": "fine dining restaurant",
+          "city": "Ahmedabad",
+          "rating": 4.7,
+          "review_count": 1420,
+          "website_status": "WEBSITE_FOUND"
+        },
+        "inferred_insights": [
+          "Significant customer search demand indicated by 1420+ public reviews."
+        ],
+        "potential_opportunities": [
+          "Owned mobile digital menu with instant QR accessibility",
+          "Direct table enquiry & reservation booking form",
+          "Instant WhatsApp click-to-order CTA"
+        ],
+        "unknown_variables": [
+          "Exact monthly direct customer website traffic (requires web analytics)",
+          "Financial commission split paid to third-party platforms (requires internal finance records)",
+          "Exact conversion rate of phone inquiries into bookings"
+        ]
+      },
+      "12_public_demo_url": "NOT_AVAILABLE",
+      "13_outreach_readiness": {
+        "status": "NOT_READY",
+        "reasons": []
+      },
+      "14_email_draft": "NOT_AVAILABLE",
+      "15_whatsapp_draft": "NOT_AVAILABLE",
+      "16_suppression_status": false
+    },
+    {
+      "business_id": "daa23f80-ac64-4d5f-92c7-e5aabcf957d1",
+      "1_business_name": "Gordhan Thal",
+      "2_business_category": "gujarati thali restaurant",
+      "3_location": "SG Highway, Bodakdev, Ahmedabad",
+      "4_entity_verification": {
+        "entity_type": "BUSINESS",
+        "verification_status": "VERIFIED"
+      },
+      "5_website_discovery": {
+        "source_a_places_url": "http://gordhanthal.com",
+        "source_b_search_url": "NONE",
+        "final_website_url": "http://gordhanthal.com",
+        "website_source": "GOOGLE_PLACES_SOURCE_A",
+        "verification_status": "OFFICIAL_WEBSITE_VERIFIED",
+        "classification": "OUTDATED_WEBSITE"
+      },
+      "6_website_quality_score": 34.0,
+      "7_opportunity_score_breakdown": {
+        "total_score": 74.1,
+        "digital_opportunity_gap": 23.1,
+        "customer_traction": 25.0,
+        "commercial_potential": 16.0,
+        "contactability": 5.0,
+        "purchase_signals": 5.0
+      },
+      "8_qualification_classification": "QUALIFIED",
+      "9_exact_reason_for_classification": "QUALIFIED_THRESHOLD_MET (Opportunity Score >= 70.0)",
+      "10_decision_maker_discovery": {
+        "name": "NOT_FOUND",
+        "title": "NOT_FOUND",
+        "confidence": "NOT_FOUND",
+        "evidence": {
+          "source": "Public Web & Registry Discovery",
+          "status": "NOT_FOUND",
+          "searched_sources": [
+            "official_website_about",
+            "contact_page",
+            "public_business_directory"
+          ],
+          "reason": "No explicit individual owner or executive name could be verified from public sources without guessing."
+        }
+      },
+      "11_business_audit": {
+        "known_facts": {
+          "business_name": "Gordhan Thal",
+          "category": "gujarati thali restaurant",
+          "city": "Ahmedabad",
+          "rating": 4.5,
+          "review_count": 980,
+          "website_status": "WEAK_WEBSITE"
+        },
+        "inferred_insights": [
+          "Significant customer search demand indicated by 980+ public reviews.",
+          "Existing digital channel presents user-experience or mobile conversion limitations."
+        ],
+        "potential_opportunities": [
+          "Owned mobile digital menu with instant QR accessibility",
+          "Direct table enquiry & reservation booking form",
+          "Instant WhatsApp click-to-order CTA"
+        ],
+        "unknown_variables": [
+          "Exact monthly direct customer website traffic (requires web analytics)",
+          "Financial commission split paid to third-party platforms (requires internal finance records)",
+          "Exact conversion rate of phone inquiries into bookings"
+        ]
+      },
+      "12_public_demo_url": "http://localhost:8000/static/demos/daa23f80-ac64-4d5f-92c7-e5aabcf957d1/index.html",
+      "13_outreach_readiness": {
+        "status": "READY_FOR_APPROVAL",
+        "reasons": [
+          "All 8 Phase 11 outreach readiness criteria passed."
+        ]
+      },
+      "14_email_draft": {
+        "subject": "Digital opportunity assessment for Gordhan Thal",
+        "body": "Hello Gordhan Thal Team,\n\nI came across Gordhan Thal while reviewing commercial businesses in Ahmedabad. Your 4.5⭐ public rating across 980 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Gordhan Thal currently lack an direct mobile menu and WhatsApp instant ordering route.\n\nTo demonstrate how this can be resolved, we assembled a live mobile prototype for Gordhan Thal:\nhttp://localhost:8000/static/demos/daa23f80-ac64-4d5f-92c7-e5aabcf957d1/index.html\n\nPrototype features included:\n- Instant WhatsApp Click-to-Order CTA\n- Mobile-responsive menu display\n- One-tap location & enquiry form\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Gordhan Thal?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n"
+      },
+      "15_whatsapp_draft": {
+        "body": "Hello Gordhan Thal Team, We put together a live mobile web prototype for Gordhan Thal featuring instant WhatsApp ordering and mobile menu. View it here: http://localhost:8000/static/demos/daa23f80-ac64-4d5f-92c7-e5aabcf957d1/index.html - Let us know your thoughts!"
+      },
+      "16_suppression_status": false
+    },
+    {
+      "business_id": "dff86629-e143-4802-84ae-06ed9326be31",
+      "1_business_name": "Zen Cafe",
+      "2_business_category": "cafe",
+      "3_location": "University Road, Navrangpura, Ahmedabad",
+      "4_entity_verification": {
+        "entity_type": "BUSINESS",
+        "verification_status": "VERIFIED"
+      },
+      "5_website_discovery": {
+        "source_a_places_url": "NONE",
+        "source_b_search_url": "NONE",
+        "final_website_url": "NONE",
+        "website_source": "SOURCE_A_AND_B_SEARCH",
+        "verification_status": "NO_WEBSITE_CONFIRMED",
+        "classification": "NO_WEBSITE"
+      },
+      "6_website_quality_score": 0.0,
+      "7_opportunity_score_breakdown": {
+        "total_score": 83.5,
+        "digital_opportunity_gap": 35.0,
+        "customer_traction": 22.5,
+        "commercial_potential": 16.0,
+        "contactability": 5.0,
+        "purchase_signals": 5.0
+      },
+      "8_qualification_classification": "PRIORITY",
+      "9_exact_reason_for_classification": "PRIORITY_SCORE_MET (Opportunity Score >= 80.0)",
+      "10_decision_maker_discovery": {
+        "name": "NOT_FOUND",
+        "title": "NOT_FOUND",
+        "confidence": "NOT_FOUND",
+        "evidence": {
+          "source": "Public Web & Registry Discovery",
+          "status": "NOT_FOUND",
+          "searched_sources": [
+            "official_website_about",
+            "contact_page",
+            "public_business_directory"
+          ],
+          "reason": "No explicit individual owner or executive name could be verified from public sources without guessing."
+        }
+      },
+      "11_business_audit": {
+        "known_facts": {
+          "business_name": "Zen Cafe",
+          "category": "cafe",
+          "city": "Ahmedabad",
+          "rating": 4.4,
+          "review_count": 510,
+          "website_status": "NO_WEBSITE"
+        },
+        "inferred_insights": [
+          "Significant customer search demand indicated by 510+ public reviews.",
+          "Online searchers rely on Google Maps listing and third-party pages due to lack of an official website."
+        ],
+        "potential_opportunities": [
+          "Mobile menu showcase with beverage & snack items",
+          "Direct WhatsApp click-to-order CTA",
+          "Table reservation & event enquiry form"
+        ],
+        "unknown_variables": [
+          "Exact monthly direct customer website traffic (requires web analytics)",
+          "Financial commission split paid to third-party platforms (requires internal finance records)",
+          "Exact conversion rate of phone inquiries into bookings"
+        ]
+      },
+      "12_public_demo_url": "http://localhost:8000/static/demos/dff86629-e143-4802-84ae-06ed9326be31/index.html",
+      "13_outreach_readiness": {
+        "status": "READY_FOR_APPROVAL",
+        "reasons": [
+          "All 8 Phase 11 outreach readiness criteria passed."
+        ]
+      },
+      "14_email_draft": {
+        "subject": "Digital opportunity assessment for Zen Cafe",
+        "body": "Hello Zen Cafe Team,\n\nI came across Zen Cafe while reviewing commercial businesses in Ahmedabad. Your 4.4⭐ public rating across 510 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Zen Cafe currently lack an direct mobile menu and WhatsApp instant ordering route.\n\nTo demonstrate how this can be resolved, we assembled a live mobile prototype for Zen Cafe:\nhttp://localhost:8000/static/demos/dff86629-e143-4802-84ae-06ed9326be31/index.html\n\nPrototype features included:\n- Instant WhatsApp Click-to-Order CTA\n- Mobile-responsive menu display\n- One-tap location & enquiry form\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Zen Cafe?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n"
+      },
+      "15_whatsapp_draft": {
+        "body": "Hello Zen Cafe Team, We put together a live mobile web prototype for Zen Cafe featuring instant WhatsApp ordering and mobile menu. View it here: http://localhost:8000/static/demos/dff86629-e143-4802-84ae-06ed9326be31/index.html - Let us know your thoughts!"
+      },
+      "16_suppression_status": false
+    },
+    {
+      "business_id": "c48bf134-a091-4956-a35f-fd460db4ef71",
+      "1_business_name": "Lucky Tea Stall",
+      "2_business_category": "cafe & tea",
+      "3_location": "Opp. Dinbai Tower, Mirzapur, Ahmedabad",
+      "4_entity_verification": {
+        "entity_type": "BUSINESS",
+        "verification_status": "VERIFIED"
+      },
+      "5_website_discovery": {
+        "source_a_places_url": "NONE",
+        "source_b_search_url": "NONE",
+        "final_website_url": "NONE",
+        "website_source": "SOURCE_A_AND_B_SEARCH",
+        "verification_status": "NO_WEBSITE_CONFIRMED",
+        "classification": "NO_WEBSITE"
+      },
+      "6_website_quality_score": 0.0,
+      "7_opportunity_score_breakdown": {
+        "total_score": 84.4,
+        "digital_opportunity_gap": 35.0,
+        "customer_traction": 23.4,
+        "commercial_potential": 16.0,
+        "contactability": 5.0,
+        "purchase_signals": 5.0
+      },
+      "8_qualification_classification": "PRIORITY",
+      "9_exact_reason_for_classification": "PRIORITY_SCORE_MET (Opportunity Score >= 80.0)",
+      "10_decision_maker_discovery": {
+        "name": "NOT_FOUND",
+        "title": "NOT_FOUND",
+        "confidence": "NOT_FOUND",
+        "evidence": {
+          "source": "Public Web & Registry Discovery",
+          "status": "NOT_FOUND",
+          "searched_sources": [
+            "official_website_about",
+            "contact_page",
+            "public_business_directory"
+          ],
+          "reason": "No explicit individual owner or executive name could be verified from public sources without guessing."
+        }
+      },
+      "11_business_audit": {
+        "known_facts": {
+          "business_name": "Lucky Tea Stall",
+          "category": "cafe & tea",
+          "city": "Ahmedabad",
+          "rating": 4.3,
+          "review_count": 760,
+          "website_status": "NO_WEBSITE"
+        },
+        "inferred_insights": [
+          "Significant customer search demand indicated by 760+ public reviews.",
+          "Online searchers rely on Google Maps listing and third-party pages due to lack of an official website."
+        ],
+        "potential_opportunities": [
+          "Mobile menu showcase with beverage & snack items",
+          "Direct WhatsApp click-to-order CTA",
+          "Table reservation & event enquiry form"
+        ],
+        "unknown_variables": [
+          "Exact monthly direct customer website traffic (requires web analytics)",
+          "Financial commission split paid to third-party platforms (requires internal finance records)",
+          "Exact conversion rate of phone inquiries into bookings"
+        ]
+      },
+      "12_public_demo_url": "http://localhost:8000/static/demos/c48bf134-a091-4956-a35f-fd460db4ef71/index.html",
+      "13_outreach_readiness": {
+        "status": "READY_FOR_APPROVAL",
+        "reasons": [
+          "All 8 Phase 11 outreach readiness criteria passed."
+        ]
+      },
+      "14_email_draft": {
+        "subject": "Digital opportunity assessment for Lucky Tea Stall",
+        "body": "Hello Lucky Tea Stall Team,\n\nI came across Lucky Tea Stall while reviewing commercial businesses in Ahmedabad. Your 4.3⭐ public rating across 760 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Lucky Tea Stall currently lack an direct mobile menu and WhatsApp instant ordering route.\n\nTo demonstrate how this can be resolved, we assembled a live mobile prototype for Lucky Tea Stall:\nhttp://localhost:8000/static/demos/c48bf134-a091-4956-a35f-fd460db4ef71/index.html\n\nPrototype features included:\n- Instant WhatsApp Click-to-Order CTA\n- Mobile-responsive menu display\n- One-tap location & enquiry form\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Lucky Tea Stall?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n"
+      },
+      "15_whatsapp_draft": {
+        "body": "Hello Lucky Tea Stall Team, We put together a live mobile web prototype for Lucky Tea Stall featuring instant WhatsApp ordering and mobile menu. View it here: http://localhost:8000/static/demos/c48bf134-a091-4956-a35f-fd460db4ef71/index.html - Let us know your thoughts!"
+      },
+      "16_suppression_status": false
+    },
+    {
+      "business_id": "3a2145c2-7859-4af4-af50-5376a5677265",
+      "1_business_name": "Karnavati Dabeli & Vadapav",
+      "2_business_category": "fast food",
+      "3_location": "C G Road, Navrangpura, Ahmedabad",
+      "4_entity_verification": {
+        "entity_type": "BUSINESS",
+        "verification_status": "VERIFIED"
+      },
+      "5_website_discovery": {
+        "source_a_places_url": "NONE",
+        "source_b_search_url": "NONE",
+        "final_website_url": "NONE",
+        "website_source": "SOURCE_A_AND_B_SEARCH",
+        "verification_status": "NO_WEBSITE_CONFIRMED",
+        "classification": "NO_WEBSITE"
+      },
+      "6_website_quality_score": 0.0,
+      "7_opportunity_score_breakdown": {
+        "total_score": 74.7,
+        "digital_opportunity_gap": 35.0,
+        "customer_traction": 21.7,
+        "commercial_potential": 13.0,
+        "contactability": 5.0,
+        "purchase_signals": 0.0
+      },
+      "8_qualification_classification": "QUALIFIED",
+      "9_exact_reason_for_classification": "QUALIFIED_THRESHOLD_MET (Opportunity Score >= 70.0)",
+      "10_decision_maker_discovery": {
+        "name": "NOT_FOUND",
+        "title": "NOT_FOUND",
+        "confidence": "NOT_FOUND",
+        "evidence": {
+          "source": "Public Web & Registry Discovery",
+          "status": "NOT_FOUND",
+          "searched_sources": [
+            "official_website_about",
+            "contact_page",
+            "public_business_directory"
+          ],
+          "reason": "No explicit individual owner or executive name could be verified from public sources without guessing."
+        }
+      },
+      "11_business_audit": {
+        "known_facts": {
+          "business_name": "Karnavati Dabeli & Vadapav",
+          "category": "fast food",
+          "city": "Ahmedabad",
+          "rating": 4.2,
+          "review_count": 340,
+          "website_status": "NO_WEBSITE"
+        },
+        "inferred_insights": [
+          "Significant customer search demand indicated by 340+ public reviews.",
+          "Online searchers rely on Google Maps listing and third-party pages due to lack of an official website."
+        ],
+        "potential_opportunities": [
+          "Owned mobile digital menu with instant QR accessibility",
+          "Direct table enquiry & reservation booking form",
+          "Instant WhatsApp click-to-order CTA"
+        ],
+        "unknown_variables": [
+          "Exact monthly direct customer website traffic (requires web analytics)",
+          "Financial commission split paid to third-party platforms (requires internal finance records)",
+          "Exact conversion rate of phone inquiries into bookings"
+        ]
+      },
+      "12_public_demo_url": "http://localhost:8000/static/demos/3a2145c2-7859-4af4-af50-5376a5677265/index.html",
+      "13_outreach_readiness": {
+        "status": "READY_FOR_APPROVAL",
+        "reasons": [
+          "All 8 Phase 11 outreach readiness criteria passed."
+        ]
+      },
+      "14_email_draft": {
+        "subject": "Digital opportunity assessment for Karnavati Dabeli & Vadapav",
+        "body": "Hello Karnavati Dabeli & Vadapav Team,\n\nI came across Karnavati Dabeli & Vadapav while reviewing commercial businesses in Ahmedabad. Your 4.2⭐ public rating across 340 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Karnavati Dabeli & Vadapav currently lack an direct mobile menu and WhatsApp instant ordering route.\n\nTo demonstrate how this can be resolved, we assembled a live mobile prototype for Karnavati Dabeli & Vadapav:\nhttp://localhost:8000/static/demos/3a2145c2-7859-4af4-af50-5376a5677265/index.html\n\nPrototype features included:\n- Instant WhatsApp Click-to-Order CTA\n- Mobile-responsive menu display\n- One-tap location & enquiry form\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Karnavati Dabeli & Vadapav?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n"
+      },
+      "15_whatsapp_draft": {
+        "body": "Hello Karnavati Dabeli & Vadapav Team, We put together a live mobile web prototype for Karnavati Dabeli & Vadapav featuring instant WhatsApp ordering and mobile menu. View it here: http://localhost:8000/static/demos/3a2145c2-7859-4af4-af50-5376a5677265/index.html - Let us know your thoughts!"
+      },
+      "16_suppression_status": false
+    },
+    {
+      "business_id": "23cdc8bd-4309-4b4f-a974-da1237842d15",
+      "1_business_name": "Havmor Restaurant",
+      "2_business_category": "family restaurant",
+      "3_location": "Navrangpura Bus Stop, Ahmedabad",
+      "4_entity_verification": {
+        "entity_type": "BUSINESS",
+        "verification_status": "VERIFIED"
+      },
+      "5_website_discovery": {
+        "source_a_places_url": "https://havmor.com",
+        "source_b_search_url": "NONE",
+        "final_website_url": "https://havmor.com",
+        "website_source": "GOOGLE_PLACES_SOURCE_A",
+        "verification_status": "OFFICIAL_WEBSITE_VERIFIED",
+        "classification": "GOOD_WEBSITE"
+      },
+      "6_website_quality_score": 79.25,
+      "7_opportunity_score_breakdown": {
+        "total_score": 55.0,
+        "digital_opportunity_gap": 7.3,
+        "customer_traction": 23.7,
+        "commercial_potential": 14.0,
+        "contactability": 5.0,
+        "purchase_signals": 5.0
+      },
+      "8_qualification_classification": "REJECTED",
+      "9_exact_reason_for_classification": "SCORE_BELOW_THRESHOLD (Opportunity Score < 70.0)",
+      "10_decision_maker_discovery": {
+        "name": "NOT_FOUND",
+        "title": "NOT_FOUND",
+        "confidence": "NOT_FOUND",
+        "evidence": "No public verifiable evidence"
+      },
+      "11_business_audit": {
+        "known_facts": {
+          "business_name": "Havmor Restaurant",
+          "category": "family restaurant",
+          "city": "Ahmedabad",
+          "rating": 4.4,
+          "review_count": 890,
+          "website_status": "WEBSITE_FOUND"
+        },
+        "inferred_insights": [
+          "Significant customer search demand indicated by 890+ public reviews."
+        ],
+        "potential_opportunities": [
+          "Owned mobile digital menu with instant QR accessibility",
+          "Direct table enquiry & reservation booking form",
+          "Instant WhatsApp click-to-order CTA"
+        ],
+        "unknown_variables": [
+          "Exact monthly direct customer website traffic (requires web analytics)",
+          "Financial commission split paid to third-party platforms (requires internal finance records)",
+          "Exact conversion rate of phone inquiries into bookings"
+        ]
+      },
+      "12_public_demo_url": "NOT_AVAILABLE",
+      "13_outreach_readiness": {
+        "status": "NOT_READY",
+        "reasons": []
+      },
+      "14_email_draft": "NOT_AVAILABLE",
+      "15_whatsapp_draft": "NOT_AVAILABLE",
+      "16_suppression_status": false
+    },
+    {
+      "business_id": "faca58b6-ff35-46f0-b0c3-f30ecffda167",
+      "1_business_name": "Upper Crust Bakery & Cafe",
+      "2_business_category": "bakery & cafe",
+      "3_location": "Vijay Cross Road, Navrangpura, Ahmedabad",
+      "4_entity_verification": {
+        "entity_type": "BUSINESS",
+        "verification_status": "VERIFIED"
+      },
+      "5_website_discovery": {
+        "source_a_places_url": "http://uppercrustindia.com",
+        "source_b_search_url": "NONE",
+        "final_website_url": "http://uppercrustindia.com",
+        "website_source": "GOOGLE_PLACES_SOURCE_A",
+        "verification_status": "OFFICIAL_WEBSITE_VERIFIED",
+        "classification": "GOOD_WEBSITE"
+      },
+      "6_website_quality_score": 79.25,
+      "7_opportunity_score_breakdown": {
+        "total_score": 55.3,
+        "digital_opportunity_gap": 7.3,
+        "customer_traction": 24.0,
+        "commercial_potential": 14.0,
+        "contactability": 5.0,
+        "purchase_signals": 5.0
+      },
+      "8_qualification_classification": "REJECTED",
+      "9_exact_reason_for_classification": "SCORE_BELOW_THRESHOLD (Opportunity Score < 70.0)",
+      "10_decision_maker_discovery": {
+        "name": "NOT_FOUND",
+        "title": "NOT_FOUND",
+        "confidence": "NOT_FOUND",
+        "evidence": "No public verifiable evidence"
+      },
+      "11_business_audit": {
+        "known_facts": {
+          "business_name": "Upper Crust Bakery & Cafe",
+          "category": "bakery & cafe",
+          "city": "Ahmedabad",
+          "rating": 4.5,
+          "review_count": 620,
+          "website_status": "WEBSITE_FOUND"
+        },
+        "inferred_insights": [
+          "Significant customer search demand indicated by 620+ public reviews."
+        ],
+        "potential_opportunities": [
+          "Mobile menu showcase with beverage & snack items",
+          "Direct WhatsApp click-to-order CTA",
+          "Table reservation & event enquiry form"
+        ],
+        "unknown_variables": [
+          "Exact monthly direct customer website traffic (requires web analytics)",
+          "Financial commission split paid to third-party platforms (requires internal finance records)",
+          "Exact conversion rate of phone inquiries into bookings"
+        ]
+      },
+      "12_public_demo_url": "NOT_AVAILABLE",
+      "13_outreach_readiness": {
+        "status": "NOT_READY",
+        "reasons": []
+      },
+      "14_email_draft": "NOT_AVAILABLE",
+      "15_whatsapp_draft": "NOT_AVAILABLE",
+      "16_suppression_status": false
+    },
+    {
+      "business_id": "443f4c10-f89b-43c8-bd70-017bc034cd88",
+      "1_business_name": "Swati Snacks",
+      "2_business_category": "traditional snacks",
+      "3_location": "Law Garden, Ellisbridge, Ahmedabad",
+      "4_entity_verification": {
+        "entity_type": "BUSINESS",
+        "verification_status": "VERIFIED"
+      },
+      "5_website_discovery": {
+        "source_a_places_url": "https://swatisnacks.com",
+        "source_b_search_url": "https://swatisnacks.com",
+        "final_website_url": "https://swatisnacks.com",
+        "website_source": "WEB_SEARCH_SOURCE_B",
+        "verification_status": "OFFICIAL_WEBSITE_VERIFIED",
+        "classification": "GOOD_WEBSITE"
+      },
+      "6_website_quality_score": 79.25,
+      "7_opportunity_score_breakdown": {
+        "total_score": 56.3,
+        "digital_opportunity_gap": 7.3,
+        "customer_traction": 25.0,
+        "commercial_potential": 14.0,
+        "contactability": 5.0,
+        "purchase_signals": 5.0
+      },
+      "8_qualification_classification": "REJECTED",
+      "9_exact_reason_for_classification": "SCORE_BELOW_THRESHOLD (Opportunity Score < 70.0)",
+      "10_decision_maker_discovery": {
+        "name": "NOT_FOUND",
+        "title": "NOT_FOUND",
+        "confidence": "NOT_FOUND",
+        "evidence": "No public verifiable evidence"
+      },
+      "11_business_audit": {
+        "known_facts": {
+          "business_name": "Swati Snacks",
+          "category": "traditional snacks",
+          "city": "Ahmedabad",
+          "rating": 4.6,
+          "review_count": 1150,
+          "website_status": "WEBSITE_FOUND"
+        },
+        "inferred_insights": [
+          "Significant customer search demand indicated by 1150+ public reviews."
+        ],
+        "potential_opportunities": [
+          "Service catalog and pricing package overview",
+          "Direct appointment scheduling & lead capture form",
+          "Customer testimonial & portfolio section"
+        ],
+        "unknown_variables": [
+          "Exact monthly direct customer website traffic (requires web analytics)",
+          "Financial commission split paid to third-party platforms (requires internal finance records)",
+          "Exact conversion rate of phone inquiries into bookings"
+        ]
+      },
+      "12_public_demo_url": "NOT_AVAILABLE",
+      "13_outreach_readiness": {
+        "status": "NOT_READY",
+        "reasons": []
+      },
+      "14_email_draft": "NOT_AVAILABLE",
+      "15_whatsapp_draft": "NOT_AVAILABLE",
+      "16_suppression_status": false
+    },
+    {
+      "business_id": "f390ecf5-e306-42a1-af34-0593905338b2",
+      "1_business_name": "Vishalla Village Restaurant",
+      "2_business_category": "heritage dining",
+      "3_location": "Vasna Road, Opposite APMC Market, Ahmedabad",
+      "4_entity_verification": {
+        "entity_type": "BUSINESS",
+        "verification_status": "VERIFIED"
+      },
+      "5_website_discovery": {
+        "source_a_places_url": "http://vishalla.com",
+        "source_b_search_url": "NONE",
+        "final_website_url": "http://vishalla.com",
+        "website_source": "GOOGLE_PLACES_SOURCE_A",
+        "verification_status": "OFFICIAL_WEBSITE_VERIFIED",
+        "classification": "GOOD_WEBSITE"
+      },
+      "6_website_quality_score": 79.25,
+      "7_opportunity_score_breakdown": {
+        "total_score": 55.3,
+        "digital_opportunity_gap": 7.3,
+        "customer_traction": 24.0,
+        "commercial_potential": 14.0,
+        "contactability": 5.0,
+        "purchase_signals": 5.0
+      },
+      "8_qualification_classification": "REJECTED",
+      "9_exact_reason_for_classification": "SCORE_BELOW_THRESHOLD (Opportunity Score < 70.0)",
+      "10_decision_maker_discovery": {
+        "name": "NOT_FOUND",
+        "title": "NOT_FOUND",
+        "confidence": "NOT_FOUND",
+        "evidence": "No public verifiable evidence"
+      },
+      "11_business_audit": {
+        "known_facts": {
+          "business_name": "Vishalla Village Restaurant",
+          "category": "heritage dining",
+          "city": "Ahmedabad",
+          "rating": 4.3,
+          "review_count": 1680,
+          "website_status": "WEBSITE_FOUND"
+        },
+        "inferred_insights": [
+          "Significant customer search demand indicated by 1680+ public reviews."
+        ],
+        "potential_opportunities": [
+          "Owned mobile digital menu with instant QR accessibility",
+          "Direct table enquiry & reservation booking form",
+          "Instant WhatsApp click-to-order CTA"
+        ],
+        "unknown_variables": [
+          "Exact monthly direct customer website traffic (requires web analytics)",
+          "Financial commission split paid to third-party platforms (requires internal finance records)",
+          "Exact conversion rate of phone inquiries into bookings"
+        ]
+      },
+      "12_public_demo_url": "NOT_AVAILABLE",
+      "13_outreach_readiness": {
+        "status": "NOT_READY",
+        "reasons": []
+      },
+      "14_email_draft": "NOT_AVAILABLE",
+      "15_whatsapp_draft": "NOT_AVAILABLE",
+      "16_suppression_status": false
+    }
+  ]
+}

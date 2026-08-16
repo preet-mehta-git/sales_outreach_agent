@@ -39,7 +39,9 @@ def test_verifier_existing_website_lead(db_session):
     out = agent.execute(inp)
 
     assert out.success is True
-    assert out.data["reachable"] is True
+    assert isinstance(out.data["evidence"], list)
+    assert any("reached successfully" in item for item in out.data["evidence"])
+
     
     db_session.refresh(lead)
     assert lead.workflow_state == WorkflowState.WEBSITE_ANALYZED

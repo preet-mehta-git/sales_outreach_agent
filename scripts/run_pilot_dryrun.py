@@ -14,6 +14,9 @@ from app.core.config import settings
 from app.core.logging import get_logger
 
 logger = get_logger("PilotDryRun")
+
+# Re-create tables to update schema with Phase 11 columns
+Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(bind=engine)
 
 

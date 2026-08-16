@@ -4,8 +4,9 @@ from sqlalchemy.orm import Session
 
 from app.schemas.agent import AgentInput
 from app.db.models import Campaign, Business
-from app.schemas.enums import WorkflowState
+from app.schemas.enums import WorkflowState, EntityVerificationStatus, ManualReviewStatus
 from app.agents.discovery_agent import DiscoveryAgent
+from app.agents.entity_verifier_agent import EntityVerifierAgent
 from app.agents.website_verifier_agent import WebsiteVerifierAgent
 from app.agents.website_audit_agent import WebsiteAuditAgent
 from app.agents.opportunity_scorer_agent import OpportunityScorerAgent
@@ -22,6 +23,7 @@ logger = get_logger("CampaignPipelineRunner")
 class CampaignPipelineRunner:
     def __init__(self, db: Session):
         self.db = db
+        self.entity_verifier = EntityVerifierAgent(self.db)
         self.verifier = WebsiteVerifierAgent(self.db)
         self.web_auditor = WebsiteAuditAgent(self.db)
         self.scorer = OpportunityScorerAgent(self.db)
@@ -35,33 +37,71 @@ class CampaignPipelineRunner:
         run_id = workflow_run_id or str(uuid.uuid4())
         inp = AgentInput(lead_id=lead.id, workflow_run_id=run_id)
 
-        # Step 2: Verification
+        # Step 1: Entity Verification Gatekeeper
+        entity_res = self.entity_verifier.execute(inp)
+        if not entity_res.success or lead.entity_verification_status == EntityVerificationStatus.REJECTED:
+            logger.info(f"Lead {lead.id} ({lead.name}) rejected as NON_BUSINESS entity.")
+            self._update_manual_review_status(lead)
+            return {"status": "REJECTED_NON_BUSINESS", "qualified": False, "run_id": run_id}
+
+        # Step 2: Source A + B Website Verification & Discovery
         self.verifier.execute(inp)
 
-        # Step 3: Website Audit
+        # Step 3: Website Audit & Classification
         self.web_auditor.execute(inp)
 
         # Step 4: Scoring
         self.scorer.execute(inp)
 
-        # Step 5: Qualification
+        # Step 5: Qualification Threshold Check (≥70 QUALIFIED, ≥80 PRIORITY)
         qual_out = self.qualifier.execute(inp)
         if not qual_out.success or not qual_out.data.get("qualified"):
+            self._update_manual_review_status(lead)
             return {"status": "REJECTED", "qualified": False, "run_id": run_id}
 
-        # Step 6: Contact Discovery
+        # Step 6: Contact & Decision-Maker Discovery (Zero Fabrication)
         self.contact_finder.execute(inp)
 
-        # Step 7: Business Audit
+        # Step 7: Facts vs Inference Business Audit
         self.biz_auditor.execute(inp)
 
-        # Step 8: Demo Generation
+        # Step 8: Public Demo Generation
         self.demo_gen.execute(inp)
 
-        # Step 9: Outreach Draft Generation
+        # Step 9: Outreach Copy & Outreach Readiness Assessment
         outreach_out = self.outreach_gen.execute(inp)
 
+        self._update_manual_review_status(lead)
         return {"status": "COMPLETED", "qualified": True, "run_id": run_id, "outreach": outreach_out.data}
+
+    def _update_manual_review_status(self, lead: Business) -> None:
+        reasons = []
+        status = ManualReviewStatus.NO_REVIEW_REQUIRED
+
+        # Ambiguity / Uncertainty checks -> REVIEW_REQUIRED
+        if lead.entity_verification_status and lead.entity_verification_status.value == "MANUAL_REVIEW":
+            status = ManualReviewStatus.REVIEW_REQUIRED
+            reasons.append("Ambiguous entity verification status requiring human decision.")
+        elif lead.website_verification_status and lead.website_verification_status.value in ("CONFLICTING_WEBSITES", "MANUAL_REVIEW"):
+            status = ManualReviewStatus.REVIEW_REQUIRED
+            reasons.append(f"Ambiguous website verification status: {lead.website_verification_status.value}")
+        elif lead.website_classification and lead.website_classification.value in ("CONFLICTING", "MANUAL_REVIEW"):
+            status = ManualReviewStatus.REVIEW_REQUIRED
+            reasons.append(f"Ambiguous website classification: {lead.website_classification.value}")
+        elif lead.contact_target_status and lead.contact_target_status.value == "MANUAL_REVIEW":
+            status = ManualReviewStatus.REVIEW_REQUIRED
+            reasons.append("Ambiguous contact target data requiring manual investigation.")
+
+        # Borderline score (60.0 - 69.9) -> REVIEW_RECOMMENDED
+        elif lead.opportunity_score is not None and 60.0 <= lead.opportunity_score < 70.0:
+            status = ManualReviewStatus.REVIEW_RECOMMENDED
+            reasons.append(f"Borderline opportunity score ({lead.opportunity_score}) recommended for human evaluation.")
+
+        lead.manual_review_status = status
+        lead.manual_review_reasons = reasons
+        self.db.commit()
+        self.db.refresh(lead)
+
 
     def run_pipeline_for_campaign(self, campaign_id: str, query: str = "restaurants in Ahmedabad") -> dict[str, Any]:
         campaign = self.db.query(Campaign).filter(Campaign.id == campaign_id).first()

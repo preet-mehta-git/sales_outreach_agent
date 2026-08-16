@@ -38,7 +38,7 @@ def test_demo_generator_agent(db_session, tmp_path):
     # Check OutreachDraft updated
     draft = db_session.query(OutreachDraft).filter(OutreachDraft.business_id == lead.id).first()
     assert draft is not None
-    assert draft.demo_url == out.data["demo_url"]
+    assert draft.demo_url == out.data["public_demo_url"]
 
     # Verify state transition to DEMO_GENERATED
     db_session.refresh(lead)

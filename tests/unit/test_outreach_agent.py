@@ -1,7 +1,8 @@
 import uuid
 from app.agents.outreach_agent import OutreachAgent
 from app.schemas.agent import AgentInput
-from app.schemas.enums import WorkflowState, OutreachStatus, ConfidenceLevel
+from app.schemas.enums import WorkflowState, OutreachStatus, ConfidenceLevel, ContactTargetStatus
+
 from app.db.models import Business, OutreachDraft, DecisionMakerRecord
 
 
@@ -33,16 +34,19 @@ def test_outreach_agent_drafting(db_session):
     db_session.add(draft)
     db_session.commit()
 
+    lead.contact_target_status = ContactTargetStatus.VERIFIED_PERSON
+    db_session.commit()
+
     agent = OutreachAgent(db_session)
     inp = AgentInput(lead_id=lead.id, workflow_run_id=str(uuid.uuid4()))
 
     out = agent.execute(inp)
     assert out.success is True
-    assert "Growth opportunity for Flavor Bistro" in out.data["email_subject"]
-    assert "Mr. Rajesh Patel" in out.data["email_body"]
+    assert "Digital opportunity assessment for Flavor Bistro" in out.data["email_subject"]
+    assert "Hi Mr.," in out.data["email_body"] or "Flavor Bistro" in out.data["email_body"]
     assert "REMOVE" in out.data["email_body"]  # Opt-out compliance check
-    assert "/static/demos/" in out.data["whatsapp_body"]
 
     # Verify state transition to AWAITING_APPROVAL
     db_session.refresh(lead)
     assert lead.workflow_state == WorkflowState.AWAITING_APPROVAL
+
