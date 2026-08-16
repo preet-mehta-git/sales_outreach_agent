@@ -1,4 +1,5 @@
 import os
+import html
 from typing import Any
 from sqlalchemy.orm import Session
 
@@ -23,17 +24,23 @@ class DemoGeneratorAgent(BaseAgent[dict[str, Any]]):
         self.orchestrator = OrchestratorEngine(self.db)
 
     def _generate_html(self, lead: Business) -> str:
+        safe_name = html.escape(lead.name or "Business")
+        safe_category = html.escape((lead.category or "restaurant").title())
+        safe_city = html.escape(lead.city or "Ahmedabad")
+        safe_address = html.escape(lead.address or "Ahmedabad, India")
+        safe_phone = html.escape(lead.phone or "N/A")
+
         clean_phone = (lead.phone or "").replace(" ", "").replace("-", "")
         if clean_phone and not clean_phone.startswith("+"):
             clean_phone = f"+91{clean_phone}"
-        wa_link = f"https://wa.me/{clean_phone}?text=Hi%20{lead.name},%20I%20would%20like%20to%20place%20an%20order"
+        wa_link = f"https://wa.me/{clean_phone}?text=Hi%20{html.escape(lead.name or 'Team')},%20I%20would%20like%20to%20place%20an%20order"
 
         return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{lead.name} - Authentic {lead.category.title()} in {lead.city}</title>
+    <title>{safe_name} - Authentic {safe_category} in {safe_city}</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {{ box-sizing: border-box; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; }}
@@ -58,7 +65,7 @@ class DemoGeneratorAgent(BaseAgent[dict[str, Any]]):
 </head>
 <body>
     <header>
-        <div class="logo">{lead.name}</div>
+        <div class="logo">{safe_name}</div>
         <div>
             <a href="#menu" class="btn-primary">View Menu</a>
             <a href="{wa_link}" target="_blank" class="btn-whatsapp">WhatsApp Order</a>
@@ -66,9 +73,9 @@ class DemoGeneratorAgent(BaseAgent[dict[str, Any]]):
     </header>
 
     <section class="hero">
-        <div class="badge">Top Rated {lead.category.title()} in {lead.city}</div>
-        <h1>Welcome to {lead.name}</h1>
-        <p>Delicious food, crafted with passion. Located at {lead.address}. Order online or reserve your table instantly!</p>
+        <div class="badge">Top Rated {safe_category} in {safe_city}</div>
+        <h1>Welcome to {safe_name}</h1>
+        <p>Delicious food, crafted with passion. Located at {safe_address}. Order online or reserve your table instantly!</p>
         <div>
             <a href="{wa_link}" target="_blank" class="btn-whatsapp" style="padding: 0.85rem 1.75rem; font-size: 1.1rem;">Order via WhatsApp</a>
         </div>
@@ -94,7 +101,7 @@ class DemoGeneratorAgent(BaseAgent[dict[str, Any]]):
     </section>
 
     <footer>
-        <p>&copy; {lead.name} | {lead.address}, {lead.city}. Phone: {lead.phone or 'N/A'}</p>
+        <p>&copy; {safe_name} | {safe_address}, {safe_city}. Phone: {safe_phone}</p>
         <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #475569;">Demo Landing Page Generated for Prospecting Assessment</p>
     </footer>
 </body>
