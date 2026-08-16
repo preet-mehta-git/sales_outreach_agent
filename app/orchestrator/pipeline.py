@@ -22,6 +22,46 @@ logger = get_logger("CampaignPipelineRunner")
 class CampaignPipelineRunner:
     def __init__(self, db: Session):
         self.db = db
+        self.verifier = WebsiteVerifierAgent(self.db)
+        self.web_auditor = WebsiteAuditAgent(self.db)
+        self.scorer = OpportunityScorerAgent(self.db)
+        self.qualifier = QualificationAgent(self.db)
+        self.contact_finder = ContactDiscoveryAgent(self.db)
+        self.biz_auditor = BusinessAuditAgent(self.db)
+        self.demo_gen = DemoGeneratorAgent(self.db)
+        self.outreach_gen = OutreachAgent(self.db)
+
+    def run_lead_pipeline(self, lead: Business, workflow_run_id: str | None = None) -> dict[str, Any]:
+        run_id = workflow_run_id or str(uuid.uuid4())
+        inp = AgentInput(lead_id=lead.id, workflow_run_id=run_id)
+
+        # Step 2: Verification
+        self.verifier.execute(inp)
+
+        # Step 3: Website Audit
+        self.web_auditor.execute(inp)
+
+        # Step 4: Scoring
+        self.scorer.execute(inp)
+
+        # Step 5: Qualification
+        qual_out = self.qualifier.execute(inp)
+        if not qual_out.success or not qual_out.data.get("qualified"):
+            return {"status": "REJECTED", "qualified": False, "run_id": run_id}
+
+        # Step 6: Contact Discovery
+        self.contact_finder.execute(inp)
+
+        # Step 7: Business Audit
+        self.biz_auditor.execute(inp)
+
+        # Step 8: Demo Generation
+        self.demo_gen.execute(inp)
+
+        # Step 9: Outreach Draft Generation
+        outreach_out = self.outreach_gen.execute(inp)
+
+        return {"status": "COMPLETED", "qualified": True, "run_id": run_id, "outreach": outreach_out.data}
 
     def run_pipeline_for_campaign(self, campaign_id: str, query: str = "restaurants in Ahmedabad") -> dict[str, Any]:
         campaign = self.db.query(Campaign).filter(Campaign.id == campaign_id).first()
@@ -51,49 +91,13 @@ class CampaignPipelineRunner:
             "drafts_created": 0
         }
 
-        # Initialize Agents for Pipeline
-        verifier = WebsiteVerifierAgent(self.db)
-        web_auditor = WebsiteAuditAgent(self.db)
-        scorer = OpportunityScorerAgent(self.db)
-        qualifier = QualificationAgent(self.db)
-        contact_finder = ContactDiscoveryAgent(self.db)
-        biz_auditor = BusinessAuditAgent(self.db)
-        demo_gen = DemoGeneratorAgent(self.db)
-        outreach_gen = OutreachAgent(self.db)
-
         for lead in discovered_leads:
-            inp = AgentInput(lead_id=lead.id, workflow_run_id=workflow_run_id)
-
-            # Step 2: Verification
-            verifier.execute(inp)
-
-            # Step 3: Website Audit
-            web_auditor.execute(inp)
-
-            # Step 4: Scoring
-            scorer.execute(inp)
-
-            # Step 5: Qualification
-            qual_out = qualifier.execute(inp)
-            if not qual_out.success or not qual_out.data.get("qualified"):
-                summary_stats["rejected"] += 1
-                continue
-
-            summary_stats["qualified"] += 1
-
-            # Step 6: Contact Discovery
-            contact_finder.execute(inp)
-
-            # Step 7: Business Audit
-            biz_auditor.execute(inp)
-
-            # Step 8: Demo Generation
-            demo_gen.execute(inp)
-
-            # Step 9: Outreach Copy Generation
-            outreach_out = outreach_gen.execute(inp)
-            if outreach_out.success:
+            res = self.run_lead_pipeline(lead, workflow_run_id=workflow_run_id)
+            if res.get("qualified"):
+                summary_stats["qualified"] += 1
                 summary_stats["drafts_created"] += 1
+            else:
+                summary_stats["rejected"] += 1
 
         logger.info(f"Campaign Pipeline completed for '{campaign.name}': {summary_stats}")
         return {
