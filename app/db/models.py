@@ -128,6 +128,10 @@ class DecisionMakerRecord(Base):
     business: Mapped["Business"] = relationship("Business", back_populates="decision_maker")
 
 
+# Model Alias for DecisionMakerRecord
+DecisionMaker = DecisionMakerRecord
+
+
 class OutreachDraft(Base):
     __tablename__ = "outreach_drafts"
     
