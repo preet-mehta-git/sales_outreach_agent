@@ -9,7 +9,30 @@ from app.db.models import Business, Campaign, WebsiteAudit, DecisionMakerRecord,
 from app.services.scoring_engine import ScoringEngine
 from app.agents.business_audit_agent import BusinessAuditAgent
 from app.schemas.agent import AgentInput
-from app.schemas.enums import ManualReviewStatus, DemoReadiness
+from app.schemas.enums import ManualReviewStatus, DemoReadiness, FinalAction
+
+
+def determine_final_action(manual_review_status: str, qualification: str, outreach_readiness: str) -> str:
+    """
+    Phase 11.2.1 Semantic Final Action Rules:
+    - REQUIRES_MANUAL_REVIEW: ONLY when manual_review_status == "REVIEW_REQUIRED"
+    - REVIEW_RECOMMENDED: ONLY when manual_review_status == "REVIEW_RECOMMENDED"
+    - AWAITING_HUMAN_OUTREACH_APPROVAL: Qualification in (PRIORITY, QUALIFIED) AND outreach_readiness == "READY_FOR_APPROVAL"
+    - REJECTED: Qualification == "REJECTED" AND manual_review_status == "NO_REVIEW_REQUIRED"
+    - QUALIFIED_NOT_READY: Qualification in (PRIORITY, QUALIFIED, POTENTIAL_REVIEW) AND outreach_readiness != "READY_FOR_APPROVAL"
+    """
+    if manual_review_status == "REVIEW_REQUIRED":
+        return "REQUIRES_MANUAL_REVIEW"
+    elif manual_review_status == "REVIEW_RECOMMENDED":
+        return "REVIEW_RECOMMENDED"
+    elif qualification in ["PRIORITY", "QUALIFIED"] and outreach_readiness == "READY_FOR_APPROVAL":
+        return "AWAITING_HUMAN_OUTREACH_APPROVAL"
+    elif qualification == "REJECTED" and manual_review_status == "NO_REVIEW_REQUIRED":
+        return "REJECTED"
+    elif qualification in ["PRIORITY", "QUALIFIED", "POTENTIAL_REVIEW"]:
+        return "QUALIFIED_NOT_READY"
+    else:
+        return "REJECTED"
 
 
 def generate_pilot_results():
@@ -47,6 +70,12 @@ def generate_pilot_results():
         count_public_demos = 0
         count_local_only_demos = 0
         count_demo_access_failures = 0
+
+        count_action_awaiting_approval = 0
+        count_action_requires_review = 0
+        count_action_review_recommended = 0
+        count_action_rejected = 0
+        count_action_qualified_not_ready = 0
 
         for b in businesses:
             wa = b.website_audit
@@ -123,8 +152,18 @@ def generate_pilot_results():
             else:
                 count_local_only_demos += 1
 
-            audit_agent = BusinessAuditAgent(db)
-            audit_data = audit_agent.run(AgentInput(lead_id=b.id, workflow_run_id='export_11_2'))
+            # Final Action Semantics Calculation
+            action = determine_final_action(mrs, qualification, readiness)
+            if action == "AWAITING_HUMAN_OUTREACH_APPROVAL":
+                count_action_awaiting_approval += 1
+            elif action == "REQUIRES_MANUAL_REVIEW":
+                count_action_requires_review += 1
+            elif action == "REVIEW_RECOMMENDED":
+                count_action_review_recommended += 1
+            elif action == "REJECTED":
+                count_action_rejected += 1
+            elif action == "QUALIFIED_NOT_READY":
+                count_action_qualified_not_ready += 1
 
             item = {
                 "business_id": str(b.id),
@@ -146,7 +185,7 @@ def generate_pilot_results():
                 "demo_url": b.public_demo_url or b.local_preview_url or "NOT_AVAILABLE",
                 "demo_access_status": das,
                 "demo_readiness": b.demo_readiness.value if b.demo_readiness else "NOT_GENERATED",
-                "action": "AWAITING_HUMAN_APPROVAL" if readiness == "READY_FOR_APPROVAL" else "REQUIRES_MANUAL_REVIEW",
+                "action": action,
                 "email_draft": draft.email_body if draft else "NOT_AVAILABLE",
                 "whatsapp_draft": draft.whatsapp_body if draft else "NOT_AVAILABLE"
             }
@@ -158,6 +197,7 @@ def generate_pilot_results():
         assert count_verified_persons + count_verified_roles + count_business_contact_only + count_contact_target_not_found + count_contact_target_manual_review == total_count, "Contact Target sum mismatch!"
         assert count_outreach_ready + count_outreach_manual_review + count_outreach_suppressed == total_count, "Outreach Readiness sum mismatch!"
         assert count_public_demos + count_local_only_demos + count_demo_access_failures == total_count, "Demo Access sum mismatch!"
+        assert count_action_awaiting_approval + count_action_requires_review + count_action_review_recommended + count_action_rejected + count_action_qualified_not_ready == total_count, "Final Action sum mismatch!"
 
         # Save Phase 11.2 JSON
         os.makedirs("docs", exist_ok=True)
@@ -194,6 +234,13 @@ def generate_pilot_results():
                     "public_demos": count_public_demos,
                     "local_only_demos": count_local_only_demos,
                     "demo_access_failures": count_demo_access_failures
+                },
+                "final_action_summary": {
+                    "awaiting_human_outreach_approval": count_action_awaiting_approval,
+                    "requires_manual_review": count_action_requires_review,
+                    "review_recommended": count_action_review_recommended,
+                    "rejected": count_action_rejected,
+                    "qualified_not_ready": count_action_qualified_not_ready
                 }
             },
             "businesses": results
@@ -235,6 +282,13 @@ def generate_pilot_results():
         md_lines.append(f"- **Public Demos**: {count_public_demos}")
         md_lines.append(f"- **Local-Only Demos**: {count_local_only_demos}")
         md_lines.append(f"- **Demo Access Failures**: {count_demo_access_failures}\n")
+
+        md_lines.append("### 5. Final Action Semantics")
+        md_lines.append(f"- **Awaiting Human Outreach Approval**: {count_action_awaiting_approval}")
+        md_lines.append(f"- **Requires Manual Review**: {count_action_requires_review}")
+        md_lines.append(f"- **Review Recommended**: {count_action_review_recommended}")
+        md_lines.append(f"- **Rejected**: {count_action_rejected}")
+        md_lines.append(f"- **Qualified Not Ready**: {count_action_qualified_not_ready}\n")
         md_lines.append("---\n")
 
         md_lines.append("## 10-Business Audit Breakdown\n")
@@ -267,6 +321,7 @@ def generate_pilot_results():
         md_lines.append("\n---\n")
         md_lines.append("## Verification & Operational Consistency\n")
         md_lines.append("- **Manual Review Truthfulness**: Discrepancy between aggregate counts and individual records resolved. Aggregate report now explicitly tracks `NO_REVIEW_REQUIRED`, `REVIEW_RECOMMENDED`, and `REVIEW_REQUIRED`.")
+        md_lines.append("- **Final Action Semantics**: Resolved contradiction between `NO_REVIEW_REQUIRED` and `REQUIRES_MANUAL_REVIEW`. Actions are strictly separated between `AWAITING_HUMAN_OUTREACH_APPROVAL`, `REQUIRES_MANUAL_REVIEW`, `REVIEW_RECOMMENDED`, `REJECTED`, and `QUALIFIED_NOT_READY`.")
         md_lines.append("- **Scoring Formula Frozen**: V1 35/25/20/10/10 formula verified and frozen. Raw scores, weights, contributions, and evidence are deterministically calculated and logged.")
         md_lines.append("- **Public Demo Security & Gating**: `PUBLIC_DEMO_BASE_URL` infrastructure active. Demos pass 6 automated verification guards before reaching `PUBLIC_ACCESSIBLE` status. Unverified or local demo URLs are strictly gated from prospect outreach drafts.\n")
 

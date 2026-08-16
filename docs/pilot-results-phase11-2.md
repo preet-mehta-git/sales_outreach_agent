@@ -37,22 +37,29 @@
 - **Local-Only Demos**: 10
 - **Demo Access Failures**: 0
 
+### 5. Final Action Semantics
+- **Awaiting Human Outreach Approval**: 4
+- **Requires Manual Review**: 0
+- **Review Recommended**: 0
+- **Rejected**: 6
+- **Qualified Not Ready**: 0
+
 ---
 
 ## 10-Business Audit Breakdown
 
 | Business | Opp Score | Qualification | Manual Review Status | Contact Target Status | Outreach Readiness | Demo Readiness | Action |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Manek Chowk Night Food Market** | **86.0** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REQUIRES_MANUAL_REVIEW` |
-| **Agashiye - House of MG** | **55.4** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REQUIRES_MANUAL_REVIEW` |
-| **Gordhan Thal** | **74.1** | `QUALIFIED` | `NO_REVIEW_REQUIRED` | `BUSINESS_CONTACT_ONLY` | `READY_FOR_APPROVAL` | `LOCAL_ONLY` | `AWAITING_HUMAN_APPROVAL` |
-| **Zen Cafe** | **83.5** | `PRIORITY` | `NO_REVIEW_REQUIRED` | `BUSINESS_CONTACT_ONLY` | `READY_FOR_APPROVAL` | `LOCAL_ONLY` | `AWAITING_HUMAN_APPROVAL` |
-| **Lucky Tea Stall** | **84.4** | `PRIORITY` | `NO_REVIEW_REQUIRED` | `BUSINESS_CONTACT_ONLY` | `READY_FOR_APPROVAL` | `LOCAL_ONLY` | `AWAITING_HUMAN_APPROVAL` |
-| **Karnavati Dabeli & Vadapav** | **74.7** | `QUALIFIED` | `NO_REVIEW_REQUIRED` | `BUSINESS_CONTACT_ONLY` | `READY_FOR_APPROVAL` | `LOCAL_ONLY` | `AWAITING_HUMAN_APPROVAL` |
-| **Havmor Restaurant** | **55.0** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REQUIRES_MANUAL_REVIEW` |
-| **Upper Crust Bakery & Cafe** | **55.3** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REQUIRES_MANUAL_REVIEW` |
-| **Swati Snacks** | **56.3** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REQUIRES_MANUAL_REVIEW` |
-| **Vishalla Village Restaurant** | **55.3** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REQUIRES_MANUAL_REVIEW` |
+| **Manek Chowk Night Food Market** | **86.0** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REJECTED` |
+| **Agashiye - House of MG** | **55.4** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REJECTED` |
+| **Gordhan Thal** | **74.1** | `QUALIFIED` | `NO_REVIEW_REQUIRED` | `BUSINESS_CONTACT_ONLY` | `READY_FOR_APPROVAL` | `LOCAL_ONLY` | `AWAITING_HUMAN_OUTREACH_APPROVAL` |
+| **Zen Cafe** | **83.5** | `PRIORITY` | `NO_REVIEW_REQUIRED` | `BUSINESS_CONTACT_ONLY` | `READY_FOR_APPROVAL` | `LOCAL_ONLY` | `AWAITING_HUMAN_OUTREACH_APPROVAL` |
+| **Lucky Tea Stall** | **84.4** | `PRIORITY` | `NO_REVIEW_REQUIRED` | `BUSINESS_CONTACT_ONLY` | `READY_FOR_APPROVAL` | `LOCAL_ONLY` | `AWAITING_HUMAN_OUTREACH_APPROVAL` |
+| **Karnavati Dabeli & Vadapav** | **74.7** | `QUALIFIED` | `NO_REVIEW_REQUIRED` | `BUSINESS_CONTACT_ONLY` | `READY_FOR_APPROVAL` | `LOCAL_ONLY` | `AWAITING_HUMAN_OUTREACH_APPROVAL` |
+| **Havmor Restaurant** | **55.0** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REJECTED` |
+| **Upper Crust Bakery & Cafe** | **55.3** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REJECTED` |
+| **Swati Snacks** | **56.3** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REJECTED` |
+| **Vishalla Village Restaurant** | **55.3** | `REJECTED` | `NO_REVIEW_REQUIRED` | `NOT_FOUND` | `NOT_READY` | `NOT_GENERATED` | `REJECTED` |
 
 ---
 
@@ -76,5 +83,6 @@
 ## Verification & Operational Consistency
 
 - **Manual Review Truthfulness**: Discrepancy between aggregate counts and individual records resolved. Aggregate report now explicitly tracks `NO_REVIEW_REQUIRED`, `REVIEW_RECOMMENDED`, and `REVIEW_REQUIRED`.
+- **Final Action Semantics**: Resolved contradiction between `NO_REVIEW_REQUIRED` and `REQUIRES_MANUAL_REVIEW`. Actions are strictly separated between `AWAITING_HUMAN_OUTREACH_APPROVAL`, `REQUIRES_MANUAL_REVIEW`, `REVIEW_RECOMMENDED`, `REJECTED`, and `QUALIFIED_NOT_READY`.
 - **Scoring Formula Frozen**: V1 35/25/20/10/10 formula verified and frozen. Raw scores, weights, contributions, and evidence are deterministically calculated and logged.
 - **Public Demo Security & Gating**: `PUBLIC_DEMO_BASE_URL` infrastructure active. Demos pass 6 automated verification guards before reaching `PUBLIC_ACCESSIBLE` status. Unverified or local demo URLs are strictly gated from prospect outreach drafts.

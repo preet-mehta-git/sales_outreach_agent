@@ -30,6 +30,13 @@
       "public_demos": 0,
       "local_only_demos": 10,
       "demo_access_failures": 0
+    },
+    "final_action_summary": {
+      "awaiting_human_outreach_approval": 4,
+      "requires_manual_review": 0,
+      "review_recommended": 0,
+      "rejected": 6,
+      "qualified_not_ready": 0
     }
   },
   "businesses": [
@@ -106,7 +113,7 @@
       "demo_url": "NOT_AVAILABLE",
       "demo_access_status": "NOT_GENERATED",
       "demo_readiness": "NOT_GENERATED",
-      "action": "REQUIRES_MANUAL_REVIEW",
+      "action": "REJECTED",
       "email_draft": "NOT_AVAILABLE",
       "whatsapp_draft": "NOT_AVAILABLE"
     },
@@ -183,7 +190,7 @@
       "demo_url": "NOT_AVAILABLE",
       "demo_access_status": "NOT_GENERATED",
       "demo_readiness": "NOT_GENERATED",
-      "action": "REQUIRES_MANUAL_REVIEW",
+      "action": "REJECTED",
       "email_draft": "NOT_AVAILABLE",
       "whatsapp_draft": "NOT_AVAILABLE"
     },
@@ -260,7 +267,7 @@
       "demo_url": "http://localhost:8000/static/demos/55fc5e03-2975-49a6-84d2-ba3f3f919005/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "demo_readiness": "LOCAL_ONLY",
-      "action": "AWAITING_HUMAN_APPROVAL",
+      "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Gordhan Thal Team,\n\nI came across Gordhan Thal while reviewing commercial businesses in Ahmedabad. Your 4.5⭐ public rating across 980 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Gordhan Thal currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Gordhan Thal to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Gordhan Thal?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Gordhan Thal Team, We reviewed the online presence for Gordhan Thal and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
@@ -337,7 +344,7 @@
       "demo_url": "http://localhost:8000/static/demos/8ae2e591-a647-42eb-9ae7-bee46606ac8e/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "demo_readiness": "LOCAL_ONLY",
-      "action": "AWAITING_HUMAN_APPROVAL",
+      "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Zen Cafe Team,\n\nI came across Zen Cafe while reviewing commercial businesses in Ahmedabad. Your 4.4⭐ public rating across 510 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Zen Cafe currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Zen Cafe to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Zen Cafe?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Zen Cafe Team, We reviewed the online presence for Zen Cafe and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
@@ -414,7 +421,7 @@
       "demo_url": "http://localhost:8000/static/demos/c06df5a2-d1c7-456f-8d12-038b6aa2eb5d/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "demo_readiness": "LOCAL_ONLY",
-      "action": "AWAITING_HUMAN_APPROVAL",
+      "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Lucky Tea Stall Team,\n\nI came across Lucky Tea Stall while reviewing commercial businesses in Ahmedabad. Your 4.3⭐ public rating across 760 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Lucky Tea Stall currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Lucky Tea Stall to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Lucky Tea Stall?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Lucky Tea Stall Team, We reviewed the online presence for Lucky Tea Stall and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
@@ -491,7 +498,7 @@
       "demo_url": "http://localhost:8000/static/demos/43853900-c63d-46c4-bba0-8f8327a816ff/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "demo_readiness": "LOCAL_ONLY",
-      "action": "AWAITING_HUMAN_APPROVAL",
+      "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Karnavati Dabeli & Vadapav Team,\n\nI came across Karnavati Dabeli & Vadapav while reviewing commercial businesses in Ahmedabad. Your 4.2⭐ public rating across 340 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Karnavati Dabeli & Vadapav currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Karnavati Dabeli & Vadapav to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Karnavati Dabeli & Vadapav?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Karnavati Dabeli & Vadapav Team, We reviewed the online presence for Karnavati Dabeli & Vadapav and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
@@ -568,7 +575,7 @@
       "demo_url": "NOT_AVAILABLE",
       "demo_access_status": "NOT_GENERATED",
       "demo_readiness": "NOT_GENERATED",
-      "action": "REQUIRES_MANUAL_REVIEW",
+      "action": "REJECTED",
       "email_draft": "NOT_AVAILABLE",
       "whatsapp_draft": "NOT_AVAILABLE"
     },
@@ -645,7 +652,7 @@
       "demo_url": "NOT_AVAILABLE",
       "demo_access_status": "NOT_GENERATED",
       "demo_readiness": "NOT_GENERATED",
-      "action": "REQUIRES_MANUAL_REVIEW",
+      "action": "REJECTED",
       "email_draft": "NOT_AVAILABLE",
       "whatsapp_draft": "NOT_AVAILABLE"
     },
@@ -722,7 +729,7 @@
       "demo_url": "NOT_AVAILABLE",
       "demo_access_status": "NOT_GENERATED",
       "demo_readiness": "NOT_GENERATED",
-      "action": "REQUIRES_MANUAL_REVIEW",
+      "action": "REJECTED",
       "email_draft": "NOT_AVAILABLE",
       "whatsapp_draft": "NOT_AVAILABLE"
     },
@@ -799,7 +806,7 @@
       "demo_url": "NOT_AVAILABLE",
       "demo_access_status": "NOT_GENERATED",
       "demo_readiness": "NOT_GENERATED",
-      "action": "REQUIRES_MANUAL_REVIEW",
+      "action": "REJECTED",
       "email_draft": "NOT_AVAILABLE",
       "whatsapp_draft": "NOT_AVAILABLE"
     }

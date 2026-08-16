@@ -166,3 +166,44 @@ def test_outreach_demo_link_gating(db):
     assert "http://localhost:8000" not in res["email_body"]
     assert "http://localhost:8000" not in res["whatsapp_body"]
     assert res["demo_url"] is None
+
+
+def test_final_action_semantics():
+    """Verify Phase 11.2.1 final action semantic resolution for all combinations."""
+    from scripts.generate_pilot_results_docs import determine_final_action
+
+    # 1. Genuinely ambiguous lead -> REQUIRES_MANUAL_REVIEW
+    assert determine_final_action(
+        manual_review_status="REVIEW_REQUIRED",
+        qualification="QUALIFIED",
+        outreach_readiness="READY_FOR_APPROVAL"
+    ) == "REQUIRES_MANUAL_REVIEW"
+
+    # 2. Recommended review lead -> REVIEW_RECOMMENDED
+    assert determine_final_action(
+        manual_review_status="REVIEW_RECOMMENDED",
+        qualification="QUALIFIED",
+        outreach_readiness="READY_FOR_APPROVAL"
+    ) == "REVIEW_RECOMMENDED"
+
+    # 3. Zen Cafe (Qualified/Priority + Outreach Ready + No Review Required) -> AWAITING_HUMAN_OUTREACH_APPROVAL
+    assert determine_final_action(
+        manual_review_status="NO_REVIEW_REQUIRED",
+        qualification="PRIORITY",
+        outreach_readiness="READY_FOR_APPROVAL"
+    ) == "AWAITING_HUMAN_OUTREACH_APPROVAL"
+
+    # 4. Agashiye (Rejected + No Review Required) -> REJECTED
+    assert determine_final_action(
+        manual_review_status="NO_REVIEW_REQUIRED",
+        qualification="REJECTED",
+        outreach_readiness="NOT_READY"
+    ) == "REJECTED"
+
+    # 5. Qualified lead with outreach not ready -> QUALIFIED_NOT_READY
+    assert determine_final_action(
+        manual_review_status="NO_REVIEW_REQUIRED",
+        qualification="QUALIFIED",
+        outreach_readiness="NOT_READY"
+    ) == "QUALIFIED_NOT_READY"
+
