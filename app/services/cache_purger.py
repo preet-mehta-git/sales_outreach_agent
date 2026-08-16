@@ -8,8 +8,9 @@ logger = get_logger("CachePurgerService")
 
 class CachePurgerService:
     """
-    Google Places Storage Compliance Purger Service (Section 6.1).
-    Purges or marks non-Place-ID basic metadata older than 30 days as stale.
+    Google Places Storage Compliance Purger Service (Section 3.2.3 TOS).
+    Purges raw cached Google Places attributes older than 30 days while retaining place_id
+    and system-derived metadata (opportunity scores, audit logs, workflow state).
     """
     
     @classmethod
@@ -23,14 +24,23 @@ class CachePurgerService:
 
         purged_count = 0
         for biz in expired_businesses:
-            # Retain place_id and system identifiers, purge/stale raw unverified cached attributes
+            # Retain place_id and system-derived identifiers.
+            # Purge raw cached Google Places attributes per Google Maps TOS 3.2.3
+            biz.rating = None
+            biz.review_count = None
+            biz.phone = None
+            
             audit = AuditLog(
                 business_id=biz.id,
                 action="GOOGLE_PLACES_30DAY_COMPLIANCE_PURGE",
                 from_state=biz.workflow_state.value if biz.workflow_state else None,
                 to_state=biz.workflow_state.value if biz.workflow_state else None,
                 agent_name="CachePurgerService",
-                payload_snapshot={"place_id": biz.place_id, "purged_at": datetime.now(timezone.utc).isoformat()}
+                payload_snapshot={
+                    "place_id": biz.place_id,
+                    "purged_fields": ["rating", "review_count", "phone"],
+                    "purged_at": datetime.now(timezone.utc).isoformat()
+                }
             )
             db.add(audit)
             purged_count += 1

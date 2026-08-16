@@ -5,43 +5,38 @@ This document records the results of the **Controlled Real-Data Dry Run** for 10
 
 ---
 
-## 1. Processed Pilot Batch Summary
+## 1. Processed Pilot Batch Summary & V1 Classification
 
-| Business Name | Category | City | Website Status | Quality Score | Opportunity Score | Workflow State | DM Confidence | Outreach Draft Status |
+| Business Name | Category | City | Website Status | Quality Score | Opportunity Score | Qualification Classification | Workflow State | Outreach Draft Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Manek Chowk Night Food Market** | Street Food | Ahmedabad | NO_WEBSITE | N/A | **81.0** | `AWAITING_APPROVAL` | `NOT_FOUND` | `AWAITING_APPROVAL` |
-| **Agashiye - House of MG** | Fine Dining | Ahmedabad | WEBSITE_FOUND | 76.8 | **51.1** | `REJECTED` | `NOT_FOUND` | N/A (Score < 60) |
-| **Gordhan Thal** | Gujarati Thali | Ahmedabad | WEBSITE_FOUND | 76.8 | **50.8** | `REJECTED` | `NOT_FOUND` | N/A (Score < 60) |
-| **Zen Cafe** | Cafe | Ahmedabad | NO_WEBSITE | N/A | **75.1** | `AWAITING_APPROVAL` | `NOT_FOUND` | `AWAITING_APPROVAL` |
-| **Lucky Tea Stall** | Cafe & Tea | Ahmedabad | NO_WEBSITE | N/A | **76.1** | `AWAITING_APPROVAL` | `NOT_FOUND` | `AWAITING_APPROVAL` |
-| **Karnavati Dabeli & Vadapav** | Fast Food | Ahmedabad | NO_WEBSITE | N/A | **74.1** | `AWAITING_APPROVAL` | `NOT_FOUND` | `AWAITING_APPROVAL` |
-| **Havmor Restaurant** | Family Dining | Ahmedabad | WEBSITE_FOUND | 76.8 | **50.8** | `REJECTED` | `NOT_FOUND` | N/A (Score < 60) |
-| **Upper Crust Bakery & Cafe** | Bakery & Cafe | Ahmedabad | WEAK_WEBSITE | 76.8 | **50.3** | `REJECTED` | `NOT_FOUND` | N/A (Score < 60) |
-| **Swati Snacks** | Traditional Snacks| Ahmedabad | NO_WEBSITE | N/A | **77.7** | `AWAITING_APPROVAL` | `NOT_FOUND` | `AWAITING_APPROVAL` |
-| **Vishalla Village Restaurant** | Heritage Dining | Ahmedabad | WEAK_WEBSITE | 76.8 | **51.1** | `REJECTED` | `NOT_FOUND` | N/A (Score < 60) |
+| **Manek Chowk Night Food Market** | Street Food | Ahmedabad | NO_WEBSITE | N/A | **81.0** | **PRIORITY** | `AWAITING_APPROVAL` | `AWAITING_APPROVAL` |
+| **Agashiye - House of MG** | Fine Dining | Ahmedabad | WEBSITE_FOUND | 76.8 | **51.1** | **REJECTED** | `REJECTED` | N/A (Score < 70) |
+| **Gordhan Thal** | Gujarati Thali | Ahmedabad | WEBSITE_FOUND | 76.8 | **50.8** | **REJECTED** | `REJECTED` | N/A (Score < 70) |
+| **Zen Cafe** | Cafe | Ahmedabad | NO_WEBSITE | N/A | **75.1** | **QUALIFIED** | `AWAITING_APPROVAL` | `AWAITING_APPROVAL` |
+| **Lucky Tea Stall** | Cafe & Tea | Ahmedabad | NO_WEBSITE | N/A | **76.1** | **QUALIFIED** | `AWAITING_APPROVAL` | `AWAITING_APPROVAL` |
+| **Karnavati Dabeli & Vadapav** | Fast Food | Ahmedabad | NO_WEBSITE | N/A | **74.1** | **QUALIFIED** | `AWAITING_APPROVAL` | `AWAITING_APPROVAL` |
+| **Havmor Restaurant** | Family Dining | Ahmedabad | WEBSITE_FOUND | 76.8 | **50.8** | **REJECTED** | `REJECTED` | N/A (Score < 70) |
+| **Upper Crust Bakery & Cafe** | Bakery & Cafe | Ahmedabad | WEAK_WEBSITE | 76.8 | **50.3** | **REJECTED** | `REJECTED` | N/A (Score < 70) |
+| **Swati Snacks** | Traditional Snacks| Ahmedabad | NO_WEBSITE | N/A | **77.7** | **QUALIFIED** | `AWAITING_APPROVAL` | `AWAITING_APPROVAL` |
+| **Vishalla Village Restaurant** | Heritage Dining | Ahmedabad | WEAK_WEBSITE | 76.8 | **51.1** | **REJECTED** | `REJECTED` | N/A (Score < 70) |
 
 ---
 
-## 2. Key Observations & Model Precision
+## 2. Key Observations & Threshold Precision
 
-1. **High Opportunity Identification**: Businesses without an existing website (e.g. Manek Chowk, Zen Cafe, Swati Snacks) correctly scored above the **60.0** threshold (range: **74.1 - 81.0**) and qualified for custom demo generation.
-2. **Hard Filtering of Low-Opportunity Businesses**: Businesses with existing, high-quality websites (e.g. Agashiye, Havmor, Gordhan Thal) scored ~**50.8 - 51.1** and were automatically filtered out (`REJECTED`) without wasting outreach tokens or drafting unnecessary messages.
-3. **Agent Correctness**:
+1. **V1 Qualification Classification Rules**:
+   - **PRIORITY (Score ≥ 80.0)**: Manek Chowk (81.0). High priority lead advanced to demo generation & outreach drafting.
+   - **QUALIFIED (70.0 - 79.9)**: Zen Cafe (75.1), Lucky Tea Stall (76.1), Karnavati Dabeli (74.1), Swati Snacks (77.7). Standard qualified leads.
+   - **POTENTIAL / REVIEW (60.0 - 69.9)**: Borderline leads reserved for manual review (none in this sample batch).
+   - **REJECTED (< 60.0)**: Agashiye, Gordhan Thal, Havmor, Upper Crust, Vishalla. Disqualified from outreach pipeline.
+
+2. **Agent Correctness**:
    - Zero generic owner names fabricated (`DM = None`, `Confidence = NOT_FOUND`).
    - Outreach draft greetings defaulted safely to `Hello {Business Name} Team,`.
-   - Zero invented revenue loss claims (e.g., ₹50,000/mo claims completely eliminated).
-4. **Safety & Security Compliance**:
+   - Zero invented revenue loss claims.
+
+3. **Safety & Compliance Verification**:
    - SSRF protection active on all website fetches.
-   - All external website snippets wrapped in `<untrusted_external_content>` XML tags.
+   - External website content isolated using XML tags (`<untrusted_external_content>`).
    - All 5 generated drafts placed into `AWAITING_APPROVAL` state for human review.
-
----
-
-## 3. Pilot Safety Verification Checklist
-
-- [x] **OUTREACH_MODE Lock**: `DRY_RUN` verified in settings.
-- [x] **Zero Outreach Dispatched**: 0 emails, 0 WhatsApp messages sent.
-- [x] **SSRF Protections**: IP ranges (127.0.0.1, 169.254.169.254, RFC1918) validated and blocked.
-- [x] **Google Places Storage Rules**: 30-day cache purge service functional.
-- [x] **V1 Scoring Model**: Exact 35/25/20/10/10 math enforced.
-- [x] **Human-in-the-Loop Gate**: All qualified leads stopped at `AWAITING_APPROVAL`.
+   - Google Places 30-day storage compliance purge verified (Place IDs retained, raw Places attributes purged after 30 days).

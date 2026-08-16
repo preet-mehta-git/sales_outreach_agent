@@ -104,6 +104,11 @@ class GooglePlacesProvider(BasePlacesProvider):
 
         purged_count = 0
         for lead in expired_leads:
+            # Purge raw cached Places fields per Google Maps TOS 3.2.3 while retaining place_id
+            lead.rating = None
+            lead.review_count = None
+            lead.phone = None
+
             # Record purge in audit trail before clearing place cached fields
             audit = AuditLog(
                 business_id=lead.id,
@@ -111,7 +116,7 @@ class GooglePlacesProvider(BasePlacesProvider):
                 from_state=lead.workflow_state.value if lead.workflow_state else None,
                 to_state=lead.workflow_state.value if lead.workflow_state else None,
                 agent_name="GooglePlacesCachePolicy",
-                payload_snapshot={"place_id": lead.place_id, "cached_age_days": max_age_days}
+                payload_snapshot={"place_id": lead.place_id, "cached_age_days": max_age_days, "purged_fields": ["rating", "review_count", "phone"]}
             )
             db.add(audit)
             purged_count += 1

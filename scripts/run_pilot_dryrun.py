@@ -142,7 +142,7 @@ def run_dryrun():
             name="Ahmedabad Pilot Dry Run - 10 Businesses",
             city="Ahmedabad",
             industry="restaurant_cafe",
-            min_opportunity_score=60
+            min_opportunity_score=70
         )
         db.add(campaign)
         db.commit()
