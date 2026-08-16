@@ -5,6 +5,7 @@ from app.api.discovery import router as discovery_router
 from app.api.audit import router as audit_router
 from app.api.qualification import router as qualification_router
 from app.api.research import router as research_router
+from app.api.demo import router as demo_router
 
 api_router = APIRouter(prefix="/api/v1")
 api_router.include_router(campaigns_router)
@@ -13,3 +14,4 @@ api_router.include_router(discovery_router)
 api_router.include_router(audit_router)
 api_router.include_router(qualification_router)
 api_router.include_router(research_router)
+api_router.include_router(demo_router)
