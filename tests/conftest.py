@@ -1,6 +1,7 @@
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
 from app.db.base import Base
 from app.db.models import Business, Campaign
 from app.schemas.enums import WorkflowState, WebsiteStatus, VerificationStatus
@@ -9,7 +10,12 @@ from app.schemas.enums import WorkflowState, WebsiteStatus, VerificationStatus
 @pytest.fixture(scope="function")
 def db_session():
     """In-memory SQLite database session for isolated testing."""
-    engine = create_engine("sqlite:///:memory:", echo=False)
+    engine = create_engine(
+        "sqlite:///:memory:",
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
+        echo=False
+    )
     Base.metadata.create_all(bind=engine)
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     session = SessionLocal()

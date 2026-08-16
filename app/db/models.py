@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime
-from sqlalchemy import String, Float, Integer, Text, Boolean, DateTime, ForeignKey, Enum as SQLEnum, JSON
+from sqlalchemy import String, Float, Integer, Text, Boolean, DateTime, ForeignKey, Enum as SQLEnum, JSON, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
 from app.schemas.enums import WorkflowState, WebsiteStatus, VerificationStatus, ConfidenceLevel, OutreachStatus
@@ -22,7 +22,7 @@ class Campaign(Base):
     min_opportunity_score: Mapped[int] = mapped_column(Integer, default=70)
     priority_score: Mapped[int] = mapped_column(Integer, default=80)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
     
     businesses: Mapped[list["Business"]] = relationship("Business", back_populates="campaign", cascade="all, delete-orphan")
 
@@ -61,8 +61,8 @@ class Business(Base):
     # Suppression flag
     is_suppressed: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-    updated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now(), onupdate=func.now())
     
     campaign: Mapped["Campaign | None"] = relationship("Campaign", back_populates="businesses")
     website_audit: Mapped["WebsiteAudit | None"] = relationship("WebsiteAudit", back_populates="business", uselist=False, cascade="all, delete-orphan")
@@ -85,9 +85,9 @@ class WebsiteAudit(Base):
     info_score: Mapped[float] = mapped_column(Float, default=0.0)
     conversion_score: Mapped[float] = mapped_column(Float, default=0.0)
     
-    missing_elements: Mapped[dict | None] = mapped_column(JSON, nullable=True)  # List of missing features (menu, booking, etc.)
+    missing_elements: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     raw_metrics: Mapped[dict | None] = mapped_column(JSON, nullable=True)
-    audited_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    audited_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
     
     business: Mapped["Business"] = relationship("Business", back_populates="website_audit")
 
@@ -107,7 +107,7 @@ class OpportunityScoreRecord(Base):
     
     is_disqualified: Mapped[bool] = mapped_column(Boolean, default=False)
     disqualification_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
-    calculated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    calculated_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
     
     business: Mapped["Business"] = relationship("Business", back_populates="score_details")
 
@@ -143,7 +143,7 @@ class OutreachDraft(Base):
     
     approved_by: Mapped[str | None] = mapped_column(String(255), nullable=True)
     approved_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
     
     business: Mapped["Business"] = relationship("Business", back_populates="outreach_draft")
 
@@ -160,7 +160,7 @@ class AuditLog(Base):
     agent_name: Mapped[str | None] = mapped_column(String(100), nullable=True)
     
     payload_snapshot: Mapped[dict | None] = mapped_column(JSON, nullable=True)
-    timestamp: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, index=True)
+    timestamp: Mapped[datetime] = mapped_column(DateTime, server_default=func.now(), index=True)
     
     business: Mapped["Business | None"] = relationship("Business", back_populates="audit_logs")
 
@@ -173,9 +173,9 @@ class AgentRun(Base):
     agent_version: Mapped[str] = mapped_column(String(50), nullable=False)
     lead_id: Mapped[str] = mapped_column(String(36), nullable=False)
     
-    status: Mapped[str] = mapped_column(String(50), nullable=False)  # SUCCESS | FAILURE
+    status: Mapped[str] = mapped_column(String(50), nullable=False)
     duration_ms: Mapped[float] = mapped_column(Float, default=0.0)
     input_payload: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     output_payload: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     errors: Mapped[dict | None] = mapped_column(JSON, nullable=True)
-    executed_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    executed_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
