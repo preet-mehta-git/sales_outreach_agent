@@ -1,7 +1,7 @@
 import uuid
 from app.agents.contact_discovery_agent import ContactDiscoveryAgent
 from app.schemas.agent import AgentInput
-from app.schemas.enums import WorkflowState
+from app.schemas.enums import WorkflowState, ConfidenceLevel
 from app.db.models import Business, DecisionMakerRecord
 
 
@@ -24,12 +24,12 @@ def test_contact_discovery_agent(db_session):
     out = agent.execute(inp)
     assert out.success is True
     assert "decision_maker_id" in out.data
-    assert out.data["confidence_level"] == "HIGH"
+    assert out.data["confidence_level"] == ConfidenceLevel.NOT_FOUND.value
 
-    # Verify DecisionMakerRecord persisted
+    # Verify DecisionMakerRecord persisted without fake owner
     dm = db_session.query(DecisionMakerRecord).filter(DecisionMakerRecord.business_id == lead.id).first()
     assert dm is not None
-    assert "Owner / GM" in dm.name
+    assert dm.name is None
 
     # Verify transition to DECISION_MAKER_RESEARCHED
     db_session.refresh(lead)

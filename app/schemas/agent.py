@@ -1,5 +1,6 @@
 from typing import Generic, TypeVar, Any
 from datetime import datetime, timezone
+import uuid
 from pydantic import BaseModel, Field
 from app.schemas.enums import ConfidenceLevel
 
@@ -10,7 +11,7 @@ T = TypeVar("T")
 class AgentInput(BaseModel):
     lead_id: str | None = None
     campaign_id: str | None = None
-    workflow_run_id: str
+    workflow_run_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     parameters: dict[str, Any] = Field(default_factory=dict)
     custom_params: dict[str, Any] = Field(default_factory=dict)
 

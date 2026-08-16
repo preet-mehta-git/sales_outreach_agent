@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from app.agents.base import BaseAgent
 from app.schemas.agent import AgentInput
-from app.schemas.enums import WorkflowState, OutreachStatus
+from app.schemas.enums import WorkflowState, OutreachStatus, ConfidenceLevel
 from app.db.models import Business, DecisionMakerRecord, WebsiteAudit, OutreachDraft
 from app.orchestrator.engine import OrchestratorEngine
 from app.core.logging import get_logger
@@ -29,17 +29,22 @@ class OutreachAgent(BaseAgent[dict[str, Any]]):
         audit = self.db.query(WebsiteAudit).filter(WebsiteAudit.business_id == lead.id).first()
         draft = self.db.query(OutreachDraft).filter(OutreachDraft.business_id == lead.id).first()
 
-        dm_name = dm.name if (dm and dm.name) else "Restaurant Owner"
+        # Personalization Check (Section 5.2): Check confidence before addressing by personal name
+        if dm and dm.name and dm.confidence in (ConfidenceLevel.HIGH, ConfidenceLevel.MEDIUM):
+            greeting = f"Hi {dm.name},"
+        else:
+            greeting = f"Hello {lead.name} Team,"
+
         demo_url = draft.demo_url if (draft and draft.demo_url) else f"/static/demos/{lead.id}/index.html"
 
-        # Generate Email Copy
+        # Generate Email Copy (Evidence-based facts, no fabricated revenue)
         subject = f"Growth opportunity for {lead.name} in {lead.city}"
         
-        email_body = f"""Hi {dm_name},
+        email_body = f"""{greeting}
 
-I came across {lead.name} while researching top {lead.category}s in {lead.city}. Your {lead.rating or 4.5}⭐ rating with {lead.review_count or 10}+ customer reviews is fantastic.
+I came across {lead.name} while researching top {lead.category}s in {lead.city}. Your {lead.rating or 4.5}⭐ rating with {lead.review_count or 10}+ customer reviews shows strong local customer demand.
 
-However, we noticed a critical digital presence gap: potential customers searching online are unable to view a mobile-optimized menu or place instant orders via WhatsApp. Based on search patterns in {lead.city}, this results in missed orders every month.
+However, we noticed a key digital presence opportunity: potential customers searching online are unable to view a mobile-optimized menu or place direct orders via WhatsApp.
 
 To show you how easy this is to solve, we built a personalized interactive web demo for {lead.name}:
 {demo_url}
@@ -60,7 +65,7 @@ If you prefer not to receive future communications, please reply with "REMOVE" o
 
         # Generate WhatsApp Copy
         whatsapp_body = (
-            f"Hi {dm_name}! 👋 We built a custom mobile web demo for {lead.name} "
+            f"{greeting} 👋 We built a custom mobile web demo for {lead.name} "
             f"including instant WhatsApp ordering & digital menu. "
             f"Check it out here: {demo_url} - Would love your thoughts!"
         )

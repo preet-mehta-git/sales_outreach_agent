@@ -34,11 +34,35 @@ class BusinessAuditAgent(BaseAgent[dict[str, Any]]):
         elif lead.website_status == WebsiteStatus.NO_WEBSITE:
             missing_gaps = ["missing_website", "missing_mobile_optimization", "missing_online_menu", "missing_whatsapp_cta"]
 
-        # Calculate estimated business impact
-        review_count = lead.review_count or 10
-        est_daily_foot_traffic = int(review_count * 1.5)
-        est_lost_monthly_customers = int(est_daily_foot_traffic * 0.20 * 30)  # 20% searchers lost due to missing/poor digital presence
-        est_lost_monthly_revenue_inr = est_lost_monthly_customers * 450  # Average check size 450 INR
+        # Evidence-Based Audit Categories (Section 5.5)
+        known_facts = {
+            "business_name": lead.name,
+            "category": lead.category,
+            "city": lead.city,
+            "rating": lead.rating,
+            "review_count": lead.review_count,
+            "website_status": lead.website_status.value if lead.website_status else "UNKNOWN",
+            "has_phone": bool(lead.phone),
+            "has_address": bool(lead.address)
+        }
+
+        inferred_insights = []
+        if lead.review_count and lead.review_count >= 50:
+            inferred_insights.append("Strong local customer demand and Google search discovery volume.")
+        if lead.website_status == WebsiteStatus.NO_WEBSITE:
+            inferred_insights.append("Customers rely entirely on third-party aggregators and Google Maps listing.")
+
+        potential_opportunities = [
+            "Owned mobile digital menu with instant QR accessibility",
+            "Direct WhatsApp click-to-chat ordering CTA",
+            "Direct table enquiry & reservation button"
+        ]
+
+        unknown_variables = [
+            "Exact website conversion rate (requires website analytics)",
+            "Exact monthly revenue impact (requires internal financial records)",
+            "Customer acquisition cost via third-party platforms"
+        ]
 
         # Safely wrap any raw external text content snippet
         raw_text_snippet = f"Business: {lead.name}, Category: {lead.category}, City: {lead.city}"
@@ -47,16 +71,11 @@ class BusinessAuditAgent(BaseAgent[dict[str, Any]]):
         audit_summary = {
             "business_id": lead.id,
             "business_name": lead.name,
-            "category": lead.category,
-            "city": lead.city,
+            "known_facts": known_facts,
+            "inferred_insights": inferred_insights,
+            "potential_opportunities": potential_opportunities,
+            "unknown_variables": unknown_variables,
             "digital_gaps": missing_gaps,
-            "estimated_lost_monthly_customers": est_lost_monthly_customers,
-            "estimated_lost_monthly_revenue_inr": est_lost_monthly_revenue_inr,
-            "recommendations": [
-                "Deploy modern mobile-first landing page with online QR code menu",
-                "Integrate instant WhatsApp click-to-chat order/table inquiry button",
-                "Implement direct Google Maps reservation & direction action buttons"
-            ],
             "untrusted_content": safe_wrapped_content
         }
 
@@ -67,10 +86,10 @@ class BusinessAuditAgent(BaseAgent[dict[str, Any]]):
                 target_state=WorkflowState.BUSINESS_AUDITED,
                 agent_name=self.name,
                 payload_snapshot={
-                    "est_lost_monthly_revenue_inr": est_lost_monthly_revenue_inr,
-                    "gap_count": len(missing_gaps)
+                    "gap_count": len(missing_gaps),
+                    "known_facts_count": len(known_facts)
                 }
             )
 
-        logger.info(f"BusinessAuditAgent completed audit for lead {lead.id}: Est Lost Rev=₹{est_lost_monthly_revenue_inr:,}")
+        logger.info(f"BusinessAuditAgent completed evidence-based audit for lead {lead.id} ({lead.name})")
         return audit_summary

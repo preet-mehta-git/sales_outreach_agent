@@ -25,14 +25,25 @@ class ContactDiscoveryAgent(BaseAgent[dict[str, Any]]):
         if not lead:
             raise ValueError(f"Business lead with ID {input_data.lead_id} not found.")
 
-        dm_name = f"Owner / GM ({lead.name})"
-        role_title = "Owner / General Manager"
-        phone = lead.phone
-        email = lead.email or f"contact@{lead.name.lower().replace(' ', '')}.com"
-        
-        confidence = ConfidenceLevel.MEDIUM
-        if lead.phone and lead.place_id:
+        # Check if verified custom owner parameters were explicitly provided
+        params = {**input_data.parameters, **input_data.custom_params}
+        explicit_owner = params.get("owner_name")
+        explicit_title = params.get("owner_title", "Owner / Manager")
+
+        if explicit_owner and explicit_owner.strip():
+            dm_name = explicit_owner.strip()
+            role_title = explicit_title.strip()
             confidence = ConfidenceLevel.HIGH
+            evidence = {"source": "Verified User Input", "explicit_name": True}
+        else:
+            # NO owner fabricated. Never invent a person's name without evidence.
+            dm_name = None
+            role_title = None
+            confidence = ConfidenceLevel.NOT_FOUND
+            evidence = {"source": "Discovery Provider", "explicit_name": False, "status": "NOT_FOUND"}
+
+        phone = lead.phone
+        email = lead.email  # Real email only, never fabricate contact@domain.com
 
         # Create or update DecisionMakerRecord
         dm_record = self.db.query(DecisionMakerRecord).filter(DecisionMakerRecord.business_id == lead.id).first()
@@ -44,7 +55,7 @@ class ContactDiscoveryAgent(BaseAgent[dict[str, Any]]):
                 contact_phone=phone,
                 contact_email=email,
                 confidence=confidence,
-                evidence={"source": "Discovery & Ingestion Provider"}
+                evidence=evidence
             )
             self.db.add(dm_record)
         else:
@@ -53,6 +64,7 @@ class ContactDiscoveryAgent(BaseAgent[dict[str, Any]]):
             dm_record.contact_phone = phone
             dm_record.contact_email = email
             dm_record.confidence = confidence
+            dm_record.evidence = evidence
 
         self.db.commit()
         self.db.refresh(dm_record)
@@ -66,11 +78,12 @@ class ContactDiscoveryAgent(BaseAgent[dict[str, Any]]):
                 payload_snapshot={
                     "decision_maker_id": dm_record.id,
                     "confidence_level": confidence.value,
-                    "role_title": role_title
+                    "role_title": role_title,
+                    "decision_maker_name": dm_name
                 }
             )
 
-        logger.info(f"ContactDiscoveryAgent researched DM for lead {lead.id}: {dm_name} ({confidence.value})")
+        logger.info(f"ContactDiscoveryAgent completed DM research for lead {lead.id}: DM={dm_name} ({confidence.value})")
         return {
             "lead_id": lead.id,
             "decision_maker_id": dm_record.id,

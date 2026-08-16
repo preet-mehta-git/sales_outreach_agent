@@ -1,7 +1,7 @@
 import uuid
 from app.agents.outreach_agent import OutreachAgent
 from app.schemas.agent import AgentInput
-from app.schemas.enums import WorkflowState, OutreachStatus
+from app.schemas.enums import WorkflowState, OutreachStatus, ConfidenceLevel
 from app.db.models import Business, OutreachDraft, DecisionMakerRecord
 
 
@@ -20,7 +20,8 @@ def test_outreach_agent_drafting(db_session):
     dm = DecisionMakerRecord(
         business_id=lead.id,
         name="Mr. Rajesh Patel",
-        title="Owner"
+        title="Owner",
+        confidence=ConfidenceLevel.HIGH
     )
     db_session.add(dm)
 

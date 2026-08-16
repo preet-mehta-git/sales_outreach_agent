@@ -22,7 +22,7 @@ def test_business_audit_agent(db_session):
 
     out = agent.execute(inp)
     assert out.success is True
-    assert out.data["estimated_lost_monthly_revenue_inr"] > 0
+    assert "known_facts" in out.data
     assert "<untrusted_external_content>" in out.data["untrusted_content"]
 
     # Verify transition to BUSINESS_AUDITED
