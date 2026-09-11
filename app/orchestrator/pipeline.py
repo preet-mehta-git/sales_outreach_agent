@@ -82,10 +82,10 @@ class CampaignPipelineRunner:
         if lead.entity_verification_status and lead.entity_verification_status.value == "MANUAL_REVIEW":
             status = ManualReviewStatus.REVIEW_REQUIRED
             reasons.append("Ambiguous entity verification status requiring human decision.")
-        elif lead.website_verification_status and lead.website_verification_status.value in ("CONFLICTING_WEBSITES", "MANUAL_REVIEW"):
+        elif lead.website_verification_status and lead.website_verification_status.value in ("CONFLICTING_WEBSITES", "CONTENT_UNVERIFIED", "MANUAL_REVIEW"):
             status = ManualReviewStatus.REVIEW_REQUIRED
             reasons.append(f"Ambiguous website verification status: {lead.website_verification_status.value}")
-        elif lead.website_classification and lead.website_classification.value in ("CONFLICTING", "MANUAL_REVIEW"):
+        elif lead.website_classification and lead.website_classification.value in ("CONFLICTING", "CONTENT_UNVERIFIED", "MANUAL_REVIEW"):
             status = ManualReviewStatus.REVIEW_REQUIRED
             reasons.append(f"Ambiguous website classification: {lead.website_classification.value}")
         elif lead.contact_target_status and lead.contact_target_status.value == "MANUAL_REVIEW":

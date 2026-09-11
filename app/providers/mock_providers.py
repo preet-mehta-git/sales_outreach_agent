@@ -87,22 +87,131 @@ class MockLLMProvider(BaseLLMProvider):
 
 class MockAuditProvider(BaseAuditProvider):
     def inspect_url(self, url: str) -> dict[str, Any]:
-        if "weak" in url or "example" in url:
+        url_lower = (url or "").lower()
+
+        # Simulated health state test triggers
+        if "timeout" in url_lower:
+            return {
+                "reachable": False,
+                "status_code": 0,
+                "health_state": "CONNECTION_TIMEOUT",
+                "is_transient": True,
+                "error": "Connection timed out after 8.0s",
+                "has_meta_viewport": False,
+                "performance_score": 0.0,
+                "mobile_score": 0.0,
+                "design_score": 0.0
+            }
+        if "http403" in url_lower or "forbidden" in url_lower:
+            return {
+                "reachable": False,
+                "status_code": 403,
+                "health_state": "HTTP_403",
+                "is_transient": True,
+                "error": "HTTP 403 Forbidden",
+                "has_meta_viewport": False,
+                "performance_score": 0.0,
+                "mobile_score": 0.0,
+                "design_score": 0.0
+            }
+        if "http429" in url_lower or "ratelimit" in url_lower:
+            return {
+                "reachable": False,
+                "status_code": 429,
+                "health_state": "HTTP_429",
+                "is_transient": True,
+                "error": "HTTP 429 Too Many Requests",
+                "has_meta_viewport": False,
+                "performance_score": 0.0,
+                "mobile_score": 0.0,
+                "design_score": 0.0
+            }
+        if "http500" in url_lower or "servererror" in url_lower:
+            return {
+                "reachable": False,
+                "status_code": 500,
+                "health_state": "HTTP_5XX",
+                "is_transient": True,
+                "error": "HTTP 500 Internal Server Error",
+                "has_meta_viewport": False,
+                "performance_score": 0.0,
+                "mobile_score": 0.0,
+                "design_score": 0.0
+            }
+        if "dnsfail" in url_lower or "nxdomain" in url_lower:
+            return {
+                "reachable": False,
+                "status_code": 0,
+                "health_state": "DNS_FAILURE",
+                "is_transient": False,
+                "error": "Unable to resolve hostname (DNS failure)",
+                "has_meta_viewport": False,
+                "performance_score": 0.0,
+                "mobile_score": 0.0,
+                "design_score": 0.0
+            }
+        if "sslerr" in url_lower:
+            return {
+                "reachable": False,
+                "status_code": 0,
+                "health_state": "SSL_ERROR",
+                "is_transient": True,
+                "error": "SSL Certificate verification failed",
+                "has_meta_viewport": False,
+                "performance_score": 0.0,
+                "mobile_score": 0.0,
+                "design_score": 0.0
+            }
+
+        # Outdated / Weak domain test triggers
+        if "weak" in url_lower or "outdated" in url_lower:
             return {
                 "reachable": True,
                 "status_code": 200,
+                "health_state": "SITE_ACCESSIBLE",
+                "is_transient": False,
                 "title": "Welcome to Our Restaurant",
+                "is_https": False,
                 "has_meta_viewport": False,
                 "has_menu_link": False,
                 "has_booking_cta": False,
                 "has_whatsapp_cta": False,
                 "performance_score": 35.0,
-                "mobile_score": 30.0,
+                "mobile_score": 25.0,
                 "design_score": 40.0
             }
+
+        # Default accessible site simulation for known mock domains
+        if any(dom in url_lower for dom in [
+            "gordhanthal.com", "swatisnacks.com", "houseofmg.com", "havmor.com",
+            "uppercrustindia.com", "vishalla.com", "sasujidininghall.com", "toranrestaurant.com",
+            "atithidining.com", "theprojectcafe.in", "mochacafe.com", "kaffacerrado.com",
+            "saleandpepe.in", "unlockedcafe.in", "varietea.in", "makeba.in",
+            "honestrestaurants.com", "jaybhavanivadapav.com", "bikanervala.com", "example.com"
+        ]):
+            is_makeba = "makeba" in url_lower
+            return {
+                "reachable": True,
+                "status_code": 200,
+                "health_state": "SITE_ACCESSIBLE",
+                "is_transient": False,
+                "title": "Official Restaurant Portal",
+                "is_https": True,
+                "has_meta_viewport": True,
+                "has_menu_link": True,
+                "has_booking_cta": True,
+                "has_whatsapp_cta": is_makeba,
+                "performance_score": 85.0 if is_makeba else 70.0,
+                "mobile_score": 85.0 if is_makeba else 80.0,
+                "design_score": 80.0 if is_makeba else 75.0,
+                "conversion_score": 80.0 if is_makeba else 70.0
+            }
+
         return {
             "reachable": False,
             "status_code": 404,
+            "health_state": "HTTP_404",
+            "is_transient": False,
             "title": None,
             "has_meta_viewport": False,
             "performance_score": 0.0,

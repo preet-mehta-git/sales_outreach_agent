@@ -100,6 +100,8 @@ class WebsiteVerifierAgent(BaseAgent[dict[str, Any]]):
         if final_url and final_url.strip():
             inspection = self.audit_provider.inspect_url(final_url)
             reachable = inspection.get("reachable", False)
+            health_state = inspection.get("health_state", "SITE_ACCESSIBLE" if reachable else "UNKNOWN")
+            is_transient = inspection.get("is_transient", False)
 
             if reachable:
                 lead.website_url = final_url
@@ -115,14 +117,30 @@ class WebsiteVerifierAgent(BaseAgent[dict[str, Any]]):
                 else:
                     lead.website_status = WebsiteStatus.WEBSITE_FOUND
 
-                evidence.append(f"Official website '{final_url}' reached successfully with status code {inspection.get('status_code', 200)}.")
+                evidence.append(f"Official website '{final_url}' reached successfully with status code {inspection.get('status_code', 200)} ({health_state}).")
             else:
                 lead.website_url = final_url
                 lead.website_source = source
-                lead.website_confidence = 30.0
-                lead.website_verification_status = WebsiteVerificationStatus.CONFLICTING_WEBSITES
-                lead.website_status = WebsiteStatus.WEBSITE_UNREACHABLE
-                evidence.append(f"Official candidate domain '{final_url}' was unreachable.")
+                
+                if is_transient:
+                    # Transient network/server failure: do NOT mark as confirmed NO_WEBSITE or permanently conflicting
+                    lead.website_confidence = 50.0
+                    lead.website_verification_status = WebsiteVerificationStatus.CONTENT_UNVERIFIED
+                    lead.website_status = WebsiteStatus.WEBSITE_UNREACHABLE
+                    evidence.append(
+                        f"Official candidate domain '{final_url}' encountered transient network/server failure: {health_state} "
+                        f"(Status: {inspection.get('status_code', 0)}). Marked as CONTENT_UNVERIFIED for manual confirmation."
+                    )
+                elif health_state == "DNS_FAILURE":
+                    lead.website_confidence = 30.0
+                    lead.website_verification_status = WebsiteVerificationStatus.MANUAL_REVIEW
+                    lead.website_status = WebsiteStatus.WEBSITE_UNREACHABLE
+                    evidence.append(f"Official candidate domain '{final_url}' failed DNS resolution ({health_state}). Requires manual review.")
+                else:
+                    lead.website_confidence = 30.0
+                    lead.website_verification_status = WebsiteVerificationStatus.CONFLICTING_WEBSITES
+                    lead.website_status = WebsiteStatus.WEBSITE_UNREACHABLE
+                    evidence.append(f"Official candidate domain '{final_url}' was unreachable ({health_state}).")
         else:
             lead.website_url = None
             lead.website_source = "SOURCE_A_AND_B_SEARCH"

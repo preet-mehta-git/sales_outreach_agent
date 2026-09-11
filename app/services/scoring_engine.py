@@ -34,6 +34,9 @@ class ScoringEngine:
 
         if ver_status == WebsiteVerificationStatus.NO_WEBSITE_CONFIRMED or status == WebsiteStatus.NO_WEBSITE or not business.website_url:
             digital_gap_score = 35.0
+        elif ver_status == WebsiteVerificationStatus.CONTENT_UNVERIFIED:
+            # Temporary technical/server failure: do NOT inflate gap to 35.0; assign conservative neutral score
+            digital_gap_score = 17.5
         elif status == WebsiteStatus.WEBSITE_UNREACHABLE:
             digital_gap_score = 35.0
         elif audit and audit.quality_score is not None:

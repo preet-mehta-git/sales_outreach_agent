@@ -28,7 +28,7 @@ class WebsiteAuditAgent(BaseAgent[dict[str, Any]]):
         missing_elements = []
         raw_metrics = {}
 
-        # Case 1: No website confirmed or unreachable
+        # Case 1: No website confirmed
         if lead.website_verification_status == WebsiteVerificationStatus.NO_WEBSITE_CONFIRMED or lead.website_status == WebsiteStatus.NO_WEBSITE or not lead.website_url:
             missing_elements = [
                 "missing_website",
@@ -43,7 +43,17 @@ class WebsiteAuditAgent(BaseAgent[dict[str, Any]]):
             design_score = 0.0
             conversion_score = 0.0
             classification = WebsiteClassification.NO_WEBSITE
-            raw_metrics = {"reason": "No website or unreachable"}
+            raw_metrics = {"reason": "Confirmed no website"}
+        elif lead.website_verification_status == WebsiteVerificationStatus.CONTENT_UNVERIFIED:
+            # Case 1.5: Candidate domain exists but encountered transient network/server failure
+            missing_elements = ["unverified_due_to_transient_failure"]
+            quality_score = 50.0  # Neutral quality baseline rather than 0.0
+            mobile_score = 50.0
+            performance_score = 50.0
+            design_score = 50.0
+            conversion_score = 50.0
+            classification = WebsiteClassification.CONTENT_UNVERIFIED
+            raw_metrics = {"reason": "Transient network/server failure; content unverified"}
         else:
             # Case 2: Multi-dimensional website audit
             inspection = self.audit_provider.inspect_url(lead.website_url)

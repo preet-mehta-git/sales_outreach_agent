@@ -1,5 +1,5 @@
 {
-  "campaign_id": "4c6a5122-c9d6-478d-8664-fb5899c7810d",
+  "campaign_id": "7d872556-9bdf-4c85-b0dc-d5bfb1f855be",
   "phase": "PHASE_12_REAL_WORLD_VALIDATION",
   "batch_size": 36,
   "entity_precision": 0.889,
@@ -14,37 +14,37 @@
     "website_verification": {
       "no_website": 17,
       "weak_website": 0,
-      "outdated_website": 8,
+      "outdated_website": 5,
       "poor_ux": 1,
       "poor_conversion": 0,
-      "technically_good": 1,
-      "good_website": 9,
-      "excellent_website": 0,
+      "technically_good": 0,
+      "good_website": 8,
+      "excellent_website": 1,
       "conflicting": 0,
       "manual_review": 0
     },
     "qualification": {
-      "priority": 16,
-      "qualified": 4,
-      "potential_review": 3,
-      "rejected": 13
+      "priority": 12,
+      "qualified": 3,
+      "potential_review": 6,
+      "rejected": 15
     },
     "manual_review": {
-      "no_review_required": 24,
+      "no_review_required": 25,
       "review_recommended": 3,
-      "review_required": 9
+      "review_required": 8
     },
     "contact_target": {
       "verified_persons": 0,
       "verified_roles": 0,
-      "business_contact_only": 20,
-      "contact_target_not_found": 16,
+      "business_contact_only": 15,
+      "contact_target_not_found": 21,
       "contact_target_manual_review": 0
     },
     "demos": {
-      "demos_generated": 20,
+      "demos_generated": 15,
       "public_demos": 0,
-      "local_only_demos": 20,
+      "local_only_demos": 15,
       "demo_access_failures": 0
     },
     "outreach": {
@@ -55,15 +55,15 @@
     },
     "final_actions": {
       "awaiting_human_outreach_approval": 11,
-      "requires_manual_review": 9,
+      "requires_manual_review": 8,
       "review_recommended": 3,
-      "rejected": 13,
+      "rejected": 14,
       "qualified_not_ready": 0
     }
   },
   "businesses": [
     {
-      "business_id": "51ce0ad4-9d93-45b3-9d9f-15e15ddc41d8",
+      "business_id": "c14fba73-38c2-47a3-bb85-ec276ba09f97",
       "business_name": "Das Khaman",
       "category": "traditional snacks",
       "location": "Shop 2, Nehrunagar Cross Road, Ahmedabad",
@@ -130,6 +130,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "High digital opportunity: confirmed zero website presence despite active customer base",
+        "Direct verified business phone contact route available (+91 79 2630 4567)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -137,14 +141,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/51ce0ad4-9d93-45b3-9d9f-15e15ddc41d8/index.html",
+      "demo_url": "http://localhost:8000/static/demos/c14fba73-38c2-47a3-bb85-ec276ba09f97/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Das Khaman Team,\n\nI came across Das Khaman while reviewing commercial businesses in Ahmedabad. Your 4.6⭐ public rating across 1250 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Das Khaman currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Das Khaman to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Das Khaman?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Das Khaman Team, We reviewed the online presence for Das Khaman and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "92c9130b-6718-4449-a72d-7bbe83680cc9",
+      "business_id": "64494a2a-15cf-414e-b695-b6fb89a79329",
       "business_name": "Jail Na Bhajiya",
       "category": "fast food snacks",
       "location": "Near Subhash Bridge Circle, RTO, Ahmedabad",
@@ -211,6 +215,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "High digital opportunity: confirmed zero website presence despite active customer base",
+        "Direct verified business phone contact route available (+91 79 2755 1234)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -218,14 +226,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/92c9130b-6718-4449-a72d-7bbe83680cc9/index.html",
+      "demo_url": "http://localhost:8000/static/demos/64494a2a-15cf-414e-b695-b6fb89a79329/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Jail Na Bhajiya Team,\n\nI came across Jail Na Bhajiya while reviewing commercial businesses in Ahmedabad. Your 4.5⭐ public rating across 1580 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Jail Na Bhajiya currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Jail Na Bhajiya to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Jail Na Bhajiya?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Jail Na Bhajiya Team, We reviewed the online presence for Jail Na Bhajiya and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "faffd45e-8448-4621-aced-d1fa2c750447",
+      "business_id": "c76c7e32-40b6-457e-8b77-40c77d151c62",
       "business_name": "Atithi Dining Hall",
       "category": "gujarati thali restaurant",
       "location": "SG Highway, Bodakdev, Ahmedabad",
@@ -242,7 +250,7 @@
           "raw_score": 100.0,
           "weight_pct": 35.0,
           "contribution": 35.0,
-          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: CONFLICTING_WEBSITES)",
+          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: MANUAL_REVIEW)",
           "evidence": {
             "website_status": "WEBSITE_UNREACHABLE",
             "quality_score": 2.5
@@ -292,6 +300,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "Verified digital opportunity: existing web presence has audit gaps (OUTDATED_WEBSITE)",
+        "Direct verified business phone contact route available (+91 79 2685 9900)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -299,99 +311,16 @@
       "outreach_readiness": "MANUAL_REVIEW",
       "manual_review_status": "REVIEW_REQUIRED",
       "manual_review_reasons": [
-        "Ambiguous website verification status: CONFLICTING_WEBSITES"
+        "Ambiguous website verification status: MANUAL_REVIEW"
       ],
-      "demo_url": "http://localhost:8000/static/demos/faffd45e-8448-4621-aced-d1fa2c750447/index.html",
+      "demo_url": "http://localhost:8000/static/demos/c76c7e32-40b6-457e-8b77-40c77d151c62/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "REQUIRES_MANUAL_REVIEW",
       "email_draft": "Hello Atithi Dining Hall Team,\n\nI came across Atithi Dining Hall while reviewing commercial businesses in Ahmedabad. Your 4.5⭐ public rating across 1100 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Atithi Dining Hall currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Atithi Dining Hall to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Atithi Dining Hall?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Atithi Dining Hall Team, We reviewed the online presence for Atithi Dining Hall and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "c6bb9fec-efbc-44ff-8d27-3a2cd960bd23",
-      "business_name": "Mocha Cafe & Bar",
-      "category": "cafe & bistro",
-      "location": "Sindhu Bhavan Road, Bodakdev, Ahmedabad",
-      "phone": "+91 79 4004 8899",
-      "rating": 4.5,
-      "review_count": 1300,
-      "entity_status": "VERIFIED",
-      "website_url": "https://mochacafe.com",
-      "website_status": "WEBSITE_UNREACHABLE",
-      "website_classification": "OUTDATED_WEBSITE",
-      "opportunity_score": 86.0,
-      "score_breakdown": {
-        "digital_opportunity_gap": {
-          "raw_score": 100.0,
-          "weight_pct": 35.0,
-          "contribution": 35.0,
-          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: CONFLICTING_WEBSITES)",
-          "evidence": {
-            "website_status": "WEBSITE_UNREACHABLE",
-            "quality_score": 2.5
-          }
-        },
-        "customer_traction": {
-          "raw_score": 100.0,
-          "weight_pct": 25.0,
-          "contribution": 25.0,
-          "reason": "Customer Traction Score 25.0/25.0 based on 1300 reviews & 4.5 rating",
-          "evidence": {
-            "reviews": 1300,
-            "rating": 4.5
-          }
-        },
-        "commercial_potential": {
-          "raw_score": 80.0,
-          "weight_pct": 20.0,
-          "contribution": 16.0,
-          "reason": "Commercial Potential Score 16.0/20.0 based on business scale and revenue gap",
-          "evidence": {
-            "reviews": 1300,
-            "price_positioning": 4.0,
-            "scale": 5.0
-          }
-        },
-        "contactability": {
-          "raw_score": 50.0,
-          "weight_pct": 10.0,
-          "contribution": 5.0,
-          "reason": "Contactability Score 5.0/10.0 (Phone: Yes, DM confidence: NOT_FOUND)",
-          "evidence": {
-            "phone_present": true,
-            "dm_confidence": "NOT_FOUND"
-          }
-        },
-        "purchase_signals": {
-          "raw_score": 50.0,
-          "weight_pct": 10.0,
-          "contribution": 5.0,
-          "reason": "Purchase Signals Score 5.0/10.0: High review volume (500+) indicates high transaction capacity and potential digital expansion intent.",
-          "evidence": {
-            "signals": [
-              "High review volume (500+) indicates high transaction capacity and potential digital expansion intent."
-            ]
-          }
-        }
-      },
-      "qualification": "PRIORITY",
-      "decision_maker": "NOT_FOUND",
-      "decision_maker_title": "NOT_FOUND",
-      "decision_maker_confidence": "NOT_FOUND",
-      "contact_target_status": "BUSINESS_CONTACT_ONLY",
-      "outreach_readiness": "MANUAL_REVIEW",
-      "manual_review_status": "REVIEW_REQUIRED",
-      "manual_review_reasons": [
-        "Ambiguous website verification status: CONFLICTING_WEBSITES"
-      ],
-      "demo_url": "http://localhost:8000/static/demos/c6bb9fec-efbc-44ff-8d27-3a2cd960bd23/index.html",
-      "demo_access_status": "LOCAL_ONLY",
-      "action": "REQUIRES_MANUAL_REVIEW",
-      "email_draft": "Hello Mocha Cafe & Bar Team,\n\nI came across Mocha Cafe & Bar while reviewing commercial businesses in Ahmedabad. Your 4.5⭐ public rating across 1300 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Mocha Cafe & Bar currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Mocha Cafe & Bar to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Mocha Cafe & Bar?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
-      "whatsapp_draft": "Hello Mocha Cafe & Bar Team, We reviewed the online presence for Mocha Cafe & Bar and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
-    },
-    {
-      "business_id": "8906bd00-1cdf-4f76-8b4b-4647575c6a2c",
+      "business_id": "b7bb874a-13cb-4982-88c4-3b8728d082aa",
       "business_name": "Lijjat Khaman House",
       "category": "traditional snacks",
       "location": "Kankaria Lake Front, Maninagar, Ahmedabad",
@@ -458,6 +387,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "High digital opportunity: confirmed zero website presence despite active customer base",
+        "Direct verified business phone contact route available (+91 79 2546 7890)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -465,14 +398,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/8906bd00-1cdf-4f76-8b4b-4647575c6a2c/index.html",
+      "demo_url": "http://localhost:8000/static/demos/b7bb874a-13cb-4982-88c4-3b8728d082aa/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Lijjat Khaman House Team,\n\nI came across Lijjat Khaman House while reviewing commercial businesses in Ahmedabad. Your 4.5⭐ public rating across 890 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Lijjat Khaman House currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Lijjat Khaman House to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Lijjat Khaman House?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Lijjat Khaman House Team, We reviewed the online presence for Lijjat Khaman House and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "8dc53c26-ede6-4486-83d2-1e90cc88642f",
+      "business_id": "045121bd-1fc9-4d27-aaf9-4949838da91b",
       "business_name": "Unlocked - Board Game Cafe",
       "category": "cafe & entertainment",
       "location": "Umashankar Joshi Marg, Navrangpura, Ahmedabad",
@@ -489,7 +422,7 @@
           "raw_score": 100.0,
           "weight_pct": 35.0,
           "contribution": 35.0,
-          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: CONFLICTING_WEBSITES)",
+          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: MANUAL_REVIEW)",
           "evidence": {
             "website_status": "WEBSITE_UNREACHABLE",
             "quality_score": 2.5
@@ -539,6 +472,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "Verified digital opportunity: existing web presence has audit gaps (OUTDATED_WEBSITE)",
+        "Direct verified business phone contact route available (+91 79 4890 0099)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -546,16 +483,16 @@
       "outreach_readiness": "MANUAL_REVIEW",
       "manual_review_status": "REVIEW_REQUIRED",
       "manual_review_reasons": [
-        "Ambiguous website verification status: CONFLICTING_WEBSITES"
+        "Ambiguous website verification status: MANUAL_REVIEW"
       ],
-      "demo_url": "http://localhost:8000/static/demos/8dc53c26-ede6-4486-83d2-1e90cc88642f/index.html",
+      "demo_url": "http://localhost:8000/static/demos/045121bd-1fc9-4d27-aaf9-4949838da91b/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "REQUIRES_MANUAL_REVIEW",
       "email_draft": "Hello Unlocked - Board Game Cafe Team,\n\nI came across Unlocked - Board Game Cafe while reviewing commercial businesses in Ahmedabad. Your 4.5⭐ public rating across 670 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Unlocked - Board Game Cafe currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Unlocked - Board Game Cafe to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Unlocked - Board Game Cafe?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Unlocked - Board Game Cafe Team, We reviewed the online presence for Unlocked - Board Game Cafe and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "d0a332cd-72d7-4e9a-ad96-f6060d79fb1d",
+      "business_id": "1c482311-c0d7-427a-b624-418e3cd04b04",
       "business_name": "Sasuji Dining Hall",
       "category": "gujarati thali restaurant",
       "location": "C G Road, Ellisbridge, Ahmedabad",
@@ -572,7 +509,7 @@
           "raw_score": 100.0,
           "weight_pct": 35.0,
           "contribution": 35.0,
-          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: CONFLICTING_WEBSITES)",
+          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: MANUAL_REVIEW)",
           "evidence": {
             "website_status": "WEBSITE_UNREACHABLE",
             "quality_score": 2.5
@@ -622,6 +559,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "Verified digital opportunity: existing web presence has audit gaps (OUTDATED_WEBSITE)",
+        "Direct verified business phone contact route available (+91 79 2640 3344)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -629,16 +570,16 @@
       "outreach_readiness": "MANUAL_REVIEW",
       "manual_review_status": "REVIEW_REQUIRED",
       "manual_review_reasons": [
-        "Ambiguous website verification status: CONFLICTING_WEBSITES"
+        "Ambiguous website verification status: MANUAL_REVIEW"
       ],
-      "demo_url": "http://localhost:8000/static/demos/d0a332cd-72d7-4e9a-ad96-f6060d79fb1d/index.html",
+      "demo_url": "http://localhost:8000/static/demos/1c482311-c0d7-427a-b624-418e3cd04b04/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "REQUIRES_MANUAL_REVIEW",
       "email_draft": "Hello Sasuji Dining Hall Team,\n\nI came across Sasuji Dining Hall while reviewing commercial businesses in Ahmedabad. Your 4.4⭐ public rating across 1420 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Sasuji Dining Hall currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Sasuji Dining Hall to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Sasuji Dining Hall?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Sasuji Dining Hall Team, We reviewed the online presence for Sasuji Dining Hall and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "7e0dfeb9-8171-4a13-b785-c9215c06b960",
+      "business_id": "005d75a0-b75d-4fab-a792-fe14e559b8ec",
       "business_name": "Raju Omelet",
       "category": "egg specialty restaurant",
       "location": "Opp. Vastrapur Lake, Ahmedabad",
@@ -705,6 +646,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "High digital opportunity: confirmed zero website presence despite active customer base",
+        "Direct verified business phone contact route available (+91 98260 11223)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -712,14 +657,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/7e0dfeb9-8171-4a13-b785-c9215c06b960/index.html",
+      "demo_url": "http://localhost:8000/static/demos/005d75a0-b75d-4fab-a792-fe14e559b8ec/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Raju Omelet Team,\n\nI came across Raju Omelet while reviewing commercial businesses in Ahmedabad. Your 4.4⭐ public rating across 950 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Raju Omelet currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Raju Omelet to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Raju Omelet?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Raju Omelet Team, We reviewed the online presence for Raju Omelet and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "17227b9d-4d17-4fb0-b1cf-b83587ebcf79",
+      "business_id": "acd2a522-724d-4f2e-a6c5-1d1e99326b2b",
       "business_name": "Toran Dining Hall",
       "category": "gujarati thali restaurant",
       "location": "Ashram Road, Navrangpura, Ahmedabad",
@@ -736,7 +681,7 @@
           "raw_score": 100.0,
           "weight_pct": 35.0,
           "contribution": 35.0,
-          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: CONFLICTING_WEBSITES)",
+          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: MANUAL_REVIEW)",
           "evidence": {
             "website_status": "WEBSITE_UNREACHABLE",
             "quality_score": 2.5
@@ -786,6 +731,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "Verified digital opportunity: existing web presence has audit gaps (OUTDATED_WEBSITE)",
+        "Direct verified business phone contact route available (+91 79 2658 2211)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -793,99 +742,16 @@
       "outreach_readiness": "MANUAL_REVIEW",
       "manual_review_status": "REVIEW_REQUIRED",
       "manual_review_reasons": [
-        "Ambiguous website verification status: CONFLICTING_WEBSITES"
+        "Ambiguous website verification status: MANUAL_REVIEW"
       ],
-      "demo_url": "http://localhost:8000/static/demos/17227b9d-4d17-4fb0-b1cf-b83587ebcf79/index.html",
+      "demo_url": "http://localhost:8000/static/demos/acd2a522-724d-4f2e-a6c5-1d1e99326b2b/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "REQUIRES_MANUAL_REVIEW",
       "email_draft": "Hello Toran Dining Hall Team,\n\nI came across Toran Dining Hall while reviewing commercial businesses in Ahmedabad. Your 4.3⭐ public rating across 920 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Toran Dining Hall currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Toran Dining Hall to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Toran Dining Hall?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Toran Dining Hall Team, We reviewed the online presence for Toran Dining Hall and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "c8f1e74e-0ccf-4914-9dc7-3f6e22e7a337",
-      "business_name": "Makeba The Lounge Cafe",
-      "category": "rooftop cafe",
-      "location": "31Five, Sarkhej Gandhinagar Highway, Ahmedabad",
-      "phone": "+91 98258 99001",
-      "rating": 4.4,
-      "review_count": 820,
-      "entity_status": "VERIFIED",
-      "website_url": "https://makeba.in",
-      "website_status": "WEBSITE_UNREACHABLE",
-      "website_classification": "GOOD_WEBSITE",
-      "opportunity_score": 84.6,
-      "score_breakdown": {
-        "digital_opportunity_gap": {
-          "raw_score": 100.0,
-          "weight_pct": 35.0,
-          "contribution": 35.0,
-          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: CONFLICTING_WEBSITES)",
-          "evidence": {
-            "website_status": "WEBSITE_UNREACHABLE",
-            "quality_score": 81.75
-          }
-        },
-        "customer_traction": {
-          "raw_score": 94.4,
-          "weight_pct": 25.0,
-          "contribution": 23.6,
-          "reason": "Customer Traction Score 23.6/25.0 based on 820 reviews & 4.4 rating",
-          "evidence": {
-            "reviews": 820,
-            "rating": 4.4
-          }
-        },
-        "commercial_potential": {
-          "raw_score": 80.0,
-          "weight_pct": 20.0,
-          "contribution": 16.0,
-          "reason": "Commercial Potential Score 16.0/20.0 based on business scale and revenue gap",
-          "evidence": {
-            "reviews": 820,
-            "price_positioning": 4.0,
-            "scale": 5.0
-          }
-        },
-        "contactability": {
-          "raw_score": 50.0,
-          "weight_pct": 10.0,
-          "contribution": 5.0,
-          "reason": "Contactability Score 5.0/10.0 (Phone: Yes, DM confidence: NOT_FOUND)",
-          "evidence": {
-            "phone_present": true,
-            "dm_confidence": "NOT_FOUND"
-          }
-        },
-        "purchase_signals": {
-          "raw_score": 50.0,
-          "weight_pct": 10.0,
-          "contribution": 5.0,
-          "reason": "Purchase Signals Score 5.0/10.0: High review volume (500+) indicates high transaction capacity and potential digital expansion intent.",
-          "evidence": {
-            "signals": [
-              "High review volume (500+) indicates high transaction capacity and potential digital expansion intent."
-            ]
-          }
-        }
-      },
-      "qualification": "PRIORITY",
-      "decision_maker": "NOT_FOUND",
-      "decision_maker_title": "NOT_FOUND",
-      "decision_maker_confidence": "NOT_FOUND",
-      "contact_target_status": "BUSINESS_CONTACT_ONLY",
-      "outreach_readiness": "MANUAL_REVIEW",
-      "manual_review_status": "REVIEW_REQUIRED",
-      "manual_review_reasons": [
-        "Ambiguous website verification status: CONFLICTING_WEBSITES"
-      ],
-      "demo_url": "http://localhost:8000/static/demos/c8f1e74e-0ccf-4914-9dc7-3f6e22e7a337/index.html",
-      "demo_access_status": "LOCAL_ONLY",
-      "action": "REQUIRES_MANUAL_REVIEW",
-      "email_draft": "Hello Makeba The Lounge Cafe Team,\n\nI came across Makeba The Lounge Cafe while reviewing commercial businesses in Ahmedabad. Your 4.4⭐ public rating across 820 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Makeba The Lounge Cafe currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Makeba The Lounge Cafe to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Makeba The Lounge Cafe?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
-      "whatsapp_draft": "Hello Makeba The Lounge Cafe Team, We reviewed the online presence for Makeba The Lounge Cafe and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
-    },
-    {
-      "business_id": "b0777425-f1f8-4875-a13f-3cc0efb24d0f",
+      "business_id": "fe015fb9-6d6b-442d-91e4-47abfb5eb667",
       "business_name": "Lucky Tea Stall",
       "category": "cafe & tea",
       "location": "Opp. Dinbai Tower, Mirzapur, Ahmedabad",
@@ -952,6 +818,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "High digital opportunity: confirmed zero website presence despite active customer base",
+        "Direct verified business phone contact route available (+91 79 2562 1100)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -959,97 +829,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/b0777425-f1f8-4875-a13f-3cc0efb24d0f/index.html",
+      "demo_url": "http://localhost:8000/static/demos/fe015fb9-6d6b-442d-91e4-47abfb5eb667/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Lucky Tea Stall Team,\n\nI came across Lucky Tea Stall while reviewing commercial businesses in Ahmedabad. Your 4.3⭐ public rating across 760 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Lucky Tea Stall currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Lucky Tea Stall to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Lucky Tea Stall?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Lucky Tea Stall Team, We reviewed the online presence for Lucky Tea Stall and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "1177cf81-edcb-44c3-9882-305347e09121",
-      "business_name": "The Project Cafe",
-      "category": "cafe & art space",
-      "location": "Yellow House, Ambawadi, Ahmedabad",
-      "phone": "+91 79 6545 7788",
-      "rating": 4.4,
-      "review_count": 740,
-      "entity_status": "VERIFIED",
-      "website_url": "https://theprojectcafe.in",
-      "website_status": "WEBSITE_UNREACHABLE",
-      "website_classification": "OUTDATED_WEBSITE",
-      "opportunity_score": 84.3,
-      "score_breakdown": {
-        "digital_opportunity_gap": {
-          "raw_score": 100.0,
-          "weight_pct": 35.0,
-          "contribution": 35.0,
-          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: CONFLICTING_WEBSITES)",
-          "evidence": {
-            "website_status": "WEBSITE_UNREACHABLE",
-            "quality_score": 2.5
-          }
-        },
-        "customer_traction": {
-          "raw_score": 93.2,
-          "weight_pct": 25.0,
-          "contribution": 23.3,
-          "reason": "Customer Traction Score 23.3/25.0 based on 740 reviews & 4.4 rating",
-          "evidence": {
-            "reviews": 740,
-            "rating": 4.4
-          }
-        },
-        "commercial_potential": {
-          "raw_score": 80.0,
-          "weight_pct": 20.0,
-          "contribution": 16.0,
-          "reason": "Commercial Potential Score 16.0/20.0 based on business scale and revenue gap",
-          "evidence": {
-            "reviews": 740,
-            "price_positioning": 4.0,
-            "scale": 5.0
-          }
-        },
-        "contactability": {
-          "raw_score": 50.0,
-          "weight_pct": 10.0,
-          "contribution": 5.0,
-          "reason": "Contactability Score 5.0/10.0 (Phone: Yes, DM confidence: NOT_FOUND)",
-          "evidence": {
-            "phone_present": true,
-            "dm_confidence": "NOT_FOUND"
-          }
-        },
-        "purchase_signals": {
-          "raw_score": 50.0,
-          "weight_pct": 10.0,
-          "contribution": 5.0,
-          "reason": "Purchase Signals Score 5.0/10.0: High review volume (500+) indicates high transaction capacity and potential digital expansion intent.",
-          "evidence": {
-            "signals": [
-              "High review volume (500+) indicates high transaction capacity and potential digital expansion intent."
-            ]
-          }
-        }
-      },
-      "qualification": "PRIORITY",
-      "decision_maker": "NOT_FOUND",
-      "decision_maker_title": "NOT_FOUND",
-      "decision_maker_confidence": "NOT_FOUND",
-      "contact_target_status": "BUSINESS_CONTACT_ONLY",
-      "outreach_readiness": "MANUAL_REVIEW",
-      "manual_review_status": "REVIEW_REQUIRED",
-      "manual_review_reasons": [
-        "Ambiguous website verification status: CONFLICTING_WEBSITES"
-      ],
-      "demo_url": "http://localhost:8000/static/demos/1177cf81-edcb-44c3-9882-305347e09121/index.html",
-      "demo_access_status": "LOCAL_ONLY",
-      "action": "REQUIRES_MANUAL_REVIEW",
-      "email_draft": "Hello The Project Cafe Team,\n\nI came across The Project Cafe while reviewing commercial businesses in Ahmedabad. Your 4.4⭐ public rating across 740 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for The Project Cafe currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for The Project Cafe to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for The Project Cafe?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
-      "whatsapp_draft": "Hello The Project Cafe Team, We reviewed the online presence for The Project Cafe and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
-    },
-    {
-      "business_id": "f45af9cf-192f-4d60-ac74-980eb6f8c960",
+      "business_id": "4ff139d2-6878-40c9-aa36-e34bf9ea3a79",
       "business_name": "Shambhu's Coffee Bar",
       "category": "coffee shop",
       "location": "HL College Road, Navrangpura, Ahmedabad",
@@ -1116,6 +903,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "High digital opportunity: confirmed zero website presence despite active customer base",
+        "Direct verified business phone contact route available (+91 98255 66778)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -1123,14 +914,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/f45af9cf-192f-4d60-ac74-980eb6f8c960/index.html",
+      "demo_url": "http://localhost:8000/static/demos/4ff139d2-6878-40c9-aa36-e34bf9ea3a79/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Shambhu's Coffee Bar Team,\n\nI came across Shambhu's Coffee Bar while reviewing commercial businesses in Ahmedabad. Your 4.2⭐ public rating across 680 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Shambhu's Coffee Bar currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Shambhu's Coffee Bar to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Shambhu's Coffee Bar?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Shambhu's Coffee Bar Team, We reviewed the online presence for Shambhu's Coffee Bar and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "f1faf3f1-3713-4676-8505-7c082f446488",
+      "business_id": "08f06b1d-e597-4f0a-bf2d-fb716b2614da",
       "business_name": "Gajanand Pauva House",
       "category": "breakfast & snacks",
       "location": "Gurukul Road, Memnagar, Ahmedabad",
@@ -1197,6 +988,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "High digital opportunity: confirmed zero website presence despite active customer base",
+        "Direct verified business phone contact route available (+91 98259 00112)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -1204,97 +999,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/f1faf3f1-3713-4676-8505-7c082f446488/index.html",
+      "demo_url": "http://localhost:8000/static/demos/08f06b1d-e597-4f0a-bf2d-fb716b2614da/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Gajanand Pauva House Team,\n\nI came across Gajanand Pauva House while reviewing commercial businesses in Ahmedabad. Your 4.4⭐ public rating across 620 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Gajanand Pauva House currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Gajanand Pauva House to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Gajanand Pauva House?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Gajanand Pauva House Team, We reviewed the online presence for Gajanand Pauva House and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "8dd0ae5c-a456-41f0-a8e7-5470974f1909",
-      "business_name": "Jay Bhavani Vadapav",
-      "category": "fast food",
-      "location": "Municipal Market, C G Road, Ahmedabad",
-      "phone": "+91 79 2642 1122",
-      "rating": 4.2,
-      "review_count": 580,
-      "entity_status": "VERIFIED",
-      "website_url": "https://jaybhavanivadapav.com",
-      "website_status": "WEBSITE_UNREACHABLE",
-      "website_classification": "TECHNICALLY_GOOD",
-      "opportunity_score": 83.8,
-      "score_breakdown": {
-        "digital_opportunity_gap": {
-          "raw_score": 100.0,
-          "weight_pct": 35.0,
-          "contribution": 35.0,
-          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: CONFLICTING_WEBSITES)",
-          "evidence": {
-            "website_status": "WEBSITE_UNREACHABLE",
-            "quality_score": 74.25
-          }
-        },
-        "customer_traction": {
-          "raw_score": 91.2,
-          "weight_pct": 25.0,
-          "contribution": 22.8,
-          "reason": "Customer Traction Score 22.8/25.0 based on 580 reviews & 4.2 rating",
-          "evidence": {
-            "reviews": 580,
-            "rating": 4.2
-          }
-        },
-        "commercial_potential": {
-          "raw_score": 80.0,
-          "weight_pct": 20.0,
-          "contribution": 16.0,
-          "reason": "Commercial Potential Score 16.0/20.0 based on business scale and revenue gap",
-          "evidence": {
-            "reviews": 580,
-            "price_positioning": 4.0,
-            "scale": 5.0
-          }
-        },
-        "contactability": {
-          "raw_score": 50.0,
-          "weight_pct": 10.0,
-          "contribution": 5.0,
-          "reason": "Contactability Score 5.0/10.0 (Phone: Yes, DM confidence: NOT_FOUND)",
-          "evidence": {
-            "phone_present": true,
-            "dm_confidence": "NOT_FOUND"
-          }
-        },
-        "purchase_signals": {
-          "raw_score": 50.0,
-          "weight_pct": 10.0,
-          "contribution": 5.0,
-          "reason": "Purchase Signals Score 5.0/10.0: High review volume (500+) indicates high transaction capacity and potential digital expansion intent.",
-          "evidence": {
-            "signals": [
-              "High review volume (500+) indicates high transaction capacity and potential digital expansion intent."
-            ]
-          }
-        }
-      },
-      "qualification": "PRIORITY",
-      "decision_maker": "NOT_FOUND",
-      "decision_maker_title": "NOT_FOUND",
-      "decision_maker_confidence": "NOT_FOUND",
-      "contact_target_status": "BUSINESS_CONTACT_ONLY",
-      "outreach_readiness": "MANUAL_REVIEW",
-      "manual_review_status": "REVIEW_REQUIRED",
-      "manual_review_reasons": [
-        "Ambiguous website verification status: CONFLICTING_WEBSITES"
-      ],
-      "demo_url": "http://localhost:8000/static/demos/8dd0ae5c-a456-41f0-a8e7-5470974f1909/index.html",
-      "demo_access_status": "LOCAL_ONLY",
-      "action": "REQUIRES_MANUAL_REVIEW",
-      "email_draft": "Hello Jay Bhavani Vadapav Team,\n\nI came across Jay Bhavani Vadapav while reviewing commercial businesses in Ahmedabad. Your 4.2⭐ public rating across 580 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Jay Bhavani Vadapav currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Jay Bhavani Vadapav to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Jay Bhavani Vadapav?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
-      "whatsapp_draft": "Hello Jay Bhavani Vadapav Team, We reviewed the online presence for Jay Bhavani Vadapav and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
-    },
-    {
-      "business_id": "72c6c95c-82e2-47e9-9925-087beeb77706",
+      "business_id": "f16fc5ef-299f-4280-a907-f41e52a48a66",
       "business_name": "Zen Cafe",
       "category": "cafe",
       "location": "University Road, Navrangpura, Ahmedabad",
@@ -1361,6 +1073,10 @@
         }
       },
       "qualification": "PRIORITY",
+      "why_this_prospect": [
+        "High digital opportunity: confirmed zero website presence despite active customer base",
+        "Direct verified business phone contact route available (+91 98980 54321)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -1368,97 +1084,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/72c6c95c-82e2-47e9-9925-087beeb77706/index.html",
+      "demo_url": "http://localhost:8000/static/demos/f16fc5ef-299f-4280-a907-f41e52a48a66/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Zen Cafe Team,\n\nI came across Zen Cafe while reviewing commercial businesses in Ahmedabad. Your 4.4⭐ public rating across 510 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Zen Cafe currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Zen Cafe to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Zen Cafe?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Zen Cafe Team, We reviewed the online presence for Zen Cafe and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "92796f33-6a3c-489f-8d24-77e54f43e59d",
-      "business_name": "Sale & Pepe",
-      "category": "italian restaurant",
-      "location": "Prahladnagar Trade Center, Ahmedabad",
-      "phone": "+91 79 4008 1122",
-      "rating": 4.3,
-      "review_count": 490,
-      "entity_status": "VERIFIED",
-      "website_url": "https://saleandpepe.in",
-      "website_status": "WEBSITE_UNREACHABLE",
-      "website_classification": "OUTDATED_WEBSITE",
-      "opportunity_score": 75.5,
-      "score_breakdown": {
-        "digital_opportunity_gap": {
-          "raw_score": 100.0,
-          "weight_pct": 35.0,
-          "contribution": 35.0,
-          "reason": "Digital Gap Score 35.0/35.0 (Website verification status: CONFLICTING_WEBSITES)",
-          "evidence": {
-            "website_status": "WEBSITE_UNREACHABLE",
-            "quality_score": 2.5
-          }
-        },
-        "customer_traction": {
-          "raw_score": 90.0,
-          "weight_pct": 25.0,
-          "contribution": 22.5,
-          "reason": "Customer Traction Score 22.5/25.0 based on 490 reviews & 4.3 rating",
-          "evidence": {
-            "reviews": 490,
-            "rating": 4.3
-          }
-        },
-        "commercial_potential": {
-          "raw_score": 65.0,
-          "weight_pct": 20.0,
-          "contribution": 13.0,
-          "reason": "Commercial Potential Score 13.0/20.0 based on business scale and revenue gap",
-          "evidence": {
-            "reviews": 490,
-            "price_positioning": 3.0,
-            "scale": 3.0
-          }
-        },
-        "contactability": {
-          "raw_score": 50.0,
-          "weight_pct": 10.0,
-          "contribution": 5.0,
-          "reason": "Contactability Score 5.0/10.0 (Phone: Yes, DM confidence: NOT_FOUND)",
-          "evidence": {
-            "phone_present": true,
-            "dm_confidence": "NOT_FOUND"
-          }
-        },
-        "purchase_signals": {
-          "raw_score": 0.0,
-          "weight_pct": 10.0,
-          "contribution": 0.0,
-          "reason": "Purchase Signals Score 0.0/10.0: No verified public purchase signal found.",
-          "evidence": {
-            "signals": [
-              "No verified public purchase signal found."
-            ]
-          }
-        }
-      },
-      "qualification": "QUALIFIED",
-      "decision_maker": "NOT_FOUND",
-      "decision_maker_title": "NOT_FOUND",
-      "decision_maker_confidence": "NOT_FOUND",
-      "contact_target_status": "BUSINESS_CONTACT_ONLY",
-      "outreach_readiness": "MANUAL_REVIEW",
-      "manual_review_status": "REVIEW_REQUIRED",
-      "manual_review_reasons": [
-        "Ambiguous website verification status: CONFLICTING_WEBSITES"
-      ],
-      "demo_url": "http://localhost:8000/static/demos/92796f33-6a3c-489f-8d24-77e54f43e59d/index.html",
-      "demo_access_status": "LOCAL_ONLY",
-      "action": "REQUIRES_MANUAL_REVIEW",
-      "email_draft": "Hello Sale & Pepe Team,\n\nI came across Sale & Pepe while reviewing commercial businesses in Ahmedabad. Your 4.3⭐ public rating across 490 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Sale & Pepe currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Sale & Pepe to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Sale & Pepe?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
-      "whatsapp_draft": "Hello Sale & Pepe Team, We reviewed the online presence for Sale & Pepe and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
-    },
-    {
-      "business_id": "e8dc18cf-35b8-4999-abf5-591d5c652071",
+      "business_id": "2b7d3085-c566-4d7a-91de-03c18b8741bb",
       "business_name": "Karnavati Dabeli & Vadapav",
       "category": "fast food",
       "location": "C G Road, Navrangpura, Ahmedabad",
@@ -1525,6 +1158,10 @@
         }
       },
       "qualification": "QUALIFIED",
+      "why_this_prospect": [
+        "High digital opportunity: confirmed zero website presence despite active customer base",
+        "Direct verified business phone contact route available (+91 98240 99887)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -1532,14 +1169,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/e8dc18cf-35b8-4999-abf5-591d5c652071/index.html",
+      "demo_url": "http://localhost:8000/static/demos/2b7d3085-c566-4d7a-91de-03c18b8741bb/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Karnavati Dabeli & Vadapav Team,\n\nI came across Karnavati Dabeli & Vadapav while reviewing commercial businesses in Ahmedabad. Your 4.2⭐ public rating across 340 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Karnavati Dabeli & Vadapav currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Karnavati Dabeli & Vadapav to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Karnavati Dabeli & Vadapav?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Karnavati Dabeli & Vadapav Team, We reviewed the online presence for Karnavati Dabeli & Vadapav and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "29af7cba-e158-4b46-b28e-01661e8dcc54",
+      "business_id": "9bb3bbc4-efea-44a8-b558-c7fa34a2acd5",
       "business_name": "Chai Wai Cafe",
       "category": "cafe",
       "location": "Near IIM New Campus, Vastrapur, Ahmedabad",
@@ -1606,6 +1243,10 @@
         }
       },
       "qualification": "QUALIFIED",
+      "why_this_prospect": [
+        "High digital opportunity: confirmed zero website presence despite active customer base",
+        "Direct verified business phone contact route available (+91 98254 55667)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -1613,14 +1254,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/29af7cba-e158-4b46-b28e-01661e8dcc54/index.html",
+      "demo_url": "http://localhost:8000/static/demos/9bb3bbc4-efea-44a8-b558-c7fa34a2acd5/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Chai Wai Cafe Team,\n\nI came across Chai Wai Cafe while reviewing commercial businesses in Ahmedabad. Your 4.3⭐ public rating across 320 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Chai Wai Cafe currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Chai Wai Cafe to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Chai Wai Cafe?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Chai Wai Cafe Team, We reviewed the online presence for Chai Wai Cafe and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "fa607086-2ebe-412a-b400-92b1c8685f33",
+      "business_id": "843cab32-f84c-4a48-a9b5-da3ea4d53e5b",
       "business_name": "Gordhan Thal",
       "category": "gujarati thali restaurant",
       "location": "SG Highway, Bodakdev, Ahmedabad",
@@ -1687,6 +1328,10 @@
         }
       },
       "qualification": "QUALIFIED",
+      "why_this_prospect": [
+        "Verified digital opportunity: existing web presence has audit gaps (OUTDATED_WEBSITE)",
+        "Direct verified business phone contact route available (+91 79 2687 1222)"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -1694,14 +1339,14 @@
       "outreach_readiness": "READY_FOR_APPROVAL",
       "manual_review_status": "NO_REVIEW_REQUIRED",
       "manual_review_reasons": [],
-      "demo_url": "http://localhost:8000/static/demos/fa607086-2ebe-412a-b400-92b1c8685f33/index.html",
+      "demo_url": "http://localhost:8000/static/demos/843cab32-f84c-4a48-a9b5-da3ea4d53e5b/index.html",
       "demo_access_status": "LOCAL_ONLY",
       "action": "AWAITING_HUMAN_OUTREACH_APPROVAL",
       "email_draft": "Hello Gordhan Thal Team,\n\nI came across Gordhan Thal while reviewing commercial businesses in Ahmedabad. Your 4.5⭐ public rating across 980 Google reviews reflects strong customer interest.\n\nBased on our digital audit, we identified a key growth opportunity: online searchers looking for Gordhan Thal currently lack a direct mobile menu and WhatsApp instant ordering route.\n\nWe have conducted a digital audit and prototype design for Gordhan Thal to optimize direct online customer ordering and reservation conversion.\n\nWould you be open to a 5-minute call this week to review how this can be enabled for Gordhan Thal?\n\nBest regards,\nOutreach Team | Antigravity AI Systems\n\n---\nTo update outreach preferences or opt out, please reply with \"REMOVE\".\n",
       "whatsapp_draft": "Hello Gordhan Thal Team, We reviewed the online presence for Gordhan Thal and identified opportunities for instant WhatsApp ordering and mobile menu. Let us know if you would like to view our findings!"
     },
     {
-      "business_id": "c488c85b-5a55-46f7-a14c-ad948b149956",
+      "business_id": "acc45168-d06f-4b43-84f2-56c4eb3e118f",
       "business_name": "Shreeji Sandwich Corner",
       "category": "fast food",
       "location": "Shastrinagar, Naranpura, Ahmedabad",
@@ -1768,6 +1413,9 @@
         }
       },
       "qualification": "POTENTIAL_REVIEW",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -1784,7 +1432,93 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "1edd0124-7aad-4910-810c-334bf13f7727",
+      "business_id": "c955a907-1d14-4474-9eeb-005628f38488",
+      "business_name": "Mocha Cafe & Bar",
+      "category": "cafe & bistro",
+      "location": "Sindhu Bhavan Road, Bodakdev, Ahmedabad",
+      "phone": "+91 79 4004 8899",
+      "rating": 4.5,
+      "review_count": 1300,
+      "entity_status": "VERIFIED",
+      "website_url": "https://mochacafe.com",
+      "website_status": "WEBSITE_UNREACHABLE",
+      "website_classification": "CONTENT_UNVERIFIED",
+      "opportunity_score": 66.5,
+      "score_breakdown": {
+        "digital_opportunity_gap": {
+          "raw_score": 50.0,
+          "weight_pct": 35.0,
+          "contribution": 17.5,
+          "reason": "Digital Gap Score 17.5/35.0 (Website verification status: CONTENT_UNVERIFIED)",
+          "evidence": {
+            "website_status": "WEBSITE_UNREACHABLE",
+            "quality_score": 50.0
+          }
+        },
+        "customer_traction": {
+          "raw_score": 100.0,
+          "weight_pct": 25.0,
+          "contribution": 25.0,
+          "reason": "Customer Traction Score 25.0/25.0 based on 1300 reviews & 4.5 rating",
+          "evidence": {
+            "reviews": 1300,
+            "rating": 4.5
+          }
+        },
+        "commercial_potential": {
+          "raw_score": 70.0,
+          "weight_pct": 20.0,
+          "contribution": 14.0,
+          "reason": "Commercial Potential Score 14.0/20.0 based on business scale and revenue gap",
+          "evidence": {
+            "reviews": 1300,
+            "price_positioning": 4.0,
+            "scale": 5.0
+          }
+        },
+        "contactability": {
+          "raw_score": 50.0,
+          "weight_pct": 10.0,
+          "contribution": 5.0,
+          "reason": "Contactability Score 5.0/10.0 (Phone: Yes, DM confidence: NOT_FOUND)",
+          "evidence": {
+            "phone_present": true,
+            "dm_confidence": null
+          }
+        },
+        "purchase_signals": {
+          "raw_score": 50.0,
+          "weight_pct": 10.0,
+          "contribution": 5.0,
+          "reason": "Purchase Signals Score 5.0/10.0: High review volume (500+) indicates high transaction capacity and potential digital expansion intent.",
+          "evidence": {
+            "signals": [
+              "High review volume (500+) indicates high transaction capacity and potential digital expansion intent."
+            ]
+          }
+        }
+      },
+      "qualification": "POTENTIAL_REVIEW",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
+      "decision_maker": "NOT_FOUND",
+      "decision_maker_title": "NOT_FOUND",
+      "decision_maker_confidence": "NOT_FOUND",
+      "contact_target_status": "NOT_FOUND",
+      "outreach_readiness": "NOT_READY",
+      "manual_review_status": "REVIEW_REQUIRED",
+      "manual_review_reasons": [
+        "Ambiguous website verification status: CONTENT_UNVERIFIED"
+      ],
+      "demo_url": "NOT_AVAILABLE",
+      "demo_access_status": "NOT_GENERATED",
+      "action": "REQUIRES_MANUAL_REVIEW",
+      "email_draft": "NOT_AVAILABLE",
+      "whatsapp_draft": "NOT_AVAILABLE"
+    },
+    {
+      "business_id": "db857a11-661f-4a49-8226-298e795f8982",
       "business_name": "Chai Tapri",
       "category": "tea stall",
       "location": "Drive In Road, Nilmani Society, Ahmedabad",
@@ -1851,6 +1585,9 @@
         }
       },
       "qualification": "POTENTIAL_REVIEW",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -1867,7 +1604,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "2c2adc27-3e16-49b2-862f-3a75313dcbc8",
+      "business_id": "6c4afd4e-8b7f-484f-bc56-54fbdd4f56ef",
       "business_name": "Amdavad Juice Bar",
       "category": "beverages",
       "location": "Near Mahalaxmi Cross Road, Paldi, Ahmedabad",
@@ -1934,6 +1671,9 @@
         }
       },
       "qualification": "POTENTIAL_REVIEW",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -1950,7 +1690,179 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "0841cc05-f596-4f46-9d7f-b6da99f6bcdc",
+      "business_id": "e2596d84-f5c4-4eb0-8e4f-432e39e5745b",
+      "business_name": "The Project Cafe",
+      "category": "cafe & art space",
+      "location": "Yellow House, Ambawadi, Ahmedabad",
+      "phone": "+91 79 6545 7788",
+      "rating": 4.4,
+      "review_count": 740,
+      "entity_status": "VERIFIED",
+      "website_url": "https://theprojectcafe.in",
+      "website_status": "WEBSITE_UNREACHABLE",
+      "website_classification": "CONTENT_UNVERIFIED",
+      "opportunity_score": 64.8,
+      "score_breakdown": {
+        "digital_opportunity_gap": {
+          "raw_score": 50.0,
+          "weight_pct": 35.0,
+          "contribution": 17.5,
+          "reason": "Digital Gap Score 17.5/35.0 (Website verification status: CONTENT_UNVERIFIED)",
+          "evidence": {
+            "website_status": "WEBSITE_UNREACHABLE",
+            "quality_score": 50.0
+          }
+        },
+        "customer_traction": {
+          "raw_score": 93.2,
+          "weight_pct": 25.0,
+          "contribution": 23.3,
+          "reason": "Customer Traction Score 23.3/25.0 based on 740 reviews & 4.4 rating",
+          "evidence": {
+            "reviews": 740,
+            "rating": 4.4
+          }
+        },
+        "commercial_potential": {
+          "raw_score": 70.0,
+          "weight_pct": 20.0,
+          "contribution": 14.0,
+          "reason": "Commercial Potential Score 14.0/20.0 based on business scale and revenue gap",
+          "evidence": {
+            "reviews": 740,
+            "price_positioning": 4.0,
+            "scale": 5.0
+          }
+        },
+        "contactability": {
+          "raw_score": 50.0,
+          "weight_pct": 10.0,
+          "contribution": 5.0,
+          "reason": "Contactability Score 5.0/10.0 (Phone: Yes, DM confidence: NOT_FOUND)",
+          "evidence": {
+            "phone_present": true,
+            "dm_confidence": null
+          }
+        },
+        "purchase_signals": {
+          "raw_score": 50.0,
+          "weight_pct": 10.0,
+          "contribution": 5.0,
+          "reason": "Purchase Signals Score 5.0/10.0: High review volume (500+) indicates high transaction capacity and potential digital expansion intent.",
+          "evidence": {
+            "signals": [
+              "High review volume (500+) indicates high transaction capacity and potential digital expansion intent."
+            ]
+          }
+        }
+      },
+      "qualification": "POTENTIAL_REVIEW",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
+      "decision_maker": "NOT_FOUND",
+      "decision_maker_title": "NOT_FOUND",
+      "decision_maker_confidence": "NOT_FOUND",
+      "contact_target_status": "NOT_FOUND",
+      "outreach_readiness": "NOT_READY",
+      "manual_review_status": "REVIEW_REQUIRED",
+      "manual_review_reasons": [
+        "Ambiguous website verification status: CONTENT_UNVERIFIED"
+      ],
+      "demo_url": "NOT_AVAILABLE",
+      "demo_access_status": "NOT_GENERATED",
+      "action": "REQUIRES_MANUAL_REVIEW",
+      "email_draft": "NOT_AVAILABLE",
+      "whatsapp_draft": "NOT_AVAILABLE"
+    },
+    {
+      "business_id": "084d1a73-58ad-4602-801b-a071552d89e3",
+      "business_name": "Jay Bhavani Vadapav",
+      "category": "fast food",
+      "location": "Municipal Market, C G Road, Ahmedabad",
+      "phone": "+91 79 2642 1122",
+      "rating": 4.2,
+      "review_count": 580,
+      "entity_status": "VERIFIED",
+      "website_url": "https://jaybhavanivadapav.com",
+      "website_status": "WEBSITE_UNREACHABLE",
+      "website_classification": "CONTENT_UNVERIFIED",
+      "opportunity_score": 64.3,
+      "score_breakdown": {
+        "digital_opportunity_gap": {
+          "raw_score": 50.0,
+          "weight_pct": 35.0,
+          "contribution": 17.5,
+          "reason": "Digital Gap Score 17.5/35.0 (Website verification status: CONTENT_UNVERIFIED)",
+          "evidence": {
+            "website_status": "WEBSITE_UNREACHABLE",
+            "quality_score": 50.0
+          }
+        },
+        "customer_traction": {
+          "raw_score": 91.2,
+          "weight_pct": 25.0,
+          "contribution": 22.8,
+          "reason": "Customer Traction Score 22.8/25.0 based on 580 reviews & 4.2 rating",
+          "evidence": {
+            "reviews": 580,
+            "rating": 4.2
+          }
+        },
+        "commercial_potential": {
+          "raw_score": 70.0,
+          "weight_pct": 20.0,
+          "contribution": 14.0,
+          "reason": "Commercial Potential Score 14.0/20.0 based on business scale and revenue gap",
+          "evidence": {
+            "reviews": 580,
+            "price_positioning": 4.0,
+            "scale": 5.0
+          }
+        },
+        "contactability": {
+          "raw_score": 50.0,
+          "weight_pct": 10.0,
+          "contribution": 5.0,
+          "reason": "Contactability Score 5.0/10.0 (Phone: Yes, DM confidence: NOT_FOUND)",
+          "evidence": {
+            "phone_present": true,
+            "dm_confidence": null
+          }
+        },
+        "purchase_signals": {
+          "raw_score": 50.0,
+          "weight_pct": 10.0,
+          "contribution": 5.0,
+          "reason": "Purchase Signals Score 5.0/10.0: High review volume (500+) indicates high transaction capacity and potential digital expansion intent.",
+          "evidence": {
+            "signals": [
+              "High review volume (500+) indicates high transaction capacity and potential digital expansion intent."
+            ]
+          }
+        }
+      },
+      "qualification": "POTENTIAL_REVIEW",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
+      "decision_maker": "NOT_FOUND",
+      "decision_maker_title": "NOT_FOUND",
+      "decision_maker_confidence": "NOT_FOUND",
+      "contact_target_status": "NOT_FOUND",
+      "outreach_readiness": "NOT_READY",
+      "manual_review_status": "REVIEW_REQUIRED",
+      "manual_review_reasons": [
+        "Ambiguous website verification status: CONTENT_UNVERIFIED"
+      ],
+      "demo_url": "NOT_AVAILABLE",
+      "demo_access_status": "NOT_GENERATED",
+      "action": "REQUIRES_MANUAL_REVIEW",
+      "email_draft": "NOT_AVAILABLE",
+      "whatsapp_draft": "NOT_AVAILABLE"
+    },
+    {
+      "business_id": "c9b9d096-b39f-40b2-ad3e-a694587d7145",
       "business_name": "Manek Chowk Night Food Market",
       "category": "street food market",
       "location": "Manek Chowk, Danaplee, Khadia, Ahmedabad",
@@ -2017,6 +1929,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2031,7 +1946,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "201ec005-0500-415a-84fa-1fcdd022771f",
+      "business_id": "3fbe2121-c815-4b1e-9555-d4412458cbc2",
       "business_name": "Urban Chowk Food Park",
       "category": "food park",
       "location": "Behind Rajpath Club, Bodakdev, Ahmedabad",
@@ -2098,6 +2013,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2112,7 +2030,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "3f775c1b-8552-4a4a-a1c5-ea4214d37785",
+      "business_id": "850993e4-ecdf-4064-b000-2c0b7b1b1da7",
       "business_name": "Law Garden Khau Gali",
       "category": "food street",
       "location": "Netaji Road, Ellisbridge, Ahmedabad",
@@ -2179,6 +2097,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2193,7 +2114,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "a285f850-7d0f-4fb1-a273-e838b5521332",
+      "business_id": "183c0c98-3614-46e1-8864-3d6cd8a8628a",
       "business_name": "Sindhu Bhavan Food Park",
       "category": "food park",
       "location": "Sindhu Bhavan Marg, Bodakdev, Ahmedabad",
@@ -2260,6 +2181,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2274,7 +2198,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "f0d9620c-412c-4737-bc2a-43cd1b8d4734",
+      "business_id": "89aece76-6c36-42a0-9cd1-b74a0d46585b",
       "business_name": "Swati Snacks",
       "category": "traditional snacks",
       "location": "Law Garden, Ellisbridge, Ahmedabad",
@@ -2341,6 +2265,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2355,7 +2282,93 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "13de3b5f-fd7b-4939-9f08-ea9baca8cb62",
+      "business_id": "de294f24-526e-439d-a7e0-34d6144192e0",
+      "business_name": "Sale & Pepe",
+      "category": "italian restaurant",
+      "location": "Prahladnagar Trade Center, Ahmedabad",
+      "phone": "+91 79 4008 1122",
+      "rating": 4.3,
+      "review_count": 490,
+      "entity_status": "VERIFIED",
+      "website_url": "https://saleandpepe.in",
+      "website_status": "WEBSITE_UNREACHABLE",
+      "website_classification": "CONTENT_UNVERIFIED",
+      "opportunity_score": 56.0,
+      "score_breakdown": {
+        "digital_opportunity_gap": {
+          "raw_score": 50.0,
+          "weight_pct": 35.0,
+          "contribution": 17.5,
+          "reason": "Digital Gap Score 17.5/35.0 (Website verification status: CONTENT_UNVERIFIED)",
+          "evidence": {
+            "website_status": "WEBSITE_UNREACHABLE",
+            "quality_score": 50.0
+          }
+        },
+        "customer_traction": {
+          "raw_score": 90.0,
+          "weight_pct": 25.0,
+          "contribution": 22.5,
+          "reason": "Customer Traction Score 22.5/25.0 based on 490 reviews & 4.3 rating",
+          "evidence": {
+            "reviews": 490,
+            "rating": 4.3
+          }
+        },
+        "commercial_potential": {
+          "raw_score": 55.0,
+          "weight_pct": 20.0,
+          "contribution": 11.0,
+          "reason": "Commercial Potential Score 11.0/20.0 based on business scale and revenue gap",
+          "evidence": {
+            "reviews": 490,
+            "price_positioning": 3.0,
+            "scale": 3.0
+          }
+        },
+        "contactability": {
+          "raw_score": 50.0,
+          "weight_pct": 10.0,
+          "contribution": 5.0,
+          "reason": "Contactability Score 5.0/10.0 (Phone: Yes, DM confidence: NOT_FOUND)",
+          "evidence": {
+            "phone_present": true,
+            "dm_confidence": null
+          }
+        },
+        "purchase_signals": {
+          "raw_score": 0.0,
+          "weight_pct": 10.0,
+          "contribution": 0.0,
+          "reason": "Purchase Signals Score 0.0/10.0: No verified public purchase signal found.",
+          "evidence": {
+            "signals": [
+              "No verified public purchase signal found."
+            ]
+          }
+        }
+      },
+      "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
+      "decision_maker": "NOT_FOUND",
+      "decision_maker_title": "NOT_FOUND",
+      "decision_maker_confidence": "NOT_FOUND",
+      "contact_target_status": "NOT_FOUND",
+      "outreach_readiness": "NOT_READY",
+      "manual_review_status": "REVIEW_REQUIRED",
+      "manual_review_reasons": [
+        "Ambiguous website verification status: CONTENT_UNVERIFIED"
+      ],
+      "demo_url": "NOT_AVAILABLE",
+      "demo_access_status": "NOT_GENERATED",
+      "action": "REQUIRES_MANUAL_REVIEW",
+      "email_draft": "NOT_AVAILABLE",
+      "whatsapp_draft": "NOT_AVAILABLE"
+    },
+    {
+      "business_id": "df1b869b-2316-4726-8595-87bbf97e3e82",
       "business_name": "Agashiye - House of MG",
       "category": "fine dining restaurant",
       "location": "Opp. Sidi Saiyyed Mosque, Lal Darwaja, Ahmedabad",
@@ -2422,6 +2435,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2436,7 +2452,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "ce4dcb27-f4e7-4a9a-b819-2408a266a1dd",
+      "business_id": "ccebacd6-b94e-4f30-87b5-2a9025568455",
       "business_name": "Vishalla Village Restaurant",
       "category": "heritage dining",
       "location": "Vasna Road, Opposite APMC Market, Ahmedabad",
@@ -2503,6 +2519,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2517,7 +2536,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "64af4b0d-837f-4958-be48-5fe2475fe2d9",
+      "business_id": "67d4206a-9696-4fc8-9b54-fc3491a945ec",
       "business_name": "Upper Crust Bakery & Cafe",
       "category": "bakery & cafe",
       "location": "Vijay Cross Road, Navrangpura, Ahmedabad",
@@ -2584,6 +2603,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2598,7 +2620,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "b4c4e404-c410-42a7-9991-75cdada751ae",
+      "business_id": "e03e0ab7-5063-4049-8146-c4b902d9d38b",
       "business_name": "Honest Restaurant",
       "category": "fast food family restaurant",
       "location": "Prahladnagar Garden Road, Ahmedabad",
@@ -2665,6 +2687,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2679,7 +2704,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "4b3f930a-9dad-4a47-886a-08dc5749df7d",
+      "business_id": "ee9c7ebb-0fca-463c-9f76-42e2ac6f2f73",
       "business_name": "Bikanervala",
       "category": "sweets & restaurant",
       "location": "Science City Road, Sola, Ahmedabad",
@@ -2746,6 +2771,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2760,7 +2788,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "78034e2c-75c3-467e-9210-508c7cc65caa",
+      "business_id": "da461e27-3de2-4836-b547-06d8a05c5375",
       "business_name": "Havmor Restaurant",
       "category": "family restaurant",
       "location": "Navrangpura Bus Stop, Ahmedabad",
@@ -2827,6 +2855,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2841,7 +2872,91 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "7eeb1d8c-6044-4d08-bd71-3ec4c7c78fd1",
+      "business_id": "7ba9cbd4-7010-49cc-83ed-c95b4c8ec07d",
+      "business_name": "Makeba The Lounge Cafe",
+      "category": "rooftop cafe",
+      "location": "31Five, Sarkhej Gandhinagar Highway, Ahmedabad",
+      "phone": "+91 98258 99001",
+      "rating": 4.4,
+      "review_count": 820,
+      "entity_status": "VERIFIED",
+      "website_url": "https://makeba.in",
+      "website_status": "WEBSITE_FOUND",
+      "website_classification": "EXCELLENT_WEBSITE",
+      "opportunity_score": 52.0,
+      "score_breakdown": {
+        "digital_opportunity_gap": {
+          "raw_score": 12.6,
+          "weight_pct": 35.0,
+          "contribution": 4.4,
+          "reason": "Digital Gap Score 4.4/35.0 (Website verification status: OFFICIAL_WEBSITE_VERIFIED)",
+          "evidence": {
+            "website_status": "WEBSITE_FOUND",
+            "quality_score": 87.5
+          }
+        },
+        "customer_traction": {
+          "raw_score": 94.4,
+          "weight_pct": 25.0,
+          "contribution": 23.6,
+          "reason": "Customer Traction Score 23.6/25.0 based on 820 reviews & 4.4 rating",
+          "evidence": {
+            "reviews": 820,
+            "rating": 4.4
+          }
+        },
+        "commercial_potential": {
+          "raw_score": 70.0,
+          "weight_pct": 20.0,
+          "contribution": 14.0,
+          "reason": "Commercial Potential Score 14.0/20.0 based on business scale and revenue gap",
+          "evidence": {
+            "reviews": 820,
+            "price_positioning": 4.0,
+            "scale": 5.0
+          }
+        },
+        "contactability": {
+          "raw_score": 50.0,
+          "weight_pct": 10.0,
+          "contribution": 5.0,
+          "reason": "Contactability Score 5.0/10.0 (Phone: Yes, DM confidence: NOT_FOUND)",
+          "evidence": {
+            "phone_present": true,
+            "dm_confidence": null
+          }
+        },
+        "purchase_signals": {
+          "raw_score": 50.0,
+          "weight_pct": 10.0,
+          "contribution": 5.0,
+          "reason": "Purchase Signals Score 5.0/10.0: High review volume (500+) indicates high transaction capacity and potential digital expansion intent.",
+          "evidence": {
+            "signals": [
+              "High review volume (500+) indicates high transaction capacity and potential digital expansion intent."
+            ]
+          }
+        }
+      },
+      "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
+      "decision_maker": "NOT_FOUND",
+      "decision_maker_title": "NOT_FOUND",
+      "decision_maker_confidence": "NOT_FOUND",
+      "contact_target_status": "NOT_FOUND",
+      "outreach_readiness": "NOT_READY",
+      "manual_review_status": "NO_REVIEW_REQUIRED",
+      "manual_review_reasons": [],
+      "demo_url": "NOT_AVAILABLE",
+      "demo_access_status": "NOT_GENERATED",
+      "action": "REJECTED",
+      "email_draft": "NOT_AVAILABLE",
+      "whatsapp_draft": "NOT_AVAILABLE"
+    },
+    {
+      "business_id": "42bb3587-6663-4aac-9151-5195770e5e16",
       "business_name": "Varietea",
       "category": "tea cafe & snacks",
       "location": "Sindhu Bhavan Road, Ahmedabad",
@@ -2908,6 +3023,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",
@@ -2922,7 +3040,7 @@
       "whatsapp_draft": "NOT_AVAILABLE"
     },
     {
-      "business_id": "bb2e814f-3637-46cb-8567-8a2ecc12d7de",
+      "business_id": "671a98f9-6865-4d4f-b6d8-b6dcdf9bff83",
       "business_name": "Kaffa Cerrado",
       "category": "specialty coffee cafe",
       "location": "Vastrapur Lake Road, Ahmedabad",
@@ -2989,6 +3107,9 @@
         }
       },
       "qualification": "REJECTED",
+      "why_this_prospect": [
+        "Not shortlisted for high-priority outreach"
+      ],
       "decision_maker": "NOT_FOUND",
       "decision_maker_title": "NOT_FOUND",
       "decision_maker_confidence": "NOT_FOUND",

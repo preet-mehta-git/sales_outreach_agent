@@ -196,6 +196,31 @@ def generate_phase12_docs():
             elif action == "QUALIFIED_NOT_READY":
                 count_action_qualified_not_ready += 1
 
+            # Build evidence-backed 'why_this_prospect' summary
+            why_reasons = []
+            if qualification in ("PRIORITY", "QUALIFIED"):
+                comp = score_breakdown.get("components", {})
+                lt = comp.get("local_traction", 0)
+                dg = comp.get("digital_opportunity_gap", 0)
+                cv = comp.get("commercial_value", 0)
+
+                if lt >= 15.0:
+                    why_reasons.append(f"Strong local traction ({b.rating}★ rating across {b.review_count or 0} Google reviews)")
+                if wc == "NO_WEBSITE":
+                    why_reasons.append("High digital opportunity: confirmed zero website presence despite active customer base")
+                elif wc in ("WEAK_WEBSITE", "OUTDATED_WEBSITE", "POOR_UX", "POOR_CONVERSION"):
+                    why_reasons.append(f"Verified digital opportunity: existing web presence has audit gaps ({wc})")
+                elif dg >= 15.0:
+                    why_reasons.append(f"Verified digital opportunity gap ({dg:.1f}/35.0)")
+
+                if cts == "VERIFIED_PERSON" and dm and dm.name:
+                    why_reasons.append(f"Direct verified decision maker identified: {dm.name} ({dm.title or 'Leadership'})")
+                elif b.phone:
+                    why_reasons.append(f"Direct verified business phone contact route available ({b.phone})")
+
+                if cv >= 14.0:
+                    why_reasons.append(f"Established commercial footprint in prime Ahmedabad locale ({b.category})")
+
             results.append({
                 "business_id": str(b.id),
                 "business_name": b.name,
@@ -211,6 +236,7 @@ def generate_phase12_docs():
                 "opportunity_score": score,
                 "score_breakdown": score_breakdown.get("components", {}),
                 "qualification": qualification,
+                "why_this_prospect": why_reasons[:3] if why_reasons else ["Not shortlisted for high-priority outreach"],
                 "decision_maker": dm.name if (dm and dm.name) else "NOT_FOUND",
                 "decision_maker_title": dm.title if (dm and dm.title) else "NOT_FOUND",
                 "decision_maker_confidence": dm.confidence.value if (dm and dm.confidence) else "NOT_FOUND",
