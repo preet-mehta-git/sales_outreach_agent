@@ -32,7 +32,20 @@ class WebsiteVerifierAgent(BaseAgent[dict[str, Any]]):
         "agashiye": "https://houseofmg.com",
         "havmor": "https://havmor.com",
         "upper crust": "http://uppercrustindia.com",
-        "vishalla": "http://vishalla.com"
+        "vishalla": "http://vishalla.com",
+        "sasuji": "http://sasujidininghall.com",
+        "toran": "http://toranrestaurant.com",
+        "atithi": "http://atithidining.com",
+        "the project cafe": "https://theprojectcafe.in",
+        "mocha cafe": "https://mochacafe.com",
+        "kaffa cerrado": "https://kaffacerrado.com",
+        "sale & pepe": "https://saleandpepe.in",
+        "unlocked": "https://unlockedcafe.in",
+        "varietea": "https://varietea.in",
+        "makeba": "https://makeba.in",
+        "honest restaurant": "https://honestrestaurants.com",
+        "jay bhavani": "https://jaybhavanivadapav.com",
+        "bikanervala": "https://bikanervala.com"
     }
 
     def __init__(self, db: Session, audit_provider: AuditProvider | None = None):

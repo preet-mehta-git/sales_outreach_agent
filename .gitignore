@@ -44,3 +44,7 @@ Thumbs.db
 # Logs & Debug
 *.log
 logs/
+
+# Generated Artifacts & Prototypes
+static/demos/
+

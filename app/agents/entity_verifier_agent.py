@@ -12,7 +12,7 @@ class EntityVerifierAgent(BaseAgent[dict[str, Any]]):
     version = "1.0"
 
     NON_BUSINESS_KEYWORDS = [
-        "market", "food market", "night market", "food street", "bazaar",
+        "market", "food market", "night market", "food street", "food park", "khau gali", "bazaar",
         "landmark", "park", "garden", "road", "street", "area", "neighborhood",
         "mall", "shopping center", "complex", "building", "tourist attraction",
         "temple", "stadium", "lake", "bridge", "monument", "bus stop",
@@ -45,14 +45,14 @@ class EntityVerifierAgent(BaseAgent[dict[str, Any]]):
         # Check non-business keywords
         matched_nb_kw = [kw for kw in self.NON_BUSINESS_KEYWORDS if kw in name_lower or kw in cat_lower]
 
-        # Explicit check for markets / food streets / geographic landmarks
-        if any(market_term in name_lower for market_term in ["night food market", "market", "food street", "bazaar"]):
+        # Explicit check for markets / food streets / food parks / geographic landmarks
+        if any(market_term in name_lower for market_term in ["night food market", "market", "food street", "food park", "khau gali", "bazaar"]):
             # Unless category explicitly indicates a single business shop inside
             if not any(cat in cat_lower for cat in ["fast food", "bakery", "cafe"]):
                 entity_type = EntityType.NON_BUSINESS
                 verification_status = EntityVerificationStatus.REJECTED
                 confidence = 95.0
-                evidence.append(f"Entity name/category indicates market/food-street area rather than a single commercial business: {matched_nb_kw}")
+                evidence.append(f"Entity name/category indicates market/food-street/food-park area rather than a single commercial business: {matched_nb_kw}")
 
         if entity_type == EntityType.BUSINESS and matched_nb_kw:
             # Check if name ends with landmark or road without business descriptor
