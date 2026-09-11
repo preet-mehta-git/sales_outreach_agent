@@ -184,7 +184,7 @@ def generate_phase12_docs():
                 count_demo_access_failures += 1
 
             # Final Action Semantics
-            action = determine_final_action(mrs, qualification, readiness)
+            action = determine_final_action(mrs, qualification, readiness, evs)
             if action == "AWAITING_HUMAN_OUTREACH_APPROVAL":
                 count_action_awaiting_approval += 1
             elif action == "REQUIRES_MANUAL_REVIEW":
@@ -198,7 +198,7 @@ def generate_phase12_docs():
 
             # Build evidence-backed 'why_this_prospect' summary
             why_reasons = []
-            if qualification in ("PRIORITY", "QUALIFIED"):
+            if qualification in ("PRIORITY", "QUALIFIED") and evs == "VERIFIED":
                 comp = score_breakdown.get("components", {})
                 lt = comp.get("local_traction", 0)
                 dg = comp.get("digital_opportunity_gap", 0)
@@ -259,13 +259,25 @@ def generate_phase12_docs():
         assert count_outreach_ready + count_outreach_manual_review + count_outreach_suppressed == total_count
         assert count_action_awaiting_approval + count_action_requires_review + count_action_review_recommended + count_action_rejected + count_action_qualified_not_ready == total_count
 
-        # Sort results by Opportunity Score descending, with Non-Business rejected at bottom
+        # Separate verified business entities from non-business entities
+        # System Invariant: NON_BUSINESS => NEVER_SALES_PROSPECT
+        verified_businesses = [r for r in results if r["entity_status"] == "VERIFIED"]
+        non_business_entities = [r for r in results if r["entity_status"] != "VERIFIED"]
+
+        # Sort ranked prospects by Qualification tier first, then Opportunity Score descending
         def sort_key(item):
-            # Rank: PRIORITY/QUALIFIED first, then score
             qual_rank = {"PRIORITY": 4, "QUALIFIED": 3, "POTENTIAL_REVIEW": 2, "REJECTED": 1}
             return (qual_rank.get(item["qualification"], 0), item["opportunity_score"])
 
-        sorted_results = sorted(results, key=sort_key, reverse=True)
+        ranked_prospects = sorted(verified_businesses, key=sort_key, reverse=True)
+        all_sorted = ranked_prospects + non_business_entities
+
+        # Assertions for Top 10 and Top 5
+        top_10 = ranked_prospects[:10]
+        top_5 = ranked_prospects[:5]
+        assert all(b["entity_status"] == "VERIFIED" for b in top_10), "Top 10 must only contain VERIFIED businesses!"
+        assert all(b["entity_status"] == "VERIFIED" for b in top_5), "Top 5 must only contain VERIFIED businesses!"
+        assert all(b["qualification"] != "REJECTED" for b in top_5), "Top 5 cannot contain REJECTED candidates!"
 
         # Output JSON
         os.makedirs("docs", exist_ok=True)
@@ -333,7 +345,10 @@ def generate_phase12_docs():
                     "qualified_not_ready": count_action_qualified_not_ready
                 }
             },
-            "businesses": sorted_results
+            "ranked_prospects": ranked_prospects,
+            "non_business_entities": non_business_entities,
+            "businesses": ranked_prospects,
+            "all_entities": all_sorted
         }
 
         with open(json_path, "w", encoding="utf-8") as f:

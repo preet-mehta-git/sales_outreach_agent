@@ -78,6 +78,14 @@ class CampaignPipelineRunner:
         reasons = []
         status = ManualReviewStatus.NO_REVIEW_REQUIRED
 
+        # If entity is rejected as non-business, manual review is strictly NOT required
+        if lead.entity_verification_status and lead.entity_verification_status.value == "REJECTED":
+            lead.manual_review_status = ManualReviewStatus.NO_REVIEW_REQUIRED
+            lead.manual_review_reasons = []
+            self.db.commit()
+            self.db.refresh(lead)
+            return
+
         # Ambiguity / Uncertainty checks -> REVIEW_REQUIRED
         if lead.entity_verification_status and lead.entity_verification_status.value == "MANUAL_REVIEW":
             status = ManualReviewStatus.REVIEW_REQUIRED

@@ -77,6 +77,23 @@ class OutreachAgent(BaseAgent[dict[str, Any]]):
         if not lead:
             raise ValueError(f"Business lead with ID {input_data.lead_id} not found.")
 
+        # Invariant: NON_BUSINESS => NEVER_SALES_PROSPECT (Exclude from outreach drafting)
+        is_explicit_non_business = (
+            (lead.entity_verification_status and lead.entity_verification_status.value == "REJECTED") or
+            (lead.entity_type and lead.entity_type.value == "NON_BUSINESS")
+        )
+        if is_explicit_non_business:
+            logger.info(f"Lead {lead.id} ({lead.name}) is a non-business entity ({lead.entity_verification_status}). Skipping outreach drafting.")
+            lead.outreach_readiness = OutreachReadiness.NOT_READY
+            lead.outreach_readiness_reasons = ["Entity is not a verified commercial business."]
+            self.db.commit()
+            return {
+                "lead_id": lead.id,
+                "status": "SKIPPED_NON_BUSINESS",
+                "outreach_readiness": OutreachReadiness.NOT_READY.value,
+                "readiness_reasons": ["Entity is not a verified commercial business."]
+            }
+
         dm = self.db.query(DecisionMakerRecord).filter(DecisionMakerRecord.business_id == lead.id).first()
         audit = self.db.query(WebsiteAudit).filter(WebsiteAudit.business_id == lead.id).first()
         draft = self.db.query(OutreachDraft).filter(OutreachDraft.business_id == lead.id).first()

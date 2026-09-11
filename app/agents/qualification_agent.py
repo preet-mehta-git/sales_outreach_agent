@@ -36,6 +36,34 @@ class QualificationAgent(BaseAgent[dict[str, Any]]):
                 "opportunity_score": lead.opportunity_score
             }
 
+        # System Invariant: NON_BUSINESS => NEVER_SALES_PROSPECT
+        # Reject non-business entities regardless of opportunity score
+        is_explicit_non_business = (
+            (lead.entity_verification_status and lead.entity_verification_status.value == "REJECTED") or
+            (lead.entity_type and lead.entity_type.value == "NON_BUSINESS")
+        )
+
+        if is_explicit_non_business:
+            logger.info(f"Lead {lead.id} ({lead.name}) is NON_BUSINESS entity. Qualification rejected regardless of score.")
+            if lead.workflow_state == WorkflowState.SCORED:
+                self.orchestrator.transition_lead(
+                    lead_id=lead.id,
+                    target_state=WorkflowState.REJECTED,
+                    agent_name=self.name,
+                    payload_snapshot={
+                        "reason": "NON_BUSINESS_ENTITY_REJECTED",
+                        "classification": "REJECTED",
+                        "opportunity_score": lead.opportunity_score
+                    }
+                )
+            return {
+                "lead_id": lead.id,
+                "qualified": False,
+                "classification": "REJECTED",
+                "reason": "NON_BUSINESS_ENTITY_REJECTED",
+                "opportunity_score": lead.opportunity_score
+            }
+
         # Determine target qualification threshold (Default: 70.0 for QUALIFIED, 80.0 for PRIORITY)
         threshold = 70.0
         if lead.campaign_id:

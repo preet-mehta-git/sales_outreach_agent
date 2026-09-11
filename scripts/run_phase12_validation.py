@@ -429,7 +429,13 @@ AHMEDABAD_PHASE12_SAMPLE = [
 ]
 
 
-def determine_final_action(manual_review_status: str, qualification: str, outreach_readiness: str) -> str:
+def determine_final_action(manual_review_status: str, qualification: str, outreach_readiness: str, entity_status: str = "VERIFIED") -> str:
+    # System Invariant: NON_BUSINESS => NEVER_SALES_PROSPECT
+    if entity_status == "REJECTED":
+        return "REJECTED"
+    elif entity_status == "MANUAL_REVIEW":
+        return "REQUIRES_MANUAL_REVIEW"
+
     if manual_review_status == "REVIEW_REQUIRED":
         return "REQUIRES_MANUAL_REVIEW"
     elif manual_review_status == "REVIEW_RECOMMENDED":
@@ -515,11 +521,12 @@ def run_phase12_validation():
                 else:
                     qualification = "REJECTED"
 
+            evs = biz.entity_verification_status.value if biz.entity_verification_status else "VERIFIED"
             mrs = biz.manual_review_status.value if biz.manual_review_status else "NO_REVIEW_REQUIRED"
             cts = biz.contact_target_status.value if biz.contact_target_status else "NOT_FOUND"
             readiness = biz.outreach_readiness.value if biz.outreach_readiness else "NOT_READY"
             das = biz.demo_access_status.value if biz.demo_access_status else "NOT_GENERATED"
-            action = determine_final_action(mrs, qualification, readiness)
+            action = determine_final_action(mrs, qualification, readiness, evs)
 
             results.append({
                 "business_id": str(biz.id),

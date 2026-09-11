@@ -181,6 +181,24 @@ class DemoGeneratorAgent(BaseAgent[dict[str, Any]]):
         if not lead:
             raise ValueError(f"Business lead with ID {input_data.lead_id} not found.")
 
+        # Invariant: NON_BUSINESS => NEVER_SALES_PROSPECT (Exclude from demo generation)
+        is_explicit_non_business = (
+            (lead.entity_verification_status and lead.entity_verification_status.value == "REJECTED") or
+            (lead.entity_type and lead.entity_type.value == "NON_BUSINESS")
+        )
+        if is_explicit_non_business:
+            logger.info(f"Lead {lead.id} ({lead.name}) is a non-business entity ({lead.entity_verification_status}). Skipping demo generation.")
+            lead.demo_access_status = DemoAccessStatus.NOT_GENERATED
+            lead.demo_readiness = DemoReadiness.NOT_GENERATED
+            self.db.commit()
+            return {
+                "lead_id": lead.id,
+                "status": "SKIPPED_NON_BUSINESS",
+                "demo_access_status": DemoAccessStatus.NOT_GENERATED.value,
+                "public_demo_url": None,
+                "local_preview_url": None
+            }
+
         # Create output directory static/demos/{lead_id}
         demo_dir = os.path.join(self.base_static_dir, lead.id)
         os.makedirs(demo_dir, exist_ok=True)
